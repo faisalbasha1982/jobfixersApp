@@ -76,6 +76,59 @@
 		<string>WorkSans-Medium.ttf</string>
 		<string>WorkSans-Regular.ttf</string>
 		<string>Feather.ttf</string>
+		<string>Barlow-Black.otf</string>
+		<string>Barlow-BlackItalic.otf</string>
+		<string>Barlow-Bold.otf</string>
+		<string>Barlow-BoldItalic.otf</string>
+		<string>Barlow-ExtraBoldItalic.otf</string>
+		<string>Barlow-ExtraLight.otf</string>
+		<string>Barlow-ExtraLightItalic.otf</string>
+		<string>Barlow-Italic.otf</string>
+		<string>Barlow-Light.otf</string>
+		<string>Barlow-LightItalic.otf</string>
+		<string>Barlow-Medium.otf</string>
+		<string>Barlow-MediumItalic.otf</string>
+		<string>Barlow-Regular.otf</string>
+		<string>Barlow-SemiBold.otf</string>
+		<string>Barlow-SemiBoldItalic.otf</string>
+		<string>Barlow-Thin.otf</string>
+		<string>Barlow-ThinItalic.otf</string>
+		<string>BarlowCondensed-Black.otf</string>
+		<string>barlowcondensed-blackitalic.otf</string>
+		<string>BarlowCondensed-Bold.otf</string>
+		<string>BarlowCondensed-BoldItalic.otf</string>
+		<string>BarlowCondensed-ExtraBold.otf</string>
+		<string>BarlowCondensed-ExtraBoldItalic.otf</string>
+		<string>BarlowCondensed-ExtraLight.otf</string>
+		<string>BarlowCondensed-ExtraLightItalic.otf</string>
+		<string>BarlowCondensed-Italic.otf</string>
+		<string>BarlowCondensed-Light.otf</string>
+		<string>BarlowCondensed-LightItalic.otf</string>
+		<string>BarlowCondensed-Medium.otf</string>
+		<string>BarlowCondensed-MediumItalic.otf</string>
+		<string>BarlowCondensed-Regular.otf</string>
+		<string>BarlowCondensed-SemiBold.otf</string>
+		<string>BarlowCondensed-SemiBoldItalic.otf</string>
+		<string>BarlowCondensed-Thin.otf</string>
+		<string>BarlowCondensed-ThinItalic.otf</string>
+		<string>BarlowSemiCondensed-Black.otf</string>
+		<string>BarlowSemiCondensed-BlackItalic.otf</string>
+		<string>BarlowSemiCondensed-Bold.otf</string>
+		<string>BarlowSemiCondensed-BoldItalic.otf</string>
+		<string>barlowsemicondensed-extrabold.otf</string>
+		<string>BarlowSemiCondensed-ExtraBoldItalic.otf</string>
+		<string>BarlowSemiCondensed-ExtraLight.otf</string>
+		<string>barlowsemicondensed-extralightitalic.otf</string>
+		<string>barlowsemicondensed-italic.otf</string>
+		<string>barlowsemicondensed-light.otf</string>
+		<string>BarlowSemiCondensed-LightItalic.otf</string>
+		<string>BarlowSemiCondensed-Medium.otf</string>
+		<string>barlowsemicondensed-mediumitalic.otf</string>
+		<string>BarlowSemiCondensed-Regular.otf</string>
+		<string>BarlowSemiCondensed-SemiBold.otf</string>
+		<string>BarlowSemiCondensed-SemiBoldItalic.otf</string>
+		<string>barlowsemicondensed-thin.otf</string>
+		<string>barlowsemicondensed-thinitalic.otf</string>
 	</array>
 </dict>
 </plist>

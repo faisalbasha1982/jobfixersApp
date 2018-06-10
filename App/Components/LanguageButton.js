@@ -54,7 +54,7 @@ class LanguageButton extends Component {
         onPress={() => {this.props.onButtonPress(this.props.language)}}
         activeOpacity={0.5}
         style={{
-          height: "20.5%",
+          height: "25.5%",
           width: "92.1%",
           marginBottom: 17,
           marginLeft: 15,

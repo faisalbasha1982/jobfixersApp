@@ -684,7 +684,7 @@ class FormTwo extends Component {
                                      }
                                 />                                        
 
-                               <Text style={{marginTop: 5, fontFamily: 'WorkSans-Bold', justifyContent: 'center', alignItems: 'center', fontWeight: '500', fontSize: 20}}>I Agree to the  {'\n'}<Text style={{ color: '#e73d50',fontFamily: 'WorkSans-Bold', fontWeight: '500', fontSize: 20  }} onPress={() => Linking.openURL('http://google.com')}>Terms & Conditions</Text></Text>                            
+                               <Text style={{marginTop: 5, fontFamily: 'WorkSans-Bold', justifyContent: 'center', alignItems: 'center', fontWeight: '500', fontSize: 20}}>I Agree to the  {'\n'}<Text style={{ color: '#e73d50',fontFamily: 'WorkSans-Bold', fontWeight: '500', fontSize: 20  }} onPress={() => Linking.openURL('https://jobfixers.be/nl/privacy')}>Terms & Conditions</Text></Text>                            
                     
                     </View>
 
@@ -813,7 +813,7 @@ class FormTwo extends Component {
                                  }
                             />                                        
 
-                           <Text style={{marginTop: 5, fontFamily: 'WorkSans-Bold', justifyContent: 'center', alignItems: 'center', fontWeight: '500', fontSize: 20}}>I Agree to the  {'\n'}<Text style={{ color: '#e73d50',fontFamily: 'WorkSans-Bold', fontWeight: '500', fontSize: 20  }} onPress={() => Linking.openURL('http://google.com')}>Terms & Conditions</Text></Text>                            
+                           <Text style={{marginTop: 5, fontFamily: 'WorkSans-Bold', justifyContent: 'center', alignItems: 'center', fontWeight: '500', fontSize: 20}}>I Agree to the  {'\n'}<Text style={{ color: '#e73d50',fontFamily: 'WorkSans-Bold', fontWeight: '500', fontSize: 20  }} onPress={() => Linking.openURL('https://jobfixers.be/nl/privacy')}>Terms & Conditions</Text></Text>                            
                 
                 </View>
 

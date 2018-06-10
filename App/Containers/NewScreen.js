@@ -26,6 +26,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { Colors } from "../Themes";
 import { Images } from '../Themes';
 import logo from '../Images/logoheader.png';
+import logoHeader from '../Images/logoheader.png';
+import headerImage from '../Images/logojobfixersNew.png'
 
 const viewPortHeight = Dimensions.get('window').height;
 const viewPortWidth  = Dimensions.get('window').width;
@@ -38,12 +40,18 @@ export default class NewScreen extends Component {
     {
         return(
                 <View style={newStyle.container}>
-                    <View style={newStyle.logoContainer}>
-                      <Image source={logo} resizeMode="contain" style={{ width:334, height: 66.7 }} />
+                    <View style={newStyle.headerImageStyle}>
+                      <Image source={headerImage} resizeMode="contain" style={{ width: viewPortWidth, height: viewPortHeight * .45 }} />
                     </View>
-                <View style={newStyle.languageTextContainer}>
-                    <Text style={newStyle.languageText}> Choose your language!</Text>
-                </View>
+
+                    <View style={newStyle.newLogoContainer}>
+                      <Image source={logoHeader} resizeMode="contain" style={{ width: viewPortWidth * 0.532, height: viewPortHeight * 0.06 }} />
+                    </View>
+
+                    <View style={newStyle.languageTextContainer}>
+                      <Text style={newStyle.languageText}> Choose your language!</Text>
+                    </View>
+
                 <View style={newStyle.buttons}>
                       <LanguageButton language={LanguageSettings.dutch.languageText} />
                       <LanguageButton language={LanguageSettings.french.languageText} />
@@ -65,6 +73,15 @@ const newStyle = StyleSheet.create({
                 alignItems: 'center',
     },
 
+    headerImageStyle: {
+        width: viewPortWidth,
+        height: viewPortHeight * 0.45,
+        flex: Platform.OS === 'ios'?24:5,
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
     logoContainer: {
                 width: viewPortWidth, 
                 height: 50, 
@@ -75,10 +92,22 @@ const newStyle = StyleSheet.create({
                 marginTop: "18.6%"
     },
 
+    newLogoContainer: {
+        width: viewPortWidth,
+        height: 50,
+        flex: 8,
+        padding: 20,
+        paddingBottom: 10,
+        marginTop: 25,
+        backgroundColor: 'white',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+    },
+
     languageTextContainer: {
                 width: viewPortWidth, 
                 height: 50, 
-                flex: 2, 
+                flex: 6, 
                 backgroundColor: 'white',
                 justifyContent: 'flex-end'
     },
@@ -99,13 +128,14 @@ const newStyle = StyleSheet.create({
     buttons: {
                 width: viewPortWidth * 0.98, 
                 height: 87, 
-                flex: 7, 
+                flex: 26, 
                 backgroundColor: 'white',
                 justifyContent: 'center',
                 alignItems: 'center',
                 marginLeft: 25,
                 marginRight: 25,
-                marginBottom: viewPortHeight * 0.10,
+                marginTop: 25,
+                marginBottom: viewPortHeight * 0.05,
     },
 
 });
