@@ -145,6 +145,7 @@ class ThankYouScreen extends Component {
                                     backgroundColor:'#e73d50',
                                     borderRadius:35,
                                     }}
+                                onPress = {() => { Linking.openURL('https://www.instagram.com/jobfixers/') }}
                                 >
                                 <Icon name={"facebook-f"}  size={15} color="#fff" />
                         </TouchableOpacity>
@@ -157,6 +158,7 @@ class ThankYouScreen extends Component {
                                     backgroundColor:'#e73d50',
                                     borderRadius:35,
                                     }}
+                                    onPress = {() => { Linking.openURL('https://facebook.com/jobFIXers.be/') }}
                                 >
                                 <Icon name={"instagram"}  size={17} color="#fff" />
                         </TouchableOpacity>

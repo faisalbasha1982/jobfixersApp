@@ -797,7 +797,7 @@ class FormTwo extends Component {
 
                 {
                     this.state.isLoading===true?
-                    <View style = {{position: 'absolute' , zIndex:999, left: 40, top: 40, right: 0, bottom: 0}}>
+                    <View style = {{position: 'absolute' , zIndex:3999, left: 40, top: 40, right: 0, bottom: 0}}>
                     <BallIndicator color='#e73d50' />
                     </View>:this.somethingElse()
                 }
