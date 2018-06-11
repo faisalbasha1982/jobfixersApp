@@ -68,36 +68,35 @@ class PushForJob extends Component {
         var selected_animations = animationsNew.slice(start,start+1);
         return selected_animations.map((animation,index)=>
                 {
-                    return (
-                        <Button
-                            style = {newStyle.button} 
-                            onPress = { () => { 
+                    return (                        
+                            <TouchableOpacity onPress={() => { 
                                 this.stopAnimation(animation[0]);
-                                this.props.onButtonPress();                                                       
-                            } 
-                        }>
-                         <Animatable.View
-                            ref={animation[start]}
-                            style={[newStyle.box,{backgroundColor: animation[start]}]}
-                            animation = {animation[start]}
-                            iterationCount={"infinite"}>
-                            <Image source={jobImage} resizeMode="contain" style={{ width: viewPortWidth * 0.891, height: viewPortHeight * 0.891 }} />
-                        </Animatable.View>                            
-                        </Button>
+                                this.props.onButtonPress()}}>
+                                <Animatable.View
+                                    ref={animation[6]}
+                                    style={[newStyle.box,{backgroundColor: animation[6]}]}
+                                    animation = {animation[6]}
+                                    iterationCount={"infinite"}>
+                                    <Image source={jobImage} resizeMode="contain" style={{ width: viewPortWidth * 0.891, height: viewPortHeight * 0.891 }} />
+                                </Animatable.View>
+                            </TouchableOpacity>                             
                     );
                 });
     }
 
     render()
     {
+        var start = 6;
+        var selected_animations = animationsNew.slice(start,start+1);
+
         return(
                 <View style={newStyle.container}>
                     <View style={newStyle.topContainer}>
                         {/* <Text style={newStyle.pushStyle}>PUSH {'\n'} FOR {'\n'} A</Text>  */}
                         <Image source={pushImage} resizeMode="contain" style={{ width: viewPortWidth * 0.812, height: viewPortHeight * 0.35 }} />
                     </View>
-                    <View style={newStyle.bottomContainer}>
-                            {this.renderAnimation(4)}
+                    <View style={newStyle.bottomContainer}>                        
+                        {this.renderAnimation(6)}                        
                     </View>
                     <View style={newStyle.logoBottom}>
                             <Image source={logoHeader} resizeMode="contain" style={{ width: viewPortWidth * 0.350, height: viewPortHeight * 0.04 }} />

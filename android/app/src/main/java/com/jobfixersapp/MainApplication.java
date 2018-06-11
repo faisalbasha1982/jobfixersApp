@@ -2,7 +2,10 @@ package com.jobfixersapp;
 
 import android.app.Application;
 
+import com.airbnb.android.react.lottie.BuildConfig;
 import com.facebook.react.ReactApplication;
+import com.github.godness84.RNSparkButton.RNSparkButtonPackage;
+import com.github.godness84.RNSparkButton.RNSparkButtonPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -27,6 +30,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNSparkButtonPackage(),
+            new RNSparkButtonPackage(),
             new LottiePackage(),
             new ReactNativeConfigPackage(),
             new VectorIconsPackage(),

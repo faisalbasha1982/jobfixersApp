@@ -601,7 +601,14 @@ class FormTwo extends Component {
                            (this.state.checkBoxError===true || this.state.postalCodeError===true)?this.renderValidation():this.somethingElse()
                     }
                 </View>
-
+                {/* <Text style={newStyle.postalName}>{this.state.postalCode}</Text> */}
+                    <TextInput
+                            style={[newStyle.nameInput,{marginTop: 10},]}
+                            keyboardType="numeric"
+                            placeholder='postalcode here......'
+                            underlineColorAndroid= 'transparent'
+                            value={this.state.postalCodeInput}
+                            onChangeText= { (postalCodeInput) => this.validationPostalCode(postalCodeInput) } />
                 <View style={newStyle.inputContainer}>
 
                     <Text style={newStyle.firstName}>{this.state.workText}</Text>
@@ -664,14 +671,17 @@ class FormTwo extends Component {
                     }
 
                     <Text style={newStyle.postalName}>{this.state.postalCode}</Text>
-                    <TextInput
-                            style={[newStyle.nameInput,{marginTop: 10},]}
-                            keyboardType="numeric"
-                            placeholder='postalcode here......'
-                            underlineColorAndroid= 'transparent'
-                            value={this.state.postalCodeInput}
-                            onChangeText= { (postalCodeInput) => this.validationPostalCode(postalCodeInput) } />
-                    
+                    {/* <View style={{flex:1,}}>
+                        <Text style={newStyle.postalName}>{this.state.postalCode}</Text>
+                        <TextInput
+                                keyboardType="numeric"
+                                placeholder='postalcode here......'
+                                underlineColorAndroid= 'transparent'                     
+                                style={newStyle.nameInput}
+                                onChangeText={(postalCodeInput) => this.validationPostalCode(postalCodeInput)}
+                                value={this.state.postalCodeInput}/>
+                    </View> */}
+
                     <View style={newStyle.policyStyle}> 
                     <CheckBox  
                                 title=''                                  
@@ -793,13 +803,13 @@ class FormTwo extends Component {
                 }
 
                 <Text style={newStyle.postalName}>{this.state.postalCode}</Text>
-                <TextInput
+                {/* <TextInput
                         style={[newStyle.nameInput,{marginTop: 10},]}
                         keyboardType="numeric"
                         placeholder='postalcode here......'
                         underlineColorAndroid= 'transparent'
                         value={this.state.postalCodeInput}
-                        onChangeText= { (postalCodeInput) => this.validationPostalCode(postalCodeInput) } />
+                        onChangeText= { (postalCodeInput) => this.validationPostalCode(postalCodeInput) } /> */}
                 
                 <View style={newStyle.policyStyle}> 
                 <CheckBox  
@@ -903,7 +913,7 @@ const newStyle = StyleSheet.create({
         backgroundColor: 'white',
         justifyContent: 'space-between',
         alignItems: 'flex-start',           
-        zIndex: 999,
+        zIndex: 1999,
     },
 
     iconImageStyle:{
@@ -919,6 +929,12 @@ const newStyle = StyleSheet.create({
         paddingTop: 10,
         flex: 18,
         height: 150,
+    },
+
+    postalContainer:{
+        position: 'relative',
+        backgroundColor: 'transparent',
+        zIndex: 999,
     },
 
     iconStyleTop: {
@@ -988,7 +1004,8 @@ const newStyle = StyleSheet.create({
         letterSpacing: 0.67,
         textAlign: 'left',
         marginLeft: 15,
-        marginBottom: 10,
+        marginBottom: 45,        
+        zIndex:999,
     },
 
     firstInput: {
@@ -1002,11 +1019,14 @@ const newStyle = StyleSheet.create({
     nameInput: {
         width: 350,
         height: 57,
+        top: 380,
         borderRadius: 8,
         backgroundColor: '#f6f6f6',
+        position: 'absolute',
         marginBottom: 15,
         padding: 10,
         marginLeft: 15,
+        zIndex:999,
     },
 
     buttons: {
@@ -1056,10 +1076,10 @@ const newStyle = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         backgroundColor: 'white',
-        marginTop: 0,
+        marginTop: 20,
         paddingLeft: 0,
         justifyContent: 'flex-start',
-        alignItems: 'flex-start',        
+        alignItems: 'flex-end',        
     },
 
      policyTextStyle: {

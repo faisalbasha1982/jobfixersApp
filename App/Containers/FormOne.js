@@ -366,6 +366,7 @@ export default class FormOne extends Component {
                         onChangeText= { (phoneNumberInput) => this.validatePhone(phoneNumberInput) }/>  */}
                       <PhoneInput 
                             ref='phone'
+                            initialCountry='be'
                             style= {newStyle.nameInput}
                             onChangePhoneNumber = { (phoneNumberInput) => this.validatePhone(phoneNumberInput) } />
                 </View>

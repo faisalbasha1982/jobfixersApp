@@ -113,7 +113,7 @@ const mapDispatchToProps = dispatch => {
 
     resetNavigate: navigationObject => dispatch(NavigationActions.reset(navigationObject)),
     navigate: navigationObject => dispatch(NavigationActions.navigate(navigationObject)),
-    onButtonPress: (language) => dispatch(NavigationActions.navigate({routeName: 'WelcomeScreen',params: {language: language }})),
+    onButtonPress: (language) => dispatch(NavigationActions.navigate({routeName: 'FormOne',params: {language: language }})),
     navigateBack: () => dispatch(NavigationActions.back()),
 
   };
