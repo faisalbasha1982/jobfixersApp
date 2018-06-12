@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -68,6 +69,9 @@
 		7803A4C464C247A3AE808204 /* barlowsemicondensed-extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5DD6144C799F45A1A725D137 /* barlowsemicondensed-extrabold.otf */; };
 		7912F7F925FD40ACAB637A7E /* Barlow-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C8A58F1D50E4459AACDC1820 /* Barlow-ExtraLightItalic.otf */; };
 		7AFCDB32B19F46EAA33198E7 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D8499EFC9E249478D0AB2EA /* EvilIcons.ttf */; };
+		7B82263B20CF8FFC002FD699 /* WaitingLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B82260A20CF8FFB002FD699 /* WaitingLogo@2x.png */; };
+		7B82263C20CF8FFC002FD699 /* WaitingLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B82263920CF8FFB002FD699 /* WaitingLogo.png */; };
+		7B82263D20CF8FFC002FD699 /* WaitingLogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B82263A20CF8FFB002FD699 /* WaitingLogo@3x.png */; };
 		7BECB87520C519C500361052 /* WorkSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BECB84420C519C500361052 /* WorkSans-SemiBold.ttf */; };
 		7BECB87620C519C500361052 /* WorkSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BECB86D20C519C500361052 /* WorkSans-ExtraBold.ttf */; };
 		7BECB87720C519C500361052 /* WorkSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BECB86E20C519C500361052 /* WorkSans-Bold.ttf */; };
@@ -534,6 +538,9 @@
 		7665FBF0F63F44AFB393F639 /* Barlow-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Barlow-Regular.otf"; path = "../assets/fonts/Barlow-Regular.otf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		79C8DA3971FC439386EE3502 /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
+		7B82260A20CF8FFB002FD699 /* WaitingLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WaitingLogo@2x.png"; sourceTree = "<group>"; };
+		7B82263920CF8FFB002FD699 /* WaitingLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WaitingLogo.png; sourceTree = "<group>"; };
+		7B82263A20CF8FFB002FD699 /* WaitingLogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WaitingLogo@3x.png"; sourceTree = "<group>"; };
 		7B8E918420C52EAF005F9EC0 /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/ios/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
 		7BECB84420C519C500361052 /* WorkSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "WorkSans-SemiBold.ttf"; path = "../assets/fonts/WorkSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		7BECB86D20C519C500361052 /* WorkSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "WorkSans-ExtraBold.ttf"; path = "../assets/fonts/WorkSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -982,6 +989,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				7B82263920CF8FFB002FD699 /* WaitingLogo.png */,
+				7B82260A20CF8FFB002FD699 /* WaitingLogo@2x.png */,
+				7B82263A20CF8FFB002FD699 /* WaitingLogo@3x.png */,
 				13B07FAE1A68108700A75B9A /* jobfixersApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* jobfixersAppTests */,
@@ -1579,6 +1589,7 @@
 				D05DF4F2136C40E8BBDA542A /* Octicons.ttf in Resources */,
 				37E79FD87EBF43159F7F653E /* Roboto_medium.ttf in Resources */,
 				7BECB87820C519C500361052 /* WorkSans-Light.ttf in Resources */,
+				7B82263C20CF8FFC002FD699 /* WaitingLogo.png in Resources */,
 				1C579F3CF19E413CBCAF1C3F /* Roboto.ttf in Resources */,
 				F7A5EEF4A45A4EF1BEAD9BC0 /* rubicon-icon-font.ttf in Resources */,
 				4FA3ABC0BE68470895B84A9A /* SimpleLineIcons.ttf in Resources */,
@@ -1613,10 +1624,12 @@
 				753A04BE4D074C4FB6BD974C /* BarlowCondensed-Light.otf in Resources */,
 				0FB6C57B3AEC451F9A25FE2D /* BarlowCondensed-LightItalic.otf in Resources */,
 				96CB7C77AEC54AE0B407ABF2 /* BarlowCondensed-Medium.otf in Resources */,
+				7B82263D20CF8FFC002FD699 /* WaitingLogo@3x.png in Resources */,
 				86F15AD860FE4C1480C46901 /* BarlowCondensed-MediumItalic.otf in Resources */,
 				A0A8762AD2624A04A2ABF9A1 /* BarlowCondensed-Regular.otf in Resources */,
 				BEF5EE28705641609408A6C8 /* BarlowCondensed-SemiBold.otf in Resources */,
 				829723056775469AA1BDD8BE /* BarlowCondensed-SemiBoldItalic.otf in Resources */,
+				7B82263B20CF8FFC002FD699 /* WaitingLogo@2x.png in Resources */,
 				E13113D36B4049D8B2D54DEF /* BarlowCondensed-Thin.otf in Resources */,
 				6CF8BEDC3464417FB39F42A9 /* BarlowCondensed-ThinItalic.otf in Resources */,
 				0DCF822276DA4EDB94F42192 /* BarlowSemiCondensed-Black.otf in Resources */,

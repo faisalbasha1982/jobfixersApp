@@ -20,6 +20,7 @@ import LanguageSettings from '../Containers/LanguageSettingsNew';
 import logoHeader from '../Images/page1.png';
 import pushImage from '../Images/pushForA.png';
 import jobImage from '../Images/group2.png';
+import njobanimationImage from '../Images/newjobanimation.gif';
 import { NavigationActions } from "react-navigation";
 import { connect } from 'react-redux';
 
@@ -59,44 +60,26 @@ const animationsNew = [
 
 class PushForJob extends Component {
 
-    stopAnimation = () => {
-        this.refs
-    }
-
-    renderAnimation = (start) => {
-
-        var selected_animations = animationsNew.slice(start,start+1);
-        return selected_animations.map((animation,index)=>
-                {
+    renderAnimation = () => {
                     return (                        
-                            <TouchableOpacity onPress={() => { 
-                                this.stopAnimation(animation[0]);
-                                this.props.onButtonPress()}}>
-                                <Animatable.View
-                                    ref={animation[6]}
-                                    style={[newStyle.box,{backgroundColor: animation[6]}]}
-                                    animation = {animation[6]}
-                                    iterationCount={"infinite"}>
-                                    <Image source={jobImage} resizeMode="contain" style={{ width: viewPortWidth * 0.891, height: viewPortHeight * 0.891 }} />
-                                </Animatable.View>
-                            </TouchableOpacity>                             
+                            <TouchableOpacity onPress={() => { this.props.onButtonPress()}}>
+                                    <Image source={njobanimationImage} resizeMode="contain" style={{ width: viewPortWidth * 0.891, height: viewPortHeight * 0.891 }} />
+                            </TouchableOpacity>
                     );
-                });
     }
 
     render()
     {
-        var start = 6;
-        var selected_animations = animationsNew.slice(start,start+1);
-
         return(
                 <View style={newStyle.container}>
                     <View style={newStyle.topContainer}>
-                        {/* <Text style={newStyle.pushStyle}>PUSH {'\n'} FOR {'\n'} A</Text>  */}
+                        {/* <Animatable.Text animation="zoomInUp" style={newStyle.pushStyle}>PUSH {'\n'} FOR {'\n'} A</Animatable.Text> */}
                         <Image source={pushImage} resizeMode="contain" style={{ width: viewPortWidth * 0.812, height: viewPortHeight * 0.35 }} />
                     </View>
-                    <View style={newStyle.bottomContainer}>                        
-                        {this.renderAnimation(6)}                        
+                    <View style={newStyle.bottomContainer}>
+                        <TouchableOpacity onPress={() => { this.props.onButtonPress()}}>
+                                    <Image source={njobanimationImage} resizeMode="contain" style={{ width: viewPortWidth * 0.891, height: viewPortHeight * 0.891 }} />
+                        </TouchableOpacity>         
                     </View>
                     <View style={newStyle.logoBottom}>
                             <Image source={logoHeader} resizeMode="contain" style={{ width: viewPortWidth * 0.350, height: viewPortHeight * 0.04 }} />
