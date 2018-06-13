@@ -602,6 +602,12 @@ class FormTwo extends Component {
                     }
                 </View>
                 {/* <Text style={newStyle.postalName}>{this.state.postalCode}</Text> */}
+                {
+                        this.state.isLoading===true?
+                        <View style = {{position: 'absolute' , zIndex:3999, left: 20, top: 40, right: 0, bottom: 0}}>
+                        <BallIndicator color='#e73d50' />
+                        </View>:this.somethingElse()
+                }
                     <TextInput
                             style={[newStyle.nameInput,{marginTop: 10},]}
                             keyboardType="numeric"
@@ -663,12 +669,6 @@ class FormTwo extends Component {
                     </View>
                     
 
-                    {
-                        this.state.isLoading===true?
-                        <View style = {{position: 'absolute' , zIndex:999, left: 40, top: 40, right: 0, bottom: 0}}>
-                        <BallIndicator color='#e73d50' />
-                        </View>:this.somethingElse()
-                    }
 
                     <Text style={newStyle.postalName}>{this.state.postalCode}</Text>
                     {/* <View style={{flex:1,}}>

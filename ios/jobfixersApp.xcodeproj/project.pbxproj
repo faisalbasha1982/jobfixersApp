@@ -1858,6 +1858,7 @@
 				PRODUCT_NAME = jobfixersApp;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -2098,7 +2099,7 @@
 				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos11.3;
-				VALIDATE_PRODUCT = NO;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};

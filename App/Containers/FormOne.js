@@ -165,6 +165,7 @@ export default class FormOne extends Component {
         console.log("phone="+phoneSub);
 
         let reg = /^[0-9]{12}$/;
+        let regNew = /^(?=(.*\d){10})(?!(.*\d){13})[\d\(\)\s+-]{10,}$/;
 
         if(phone === '')
         {
@@ -186,7 +187,7 @@ export default class FormOne extends Component {
     
             this.phoneText = this.state.country;
     
-            if (reg.exec(phoneSub))
+            if (regNew.exec(phoneSub))
               this.setState({ phoneNumberEmptyError:false, EmptyErrorText:'', phoneNumberError: false, phoneNumberInput: phone, phoneNumberErrorText: '' });
             else
                 if(this.state.language === 'NEDERLANDS')

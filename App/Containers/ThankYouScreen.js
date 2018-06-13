@@ -55,13 +55,15 @@ class ThankYouScreen extends Component {
     };
 
     timerCount = () => {
-        setTimeout(() => { this.props.onButtonPress(this.state.language),5000});
+        setTimeout(() => { this.props.onButtonPress(),30000});
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.language !== this.props.navigation.state.params.language) {
             this.setState({ language: nextProps.language });
             this.setText();
+
+            this._interval = setInterval(() => { this.props.onButtonPress(),30000});
         }
     }
 
@@ -70,7 +72,7 @@ class ThankYouScreen extends Component {
         this.setState({ language: this.props.navigation.state.params.language });
         this.setText();
 
-        this._interval = setInterval(() => { this.props.onButtonPress(this.state.language),30000});        
+        this._interval = setInterval(() => { this.props.onButtonPress(),30000});        
     }
 
     componentWillUnmount() {
@@ -295,7 +297,7 @@ const mapDispatchToProps = dispatch => {
         resetNavigate: navigationObject => dispatch(NavigationActions.reset(navigationObject)),
         navigate: navigationObject => dispatch(NavigationActions.navigate(navigationObject)),
         navigateBack: () => dispatch(NavigationActions.back()),
-        onButtonPress: (language) => dispatch(NavigationActions.navigate({routeName: 'WelcomeScreen', params:{language: language}})),  
+        onButtonPress: () => dispatch(NavigationActions.navigate({routeName: 'PushForJob'})),  
     };
 };
 
