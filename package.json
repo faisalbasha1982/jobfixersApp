@@ -11,6 +11,7 @@
     "rnvc": "rm ./node_modules/react-native/local-cli/core/__fixtures__/files/package.json",
     "cfix": "rm ./node_modules/react-native/local-cli/core/fixtures/files/package.json",
     "nuclear": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules/ && npm cache verify && npm install && npm start -- --reset-cache",
+    "jsbundleMaker": " react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/main.jsbundle --assets-dest ios",
     "test:watch": "jest --watch",
     "updateSnapshot": "jest --updateSnapshot",
     "coverage": "jest --coverage && open coverage/lcov-report/index.html || xdg-open coverage/lcov-report/index.html",

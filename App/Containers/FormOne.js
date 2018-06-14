@@ -72,7 +72,7 @@ export default class FormOne extends Component {
             buttonText: '',
             firstNameError:true,
             firstNameErrorText:'',            
-            lastNameError:true,
+            lastNameError:false,
             lastNameErrorText:'',
             phoneNumberError:true,
             phoneNumberErrorText:'',
@@ -276,8 +276,8 @@ export default class FormOne extends Component {
 
         if(this.state.firstNameError===true)
             errorString = errorString + '\n' + this.state.firstNameErrorText;
-        if(this.state.lastNameError===true)
-            errorString = errorString + '\n' + this.state.lastNameErrorText;
+        // if(this.state.lastNameError===true)
+        //     errorString = errorString + '\n' + this.state.lastNameErrorText;
         if(this.state.phoneNumberError===true)
             errorString = errorString + '\n' + this.state.phoneNumberErrorText;
             
@@ -351,12 +351,12 @@ export default class FormOne extends Component {
                                 onChangeText={(firstNameInput) => this.validationFirstName(firstNameInput)}/>
                             
 
-                    <Text style={newStyle.firstName}>{this.state.name}</Text>
+                    {/* <Text style={newStyle.firstName}>{this.state.name}</Text>
                     <TextInput
                         style={ newStyle.nameInput}
                         placeholder=''
                         underlineColorAndroid= 'transparent'
-                        onChangeText= { (lastNameInput) => this.validationLastName(lastNameInput) }/>
+                        onChangeText= { (lastNameInput) => this.validationLastName(lastNameInput) }/> */}
 
                       <Text style={newStyle.phoneNumberStyle}>{this.state.phoneNumber}</Text> 
                      {/* <TextInput
@@ -406,12 +406,12 @@ export default class FormOne extends Component {
                              onChangeText={(firstNameInput) => this.validationFirstName(firstNameInput)}/>
                          
 
-                 <Text style={newStyle.firstName}>{this.state.name}</Text>
+                 {/* <Text style={newStyle.firstName}>{this.state.name}</Text>
                  <TextInput
                      style={ newStyle.nameInput}
                      placeholder=''
                      underlineColorAndroid= 'transparent'
-                     onChangeText= { (lastNameInput) => this.validationLastName(lastNameInput) }/>
+                     onChangeText= { (lastNameInput) => this.validationLastName(lastNameInput) }/> */}
 
                  <Text style={newStyle.phoneNumberStyle}>{this.state.phoneNumber}</Text>
                  {/* <TextInput

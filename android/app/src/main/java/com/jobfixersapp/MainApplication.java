@@ -2,14 +2,12 @@ package com.jobfixersapp;
 
 import android.app.Application;
 
-import com.airbnb.android.react.lottie.BuildConfig;
 import com.facebook.react.ReactApplication;
-import com.github.godness84.RNSparkButton.RNSparkButtonPackage;
-import com.github.godness84.RNSparkButton.RNSparkButtonPackage;
-import com.airbnb.android.react.lottie.LottiePackage;
-import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
+import com.github.godness84.RNSparkButton.RNSparkButtonPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
+import com.airbnb.android.react.lottie.LottiePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -30,12 +28,11 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNSparkButtonPackage(),
-            new RNSparkButtonPackage(),
-            new LottiePackage(),
-            new ReactNativeConfigPackage(),
             new VectorIconsPackage(),
-            new RNDeviceInfo()
+            new RNSparkButtonPackage(),
+            new RNDeviceInfo(),
+            new ReactNativeConfigPackage(),
+            new LottiePackage()
       );
     }
 

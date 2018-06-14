@@ -693,8 +693,14 @@ class FormTwo extends Component {
                                             }
                                      }
                                 />                                        
-
-                               <Text style={{marginTop: 5, fontFamily: 'WorkSans-Bold', justifyContent: 'center', alignItems: 'center', fontWeight: '500', fontSize: 20}}>I Agree to the  {'\n'}<Text style={{ color: '#e73d50',fontFamily: 'WorkSans-Bold', fontWeight: '500', fontSize: 20  }} onPress={() => Linking.openURL('https://jobfixers.be/nl/privacy')}>Terms & Conditions</Text></Text>                            
+                                {
+                                    this.props.navigation.state.params.objectParams.language ==='NEDERLANDS'?
+                                    <Text style={{marginTop: 5, fontFamily: 'WorkSans-Bold', justifyContent: 'center', alignItems: 'center', fontWeight: '500', fontSize: 20}}>{LanguageSettings.dutch.agreementText} {'\n'}<Text style={{ color: '#e73d50',fontFamily: 'WorkSans-Bold', fontWeight: '500', fontSize: 20  }} onPress={() => Linking.openURL('https://jobfixers.be/nl/privacy')}>{LanguageSettings.dutch.policyText}</Text></Text>
+                                    :this.props.navigation.state.params.objectParams.language === 'ENGLISH'?
+                                    <Text style={{marginTop: 5, fontFamily: 'WorkSans-Bold', justifyContent: 'center', alignItems: 'center', fontWeight: '500', fontSize: 20}}>{LanguageSettings.english.agreementText} {'\n'}<Text style={{ color: '#e73d50',fontFamily: 'WorkSans-Bold', fontWeight: '500', fontSize: 20  }} onPress={() => Linking.openURL('https://jobfixers.be/nl/privacy')}>{LanguageSettings.english.policyText}</Text></Text>
+                                    :
+                                    <Text style={{marginTop: 15, fontFamily: 'WorkSans-Bold', justifyContent: 'center', alignItems: 'center', fontWeight: '500', fontSize: 16}}>{LanguageSettings.french.agreementText} {'\n'}<Text style={{ color: '#e73d50',fontFamily: 'WorkSans-Bold', fontWeight: '500', fontSize: 20  }} onPress={() => Linking.openURL('https://jobfixers.be/nl/privacy')}>{LanguageSettings.french.policyText}</Text></Text>
+                                }
                     
                     </View>
 
@@ -823,7 +829,14 @@ class FormTwo extends Component {
                                  }
                             />                                        
 
-                           <Text style={{marginTop: 5, fontFamily: 'WorkSans-Bold', justifyContent: 'center', alignItems: 'center', fontWeight: '500', fontSize: 20}}>I Agree to the  {'\n'}<Text style={{ color: '#e73d50',fontFamily: 'WorkSans-Bold', fontWeight: '500', fontSize: 20  }} onPress={() => Linking.openURL('https://jobfixers.be/nl/privacy')}>Terms & Conditions</Text></Text>                            
+                                {
+                                    this.props.navigation.state.params.objectParams.language ==='NEDERLANDS'?
+                                    <Text style={{marginTop: 5, fontFamily: 'WorkSans-Bold', justifyContent: 'center', alignItems: 'center', fontWeight: '500', fontSize: 20}}>{LanguageSettings.dutch.agreementText} {'\n'}<Text style={{ color: '#e73d50',fontFamily: 'WorkSans-Bold', fontWeight: '500', fontSize: 20  }} onPress={() => Linking.openURL('https://jobfixers.be/nl/privacy')}>{LanguageSettings.dutch.policyText}</Text></Text>
+                                    :this.props.navigation.state.params.objectParams.language === 'ENGLISH'?
+                                    <Text style={{marginTop: 5, fontFamily: 'WorkSans-Bold', justifyContent: 'center', alignItems: 'center', fontWeight: '500', fontSize: 20}}>{LanguageSettings.english.agreementText} {'\n'}<Text style={{ color: '#e73d50',fontFamily: 'WorkSans-Bold', fontWeight: '500', fontSize: 20  }} onPress={() => Linking.openURL('https://jobfixers.be/nl/privacy')}>{LanguageSettings.english.policyText}</Text></Text>
+                                    :
+                                    <Text style={{marginTop: 5, fontFamily: 'WorkSans-Bold', justifyContent: 'center', alignItems: 'center', fontWeight: '500', fontSize: 20}}>{LanguageSettings.french.agreementText} {'\n'} déclaration {'\n'}<Text style={{ color: '#e73d50',fontFamily: 'WorkSans-Bold', fontWeight: '500', fontSize: 20  }} onPress={() => Linking.openURL('https://jobfixers.be/nl/privacy')}>{LanguageSettings.french.policyText}</Text></Text>
+                                }
                 
                 </View>
 
