@@ -16,6 +16,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { NavigationActions } from "react-navigation";
+import TimerMixin from 'react-timer-mixin';
 import ButtonWelcome from '../Components/ButtonWelcome';
 import LanguageButton from '../Components/LanguageButton';
 import Spinner from "react-native-loading-spinner-overlay";
@@ -43,6 +44,7 @@ class ThankYouScreen extends Component {
     constructor(props)
     {
         super(props);        
+        //this._interval = setInterval(() => { this.props.onButtonPress(),60000});        
     }
 
     state = {
@@ -52,10 +54,19 @@ class ThankYouScreen extends Component {
         thankYouTextTwo: '',
         followText: '',                
         buttonText: '',
+        timer:0,
     };
 
     timerCount = () => {
-        setTimeout(() => { this.props.onButtonPress(),30000});
+        setTimeout(() => { this.props.onButtonPress(),60000});
+    }
+
+    checkTimer = () => {
+        
+        this.setState({timer: this.state.timer + 1});
+
+        if(this.state.timer===500)
+            this.props.onButtonPress();
     }
 
     componentWillReceiveProps(nextProps) {
@@ -63,7 +74,7 @@ class ThankYouScreen extends Component {
             this.setState({ language: nextProps.language });
             this.setText();
 
-            this._interval = setInterval(() => { this.props.onButtonPress(),30000});
+            //this._interval = setInterval(() => { this.props.onButtonPress(),60000});
         }
     }
 
@@ -72,7 +83,7 @@ class ThankYouScreen extends Component {
         this.setState({ language: this.props.navigation.state.params.language });
         this.setText();
 
-        this._interval = setInterval(() => { this.props.onButtonPress(),30000});        
+        this._interval = setInterval(() => { this.checkTimer(),1000});        
     }
 
     componentWillUnmount() {
@@ -186,7 +197,7 @@ const newStyle = StyleSheet.create({
     headerImage: {
         width: viewPortWidth,
         height: viewPortHeight * 0.55,
-        flex: Platform.os==='ios'?31:23,
+        flex: Platform.OS==='ios'?28:23,
         backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',

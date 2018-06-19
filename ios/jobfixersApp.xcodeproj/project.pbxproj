@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		005C3D7F5B2A440DAE3C11B9 /* WorkSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C9C032AA1E840889E9987AC /* WorkSans-ExtraBold.ttf */; };
 		008A5640ABCF4633A169F7E0 /* BarlowCondensed-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 146803D1D155456A8F5856C7 /* BarlowCondensed-SemiBoldItalic.otf */; };
@@ -73,7 +74,9 @@
 		78B6CFD5F604477D811AC938 /* BarlowSemiCondensed-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5E9D89BB1B74F1E9A8CAD22 /* BarlowSemiCondensed-BoldItalic.otf */; };
 		7AEF6D65AE7E41EAA223DAFF /* Barlow-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D64ED0AC496046EF91331CE7 /* Barlow-LightItalic.otf */; };
 		7B91BCAE20D25B7100D06121 /* WaitingLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B91BC8820D25B7100D06121 /* WaitingLogo.png */; };
+		7BAB7A9D20D7C7BA003B3B12 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 008F07F21AC5B25A0029DE68 /* main.jsbundle */; };
 		7BC5AB3420D26CC000A0F0E0 /* logoheader.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BC5AB3320D26CBF00A0F0E0 /* logoheader.png */; };
+		7BDA170020D78DFB00FCDD0E /* Lottie.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 7BC5AB2C20D268AD00A0F0E0 /* Lottie.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7FE7ADBDE8B2402DBA5009C4 /* BarlowSemiCondensed-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A65945B090934F9FB58AA057 /* BarlowSemiCondensed-LightItalic.otf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		86BFCCC5748345D880BFAB2B /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E8B8D57BB7455F94D3718F /* libReactNativeConfig.a */; };
@@ -384,6 +387,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTLinking;
 		};
+		7BAB7A6D20D7C57F003B3B12 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E2605F75B4D45A1A19333DF /* Lottie.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 84FE12EE1E4C1485009B157C;
+			remoteInfo = LottieLibraryIOS;
+		};
 		7BC5AACD20D2620400A0F0E0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA987B8925D5418593F74086 /* LottieReactNative.xcodeproj */;
@@ -462,6 +472,20 @@
 			remoteInfo = RCTBlob;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7BDA16FF20D78DC600FCDD0E /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7BDA170020D78DFB00FCDD0E /* Lottie.framework in Copy Files */,
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
@@ -1027,10 +1051,12 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				7BDA16FF20D78DC600FCDD0E /* Copy Files */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7BAB7A6E20D7C57F003B3B12 /* PBXTargetDependency */,
 			);
 			name = jobfixersApp;
 			productName = "Hello World";
@@ -1529,6 +1555,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BAB7A9D20D7C7BA003B3B12 /* main.jsbundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				7B91BCAE20D25B7100D06121 /* WaitingLogo.png in Resources */,
@@ -1707,6 +1734,11 @@
 			isa = PBXTargetDependency;
 			target = 2D02E47A1E0B4A5D006451C7 /* jobfixersApp-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
+		};
+		7BAB7A6E20D7C57F003B3B12 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LottieLibraryIOS;
+			targetProxy = 7BAB7A6D20D7C57F003B3B12 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

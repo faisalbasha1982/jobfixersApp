@@ -351,12 +351,12 @@ export default class FormOne extends Component {
                                 onChangeText={(firstNameInput) => this.validationFirstName(firstNameInput)}/>
                             
 
-                    {/* <Text style={newStyle.firstName}>{this.state.name}</Text>
+                    <Text style={newStyle.firstName}>{this.state.name}</Text>
                     <TextInput
                         style={ newStyle.nameInput}
                         placeholder=''
                         underlineColorAndroid= 'transparent'
-                        onChangeText= { (lastNameInput) => this.validationLastName(lastNameInput) }/> */}
+                        onChangeText= { (lastNameInput) => this.setState({lastNameInput}) }/>
 
                       <Text style={newStyle.phoneNumberStyle}>{this.state.phoneNumber}</Text> 
                      {/* <TextInput
@@ -474,7 +474,7 @@ const newStyle = StyleSheet.create({
 
     headerImage: {
         width: viewPortWidth,
-        height: viewPortHeight * 0.45,
+        height: viewPortHeight * 0.51,
         flex: Platform.OS === 'ios'?9:5,
         backgroundColor: 'white',
         justifyContent: 'center',

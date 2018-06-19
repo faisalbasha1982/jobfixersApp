@@ -311,7 +311,24 @@ class FormTwo extends Component {
                     this.setState({ postalCodeError: true,  ErrorText: 'Postal Code is Required!' });
 
                  if(this.state.checked === false)
-                    this.setState({ checkBoxError: true, ErrorText: 'Check Box is Required!'});
+                 {
+
+                    if(this.state.language === 'NEDERLANDS')
+                        {
+                            this.setState({ checkBoxError: true, ErrorText: LanguageSettings.dutch.CheckBoxErrorText});
+                        }
+                        // errorString = errorString + LanguageSettings.dutch.CheckBoxErrorText;
+                    else
+                        if(this.state.language === 'ENGLISH')
+                            this.setState({ checkBoxError: true, ErrorText: LanguageSettings.english.CheckBoxErrorText});
+
+                            // errorString = errorString + LanguageSettings.english.CheckBoxErrorText;
+                        else
+                            this.setState({ checkBoxError: true, ErrorText: LanguageSettings.french.CheckBoxErrorText});
+                            // errorString = errorString + LanguageSettings.french.CheckBoxErrorText;
+                    
+                 }
+                    //this.setState({ checkBoxError: true, ErrorText: 'Check Box is Required!'});
 
             }
         else
@@ -390,17 +407,20 @@ class FormTwo extends Component {
     renderValidation = () => {
         
         let errorString = this.state.ErrorText + '\n';
-        errorString = errorString + this.state.EmptyErrorText + '\n';
+        errorString = errorString + this.state.EmptyErrorText + '\n';        
+
+        console.log("this.state.checked=="+this.state.checked);
+        console.log("render validation language="+this.state.language);
 
         if(this.state.checked===false)
            {
-               if(this.state.language==='NEDERLANDS')
+               if(this.state.language === 'NEDERLANDS')
                     errorString = errorString + LanguageSettings.dutch.CheckBoxErrorText;
                 else
                     if(this.state.language === 'ENGLISH')
                         errorString = errorString + LanguageSettings.english.CheckBoxErrorText;
                     else
-                        errorString = errorString + LanguageSettings.french.CheckBoxErrorText;                    
+                        errorString = errorString + LanguageSettings.french.CheckBoxErrorText;                   
            }
 
         if(this.state.postalCodeError === true || this.state.checkBoxError === true)
@@ -609,7 +629,7 @@ class FormTwo extends Component {
                         </View>:this.somethingElse()
                 }
                     <TextInput
-                            style={[newStyle.nameInput,{marginTop: 10},]}
+                            style={[newStyle.nameInput,{marginTop: 20},]}
                             keyboardType="numeric"
                             placeholder='postalcode here......'
                             underlineColorAndroid= 'transparent'
@@ -668,8 +688,6 @@ class FormTwo extends Component {
 
                     </View>
                     
-
-
                     <Text style={newStyle.postalName}>{this.state.postalCode}</Text>
                     {/* <View style={{flex:1,}}>
                         <Text style={newStyle.postalName}>{this.state.postalCode}</Text>
@@ -897,8 +915,8 @@ const newStyle = StyleSheet.create({
 
     headerImage: {
         width: viewPortWidth,
-        height: viewPortHeight * 0.50,
-        flex: Platform.OS === 'ios'?12:11,
+        height: viewPortHeight * 0.51,
+        flex: Platform.OS === 'ios'?13:11,
         backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
@@ -917,7 +935,7 @@ const newStyle = StyleSheet.create({
 
     dropDownStyle: {
         width: viewPortWidth,
-        height: 57,
+        height: 60,
         flex:1,        
         marginTop: 15,
         marginLeft: 15,
@@ -926,7 +944,7 @@ const newStyle = StyleSheet.create({
         backgroundColor: 'white',
         justifyContent: 'space-between',
         alignItems: 'flex-start',           
-        zIndex: 1999,
+        zIndex: 3999,
     },
 
     iconImageStyle:{
