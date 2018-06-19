@@ -74,11 +74,11 @@ class PushForJob extends Component {
                 <View style={newStyle.container}>
                     <View style={newStyle.topContainer}>
                         {/* <Animatable.Text animation="zoomInUp" style={newStyle.pushStyle}>PUSH {'\n'} FOR {'\n'} A</Animatable.Text> */}
-                        <Image source={pushImage} resizeMode="contain" style={{ width: viewPortWidth * 0.812, height: viewPortHeight * 0.35 }} />
+                        <Image source={pushImage} resizeMode="contain" style={{ width: viewPortWidth * 0.812, height: viewPortHeight * 0.35, }} />
                     </View>
                     <View style={newStyle.bottomContainer}>
                         <TouchableOpacity onPress={() => { this.props.onButtonPress()}}>
-                                    <Image source={njobanimationImage} resizeMode="contain" style={{ width: viewPortWidth * 0.891, height: viewPortHeight * 0.891 }} />
+                                    <Image source={njobanimationImage} resizeMode="contain" style={{ width: viewPortWidth * 0.891, height: viewPortHeight * 0.891, marginLeft: 15, }} />
                         </TouchableOpacity>         
                     </View>
                     <View style={newStyle.logoBottom}>

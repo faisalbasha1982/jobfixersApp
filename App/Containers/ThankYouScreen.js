@@ -10,6 +10,7 @@ import {
     TextInput,
     PixelRatio,
     Platform,
+    Linking,
     Alert
 } from 'react-native';
 import { connect } from "react-redux";
@@ -158,7 +159,7 @@ class ThankYouScreen extends Component {
                                     backgroundColor:'#e73d50',
                                     borderRadius:35,
                                     }}
-                                onPress = {() => { Linking.openURL('https://www.instagram.com/jobfixers/') }}
+                                onPress = {() => { Linking.openURL('https://facebook.com/jobFIXers.be/') }}
                                 >
                                 <Icon name={"facebook-f"}  size={15} color="#fff" />
                         </TouchableOpacity>
@@ -171,7 +172,7 @@ class ThankYouScreen extends Component {
                                     backgroundColor:'#e73d50',
                                     borderRadius:35,
                                     }}
-                                    onPress = {() => { Linking.openURL('https://facebook.com/jobFIXers.be/') }}
+                                    onPress = {() => { Linking.openURL('https://www.instagram.com/jobfixers/') }}
                                 >
                                 <Icon name={"instagram"}  size={17} color="#fff" />
                         </TouchableOpacity>

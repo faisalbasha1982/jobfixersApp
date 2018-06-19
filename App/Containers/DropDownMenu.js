@@ -93,7 +93,7 @@ class DropdownMenu extends Component {
           <ScrollView style={[{position: 'absolute', elevation: 3,zIndex: 999, top: 0, left: 0, right: 0, backgroundColor: 'white'}, heightStyle]}>
           {
             currentTitles.map((title, index) =>
-            <TouchableOpacity key={index} activeOpacity={1} style={{flex: 1, height: 44}} onPress={this.itemOnPress.bind(this, index)} >
+            <TouchableOpacity key={index} activeOpacity={1} style={{flex: 1, height: 40}} onPress={this.itemOnPress.bind(this, index)} >
             {this.renderChcek(index, title)}
               <View style={{backgroundColor: '#F6F6F6', height: 1, marginLeft: 15}} />
              </TouchableOpacity>

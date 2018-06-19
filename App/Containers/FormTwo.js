@@ -53,6 +53,7 @@ import DropdownMenu from './DropDownMenu';
 import Validation from '../Components/ButtonValidation';
 import Modal from "react-native-modal";
 import SmartPicker from 'react-native-smart-picker';
+import IOSPicker from 'react-native-ios-picker';
 
 import { Colors } from "../Themes";
 import { Images } from '../Themes';
@@ -218,9 +219,7 @@ class FormTwo extends Component {
                     construct: LanguageSettings.french.construct,
                     office: LanguageSettings.french.office,    
                     });
-            }
-    
-       
+            }       
     }
 
     randomStringIV = () => {
@@ -379,6 +378,11 @@ class FormTwo extends Component {
             }
     }
 
+    toggleChecked = () => {
+
+            
+    }
+
     validationPostalCode = (pcode) => {
         let reg = /^[0-9]{4}$/;
 
@@ -421,7 +425,7 @@ class FormTwo extends Component {
                         errorString = errorString + LanguageSettings.english.CheckBoxErrorText;
                     else
                         errorString = errorString + LanguageSettings.french.CheckBoxErrorText;                   
-           }
+           }          
 
         if(this.state.postalCodeError === true || this.state.checkBoxError === true)
             return (
@@ -578,7 +582,7 @@ class FormTwo extends Component {
     }
 
     pickerComponent = () => {
-        console.log("hello in picker Component");
+        // console.log("hello in picker Component");
         return (
             <Picker
             selectedValue={this.state.dropDownItem}
@@ -595,6 +599,11 @@ class FormTwo extends Component {
         </Picker>       
         );
     }
+
+    change(d, data) {
+        this.setState({selectedValue: data});
+      }
+    
 
     render() {
         const myIcon = (<Icon name="angle-left" size={30} color="#900" />);
@@ -629,9 +638,9 @@ class FormTwo extends Component {
                         </View>:this.somethingElse()
                 }
                     <TextInput
-                            style={[newStyle.nameInput,{marginTop: 20},]}
+                            style={[newStyle.nameInput,{marginTop: 30},]}
                             keyboardType="numeric"
-                            placeholder='postalcode here......'
+                            placeholder=''
                             underlineColorAndroid= 'transparent'
                             value={this.state.postalCodeInput}
                             onChangeText= { (postalCodeInput) => this.validationPostalCode(postalCodeInput) } />
@@ -655,10 +664,13 @@ class FormTwo extends Component {
                                 // checkImage={}   
                                 // optionTextStyle={{color: '#333333'}}
                                 // titleStyle={{color: '#333333'}} 
-                                maxHeight={200} 
+                                maxHeight={250} 
                                 handler={(selection, row) => this.setState({dropDownItem: data[selection][row]})}
                                 data={data}> 
                         </DropdownMenu>
+                        // <IOSPicker 
+                        // data={data}
+                        // onValueChange={(d,i)=> this.setState({dropDownItem: data[d][i]})}/>
                         :
                        <View style={{
                                 width: 250,
@@ -818,7 +830,6 @@ class FormTwo extends Component {
 
                 </View>
                 
-
                 {
                     this.state.isLoading===true?
                     <View style = {{position: 'absolute' , zIndex:3999, left: 40, top: 40, right: 0, bottom: 0}}>
@@ -936,7 +947,7 @@ const newStyle = StyleSheet.create({
     dropDownStyle: {
         width: viewPortWidth,
         height: 60,
-        flex:1,        
+        flex:1,
         marginTop: 15,
         marginLeft: 15,
         paddingRight: 25,
@@ -944,7 +955,7 @@ const newStyle = StyleSheet.create({
         backgroundColor: 'white',
         justifyContent: 'space-between',
         alignItems: 'flex-start',           
-        zIndex: 3999,
+        zIndex: 999,
     },
 
     iconImageStyle:{
@@ -964,8 +975,9 @@ const newStyle = StyleSheet.create({
 
     postalContainer:{
         position: 'relative',
-        backgroundColor: 'transparent',
-        zIndex: 999,
+        backgroundColor: 'powderblue',
+        zIndex: 989,
+        marginTop:20,        
     },
 
     iconStyleTop: {
@@ -1012,7 +1024,7 @@ const newStyle = StyleSheet.create({
     },
 
     firstName: {
-        width: 159,
+        width: 220,
         height: 19,
         fontFamily: 'WorkSans-Regular',
         fontSize: 16,
@@ -1036,7 +1048,8 @@ const newStyle = StyleSheet.create({
         textAlign: 'left',
         marginLeft: 15,
         marginBottom: 45,        
-        zIndex:999,
+        marginTop:10,
+        zIndex:900,
     },
 
     firstInput: {
@@ -1057,7 +1070,7 @@ const newStyle = StyleSheet.create({
         marginBottom: 15,
         padding: 10,
         marginLeft: 15,
-        zIndex:999,
+        zIndex: 900
     },
 
     buttons: {

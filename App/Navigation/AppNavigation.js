@@ -20,7 +20,11 @@ const PrimaryNav = StackNavigator({
   FormOne: { screen: FormOne },
   FormTwo: { screen: FormTwo },
   FormTwoNew: { screen: FormTwoNew},
-  ThankYouScreen : { screen: ThankYouScreen },
+  ThankYouScreen : { screen: ThankYouScreen,
+      navigationOptions: {
+        gesturesEnabled: false,
+      },
+   },
   PushForJob: { screen: PushForJob},
 }, {
   // Default config for all screens
