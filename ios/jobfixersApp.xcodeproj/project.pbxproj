@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		005C3D7F5B2A440DAE3C11B9 /* WorkSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C9C032AA1E840889E9987AC /* WorkSans-ExtraBold.ttf */; };
 		008A5640ABCF4633A169F7E0 /* BarlowCondensed-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 146803D1D155456A8F5856C7 /* BarlowCondensed-SemiBoldItalic.otf */; };
@@ -84,6 +85,7 @@
 		8BCAB61963D841AEA882C674 /* BarlowCondensed-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 112DC203157341B9AC777B02 /* BarlowCondensed-Thin.otf */; };
 		8C01364B6CF64106938598C9 /* WorkSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D521196B758C438AA75D8BB9 /* WorkSans-Medium.ttf */; };
 		8F12047A21864737B37251F6 /* barlowcondensed-blackitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C5F2353FB0EC4D6EA6D75AAA /* barlowcondensed-blackitalic.otf */; };
+		8F385AA62518438D85CA6B50 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B651708CD19F44FAB3CC4A20 /* libSplashScreen.a */; };
 		96419CEB14B34D77ADBE8BE4 /* Barlow-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3456B076B2D74AAC80BFDFEF /* Barlow-SemiBold.otf */; };
 		9A2B953D43E74760A5FD109A /* WorkSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA3C27361DA42BBAEF7F1F6 /* WorkSans-Thin.ttf */; };
 		9C68933FEFF7464C8BF014BA /* Barlow-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 206DBC080D4641649BD32BA9 /* Barlow-ExtraLightItalic.otf */; };
@@ -386,6 +388,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTLinking;
 		};
+		7B4DC79E20DA53DD002E39D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E903C297A314D77941F8CDC /* SplashScreen.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D7682761D8E76B80014119E;
+			remoteInfo = SplashScreen;
+		};
 		7BAB7A6D20D7C57F003B3B12 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7E2605F75B4D45A1A19333DF /* Lottie.xcodeproj */;
@@ -561,6 +570,7 @@
 		849BF7F582CD437294F4BF91 /* Barlow-SemiBoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Barlow-SemiBoldItalic.otf"; path = "../assets/fonts/Barlow-SemiBoldItalic.otf"; sourceTree = "<group>"; };
 		871CCBB69C7D4303A7EEE95F /* Barlow-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Barlow-Light.otf"; path = "../assets/fonts/Barlow-Light.otf"; sourceTree = "<group>"; };
 		8BAFE00C8CC34E5CB5600A2C /* libLottie.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libLottie.a; sourceTree = "<group>"; };
+		8E903C297A314D77941F8CDC /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		930352DC1AAA40B38D41733B /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		955ACCDE7AD34D7492E20C4F /* Barlow-BoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Barlow-BoldItalic.otf"; path = "../assets/fonts/Barlow-BoldItalic.otf"; sourceTree = "<group>"; };
 		95BBDD42DA84417B8D2E8690 /* WorkSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-SemiBold.ttf"; path = "../assets/fonts/WorkSans-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -581,6 +591,7 @@
 		B3FB1EB30FC64931BF97C0AD /* BarlowCondensed-ThinItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BarlowCondensed-ThinItalic.otf"; path = "../assets/fonts/BarlowCondensed-ThinItalic.otf"; sourceTree = "<group>"; };
 		B5E9D89BB1B74F1E9A8CAD22 /* BarlowSemiCondensed-BoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BarlowSemiCondensed-BoldItalic.otf"; path = "../assets/fonts/BarlowSemiCondensed-BoldItalic.otf"; sourceTree = "<group>"; };
 		B5EE1C01B6EB4E8F9DC77636 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
+		B651708CD19F44FAB3CC4A20 /* libSplashScreen.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSplashScreen.a; sourceTree = "<group>"; };
 		B8B69D85C7F1487EBED90A68 /* Barlow-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Barlow-Bold.otf"; path = "../assets/fonts/Barlow-Bold.otf"; sourceTree = "<group>"; };
 		BEF1F4CAD97A4B9DA04150C5 /* Barlow-ExtraLight.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Barlow-ExtraLight.otf"; path = "../assets/fonts/Barlow-ExtraLight.otf"; sourceTree = "<group>"; };
 		C5B84F03733440B2A01BEC58 /* Barlow-BlackItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Barlow-BlackItalic.otf"; path = "../assets/fonts/Barlow-BlackItalic.otf"; sourceTree = "<group>"; };
@@ -637,6 +648,7 @@
 				BFEACBBAF5F842DF833D5832 /* libRNVectorIcons.a in Frameworks */,
 				0BDF3CB3A5C94EFD8D17546D /* Lottie.framework in Frameworks */,
 				009EF4C2940A42BAA5D42060 /* libLottie.a in Frameworks */,
+				8F385AA62518438D85CA6B50 /* libSplashScreen.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -892,6 +904,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		7B4DC79B20DA53DD002E39D6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7B4DC79F20DA53DD002E39D6 /* libSplashScreen.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		7BC5AA9E20D2620200A0F0E0 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -902,6 +922,7 @@
 				25CA7E76A16D45139E775BE6 /* libRNDeviceInfo-tvOS.a */,
 				A6CE4DD61EEF48F58621FC10 /* Lottie.framework */,
 				8BAFE00C8CC34E5CB5600A2C /* libLottie.a */,
+				B651708CD19F44FAB3CC4A20 /* libSplashScreen.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -970,6 +991,7 @@
 				2AE2984556594DA4A2F7A48C /* RNDeviceInfo.xcodeproj */,
 				B5EE1C01B6EB4E8F9DC77636 /* RNVectorIcons.xcodeproj */,
 				7E2605F75B4D45A1A19333DF /* Lottie.xcodeproj */,
+				8E903C297A314D77941F8CDC /* SplashScreen.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1205,6 +1227,10 @@
 				{
 					ProductGroup = 7BC5AAC620D2620400A0F0E0 /* Products */;
 					ProjectRef = B5EE1C01B6EB4E8F9DC77636 /* RNVectorIcons.xcodeproj */;
+				},
+				{
+					ProductGroup = 7B4DC79B20DA53DD002E39D6 /* Products */;
+					ProjectRef = 8E903C297A314D77941F8CDC /* SplashScreen.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1461,6 +1487,13 @@
 			fileType = archive.ar;
 			path = libRCTLinking.a;
 			remoteRef = 78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7B4DC79F20DA53DD002E39D6 /* libSplashScreen.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSplashScreen.a;
+			remoteRef = 7B4DC79E20DA53DD002E39D6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		7BC5AACE20D2620400A0F0E0 /* libLottieReactNative.a */ = {
@@ -1770,6 +1803,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = jobfixersAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1782,6 +1816,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1806,6 +1841,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = jobfixersAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1818,6 +1854,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1843,6 +1880,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = jobfixersApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1871,6 +1909,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = jobfixersApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1907,6 +1946,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = "jobfixersApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1918,6 +1958,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1952,6 +1993,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = "jobfixersApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1963,6 +2005,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1995,6 +2038,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = "jobfixersApp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2006,6 +2050,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -2038,6 +2083,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = "jobfixersApp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2049,6 +2095,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (

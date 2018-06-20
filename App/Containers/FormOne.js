@@ -126,6 +126,8 @@ export default class FormOne extends Component {
 
         let reg = /^[a-zA-Z\s]+$/;
 
+        console.log("name="+name);
+
         if(name === '')
         {
             //this.setState({ firstNameError: true, ErrorText: 'First Name is Required' });
@@ -406,12 +408,12 @@ export default class FormOne extends Component {
                              onChangeText={(firstNameInput) => this.validationFirstName(firstNameInput)}/>
                          
 
-                 {/* <Text style={newStyle.firstName}>{this.state.name}</Text>
+                 <Text style={newStyle.firstName}>{this.state.name}</Text>
                  <TextInput
                      style={ newStyle.nameInput}
                      placeholder=''
                      underlineColorAndroid= 'transparent'
-                     onChangeText= { (lastNameInput) => this.validationLastName(lastNameInput) }/> */}
+                     onChangeText= { (lastNameInput) => this.setState({lastNameInput}) }/>
 
                  <Text style={newStyle.phoneNumberStyle}>{this.state.phoneNumber}</Text>
                  {/* <TextInput
@@ -422,6 +424,7 @@ export default class FormOne extends Component {
                      onChangeText= { (phoneNumberInput) => this.validatePhone(phoneNumberInput) }/>                 */}
                  <PhoneInput 
                          ref='phone'
+                         initialCountry='be'
                          style= {newStyle.nameInput}
                          onChangePhoneNumber = { (phoneNumberInput) => this.validatePhone(phoneNumberInput) } />
 

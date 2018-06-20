@@ -307,7 +307,15 @@ class FormTwo extends Component {
         if(phone === '' || fName === '' || lName === '' || postalCode ==='' || this.state.checked === false )
             {
                 if(postalCode === '')
-                    this.setState({ postalCodeError: true,  ErrorText: 'Postal Code is Required!' });
+                {   
+                    if(this.state.language === 'NEDERLANDS')
+                        this.setState({ postalCodeError: true,  ErrorText: LanguageSettings.dutch.postalCodeErrorText });
+                    else
+                        if(this.state.language === 'ENGLISH')
+                            this.setState({ postalCodeError: true,  ErrorText: LanguageSettings.english.postalCodeErrorText });
+                        else
+                            this.setState({ postalCodeError: true,  ErrorText: LanguageSettings.french.postalCodeErrorText });
+                }
 
                  if(this.state.checked === false)
                  {
@@ -404,7 +412,15 @@ class FormTwo extends Component {
             if (reg.exec(pcode))
                 this.setState({ postalCodeEmptyError:false, EmptyErrorText: '', postalCodeError: false, postalCodeInput: pcode });
             else
-                this.setState({ postalCodeEmptyError:false, EmptyErrorText: '', postalCodeError: true,  ErrorText: 'Postal Code is not Valid' });
+            {
+                if(this.state.language === 'NEDERLANDS')
+                    this.setState({ postalCodeEmptyError:false, EmptyErrorText: '', postalCodeError: true,  ErrorText: LanguageSettings.dutch.postalCodeErrorText });
+                else
+                    if(this.state.language === 'ENGLISH')
+                        this.setState({ postalCodeEmptyError:false, EmptyErrorText: '', postalCodeError: true,  ErrorText: LanguageSettings.english.postalCodeErrorText });
+                    else
+                        this.setState({ postalCodeEmptyError:false, EmptyErrorText: '', postalCodeError: true,  ErrorText: LanguageSettings.french.postalCodeErrorText });
+            }
         }    
     }
 
@@ -803,7 +819,7 @@ class FormTwo extends Component {
                     </DropdownMenu>
                     :
                    <View style={{
-                            width: 250,
+                            width: 340,
                             height: 57,
                             borderRadius: 8,
                             backgroundColor: '#f6f6f6',
@@ -838,13 +854,13 @@ class FormTwo extends Component {
                 }
 
                 <Text style={newStyle.postalName}>{this.state.postalCode}</Text>
-                {/* <TextInput
-                        style={[newStyle.nameInput,{marginTop: 10},]}
+                <TextInput
+                        style={[newStyle.postalInput,{marginTop: 10},]}
                         keyboardType="numeric"
-                        placeholder='postalcode here......'
+                        placeholder=""
                         underlineColorAndroid= 'transparent'
                         value={this.state.postalCodeInput}
-                        onChangeText= { (postalCodeInput) => this.validationPostalCode(postalCodeInput) } /> */}
+                        onChangeText= { (postalCodeInput) => this.validationPostalCode(postalCodeInput) } />
                 
                 <View style={newStyle.policyStyle}> 
                 <CheckBox  
@@ -1071,6 +1087,17 @@ const newStyle = StyleSheet.create({
         padding: 10,
         marginLeft: 15,
         zIndex: 900
+    },
+
+    postalInput: {
+        width: 340,
+        height: 57,
+        borderRadius: 8,
+        backgroundColor: '#f6f6f6',
+        marginBottom: 15,
+        padding: 10,
+        marginLeft: 15,
+        zIndex: 999
     },
 
     buttons: {

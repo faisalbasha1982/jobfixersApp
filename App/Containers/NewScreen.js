@@ -76,7 +76,7 @@ const newStyle = StyleSheet.create({
     headerImageStyle: {
         width: viewPortWidth,
         height: viewPortHeight * 0.45,
-        flex: Platform.OS === 'ios'?24:5,
+        flex: Platform.OS === 'ios'?24:20,
         backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
