@@ -118,7 +118,6 @@ class FormTwo extends Component {
             country:'',
             isLoading:false,
             message: '',
-            language: 'en',
             time: '',
             selected:'',
             eAuthData:'',
@@ -128,7 +127,6 @@ class FormTwo extends Component {
             office:'',
             industry:'',
             isModalVisible: false,
-            language:'',
 
             // data: [
             //     {
@@ -302,9 +300,10 @@ class FormTwo extends Component {
         console.log("values found in login, phone = "+this.state.phonenumber);
         console.log("values found in login, fName = "+this.state.firstname);
         console.log("values found in login, lName = "+this.state.lastname);
+        console.log("values found in this.state.checked="+this.state.checked);
         console.log("values found in login, postalcode = "+this.state.postalCodeInput);
 
-        if(phone === '' || fName === '' || lName === '' || postalCode ==='' || this.state.checked === false )
+        if(phone === '' || fName === '' || postalCode ==='' || this.state.checked === false )
             {
                 if(postalCode === '')
                 {   
@@ -620,7 +619,6 @@ class FormTwo extends Component {
         this.setState({selectedValue: data});
       }
     
-
     render() {
         const myIcon = (<Icon name="angle-left" size={30} color="#900" />);
         var bt = LanguageSettings.dutch.buttonTextJob;
@@ -753,7 +751,7 @@ class FormTwo extends Component {
                 </View>
 
                 <View style={newStyle.buttons}>
-                    <TouchableOpacity onPress={() => this.props.navigateBack()}
+                    <TouchableOpacity onPress={() => this.props.navigateBack(this.state.language) }
                         activeOpacity={0.5}
                         style={newStyle.iconStyle}>
                             <Icon
@@ -888,7 +886,7 @@ class FormTwo extends Component {
             </View>
 
             <View style={newStyle.buttons}>
-                <TouchableOpacity onPress={() => this.props.navigateBack()}
+                <TouchableOpacity onPress={() => this.props.navigateBack(this.state.language) }
                     activeOpacity={0.5}
                     style={newStyle.iconStyle}>
                         <Icon
@@ -1192,11 +1190,10 @@ const mapStateToProps = state => {
   };
   
   const mapDispatchToProps = dispatch => {
-    return {
-  
+    return {  
       resetNavigate: navigationObject => dispatch(NavigationActions.reset(navigationObject)),
       navigate: navigationObject => dispatch(NavigationActions.navigate(navigationObject)),
-      navigateBack: () => dispatch(NavigationActions.back()),
+      navigateBack: (language) => dispatch(NavigationActions.navigate({routeName: 'FormOne', params:{language: language}})),
       onButtonPress: (language) => dispatch(NavigationActions.navigate({routeName: 'ThankYouScreen', params:{language: language}})),
     };
   };

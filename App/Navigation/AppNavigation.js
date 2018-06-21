@@ -15,11 +15,27 @@ import styles from './Styles/NavigationStyles';
 const PrimaryNav = StackNavigator({
   LaunchScreen: { screen: LaunchScreen },
   LanguageScreen: { screen: LanguageScreen },
-  NewScreen: { screen: NewScreen },
+  NewScreen: { screen: NewScreen,
+    navigationOptions: {
+      gesturesEnabled: false,
+    },
+   },
   WelcomeScreen: { screen: WelcomeScreen },
-  FormOne: { screen: FormOne },
-  FormTwo: { screen: FormTwo },
-  FormTwoNew: { screen: FormTwoNew},
+  FormOne: { screen: FormOne,
+    navigationOptions: {
+      gesturesEnabled: false,
+    }, 
+  },
+  FormTwo: { screen: FormTwo,
+    navigationOptions: {
+      gesturesEnabled: false,
+    },
+  },
+  FormTwoNew: { screen: FormTwoNew,
+    navigationOptions: {
+      gesturesEnabled: false,
+    },
+  },
   ThankYouScreen : { screen: ThankYouScreen,
       navigationOptions: {
         gesturesEnabled: false,

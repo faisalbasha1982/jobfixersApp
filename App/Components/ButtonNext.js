@@ -44,9 +44,9 @@ class ButtonNext extends Component {
         firstNameError: nextProps.objectParams.firstNameError,
         lastNameError: nextProps.objectParams.lastNameError,
         phoneNumberError: nextProps.objectParams.phoneNumberError,
-        firstNameEmpty: this.props.objectParams.firstNameEmpty,
-        lastNameEmpty: this.props.objectParams.lastNameEmpty,
-        phoneNumberEmpty: this.props.objectParams.phoneNumberEmpty
+        firstNameEmpty: nextProps.objectParams.firstNameEmpty,
+        lastNameEmpty: nextProps.objectParams.lastNameEmpty,
+        phoneNumberEmpty: nextProps.objectParams.phoneNumberEmpty
       });
 
       clanguage = this.props.objectParams.language;
@@ -78,41 +78,68 @@ class ButtonNext extends Component {
   setlanguage = () => {
   }
 
+
   somethingElse = () => {
 
-    if(this.state.language === 'ENGLISH')
-        this.props.func(true,LanguageSettings.english.EmptyErrorText);
+    console.log("somethingElse this.state.language==="+this.state.language);
+
+    if(this.state.language === 'NEDERLANDS')
+        this.props.func(true,LanguageSettings.dutch.EmptyErrorText);
     else
-      if(this.state.language === 'NEDERLANDS')
-          this.props.func(true,LanguageSettings.dutch.EmptyErrorText);
+      if(this.state.language === 'ENGLISH')
+          this.props.func(true,LanguageSettings.english.EmptyErrorText);
       else
           this.props.func(true,LanguageSettings.french.EmptyErrorText);
            
     console.log("firstNameError:"+this.state.firstNameError);
     console.log("lastNameError:"+this.state.lastNameError);
     console.log("phoneNameError:"+this.state.phoneNumberError);
-
+    console.log("firstNameError:"+this.state.firstNameEmpty);
+    console.log("lastNameError:"+this.state.lastNameEmpty);
+    console.log("phoneNameError:"+this.state.phoneNumberEmpty);
   }
 
  // width: (viewPortWidth * 41) / 46,
  // height: viewPortHeight / 11,
  
   render() {
+    console.log("First Name="+this.state.firstName);
+    console.log("Last Name="+this.state.lastName);
+    console.log("Phone Number="+this.state.phoneNumber);
+    console.log("firstNameError:"+this.state.firstNameError);
+    console.log("lastNameError:"+this.state.lastNameError);
+    console.log("phoneNameError:"+this.state.phoneNumberError);
+    console.log("firstNameError:"+this.state.firstNameEmpty);
+    console.log("lastNameError:"+this.state.lastNameEmpty);
+    console.log("phoneNameError:"+this.state.phoneNumberEmpty);
+
+    // width: 333,
+    // height: 57,
+    // borderRadius: 8,
+    // backgroundColor: '#e73d50',
+    // marginTop: viewPortHeight / 80,
+    // justifyContent: 'center',
+    // alignItems: 'center'
+
       return (
         <TouchableOpacity
         onPress={() => 
-          (!this.state.firstNameError && 
-          !this.state.lastNameError && 
-          !this.state.phoneNumberError)?this.props.onButtonPress(this.state.text,clanguage,this.state.firstName,this.state.lastName,this.state.phoneNumber):this.somethingElse() }
+          (!this.state.firstNameEmpty &&
+           !this.state.phoneNumberEmpty &&
+           !this.state.firstNameError && 
+           !this.state.lastNameError && 
+           !this.state.phoneNumberError)?this.props.onButtonPress(this.state.text,this.state.language,this.state.firstName,this.state.lastName,this.state.phoneNumber):this.somethingElse() }
           activeOpacity={0.5}
           style={{
-            width: 333,
+            width: 266,
             height: 57,
             marginBottom: 17,
             marginLeft: 8,
             borderRadius: 8,
             backgroundColor: '#E73D50',
-            marginTop: viewPortHeight / 80,            
+            marginTop: viewPortHeight / 30,            
+            justifyContent: 'center',
+            alignItems: 'center'
         }}>
         <Text
             style={{
@@ -123,7 +150,7 @@ class ButtonNext extends Component {
                 fontWeight: '500',
                 fontStyle: 'normal',
                 color: '#ffffff',
-                marginTop: 20,                
+                marginTop: 0,                
                 letterSpacing: 0.67,
                 textAlign: 'center'}}
         > {this.state.text.toUpperCase()}</Text>
@@ -154,7 +181,7 @@ const mapDispatchToProps = dispatch => {
         firstName: firstName,
         lastName: lastName,
         phoneNumber: phoneNumber,      
-    } }})),
+    }}})),
 
   };
 };

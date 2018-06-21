@@ -17,6 +17,7 @@ import {
 import { Container, Header, Content, Input, Item } from 'native-base';
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { NavigationActions } from "react-navigation";
 import ButtonNext from '../Components/ButtonNext';
 import ButtonWelcome from '../Components/ButtonWelcome';
 import LanguageButton from '../Components/LanguageButton';
@@ -36,6 +37,8 @@ import { Images } from '../Themes';
 import headerImage from '../Images/headerImage.png';
 import logoHeader from '../Images/logoheader.png';
 import logoNew from '../Images/logojobfixersNew.png';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 const viewPortHeight = Dimensions.get('window').height;
 const viewPortWidth = Dimensions.get('window').width;
@@ -49,7 +52,7 @@ export const IMAGE_HEIGHT_SMALL = window.width /7;
 
 let cLanguage = '';
 
-export default class FormOne extends Component {
+class FormOne extends Component {
 
     static propTypes = {
         language: PropTypes.string.isRequired
@@ -93,6 +96,8 @@ export default class FormOne extends Component {
         if(name === '')
         {
             //this.setState({ lastNameError: true, ErrorText: 'Last Name is Required' });
+            this.setState({lastNameInput: ''});
+
             if(this.state.language === 'NEDERLANDS')
                 this.setState({ lastNameEmptyError: true, EmptyErrorText: LanguageSettings.dutch.EmptyErrorText });
             else
@@ -126,10 +131,13 @@ export default class FormOne extends Component {
 
         let reg = /^[a-zA-Z\s]+$/;
 
-        console.log("name="+name);
+        console.log("validating First Name="+name);
 
         if(name === '')
         {
+            console.log("First name is empty="+name);
+            console.log("Language ="+this.state.language);
+            this.setState({firstNameInput: ''});
             //this.setState({ firstNameError: true, ErrorText: 'First Name is Required' });
             if(this.state.language === 'NEDERLANDS')
                 this.setState({ firstNameEmptyError: true, EmptyErrorText: LanguageSettings.dutch.EmptyErrorText });
@@ -143,7 +151,7 @@ export default class FormOne extends Component {
         {
             if(reg.exec(name))
             {
-              this.setState({ firstNameEmptyError:'', EmptyErrorText:'', firstNameError: false, firstNameInput: name, firstNameErrorText:'' });
+              this.setState({ firstNameEmptyError:false, EmptyErrorText:'', firstNameError: false, firstNameInput: name, firstNameErrorText:'' });
             }
             else
             {
@@ -172,6 +180,8 @@ export default class FormOne extends Component {
         if(phone === '')
         {
             //this.setState({ phoneNumberError: true, ErrorText: 'Phone Number is Required' });
+            this.setState({phoneNumberInput: ''});
+
             if(this.state.language === 'NEDERLANDS')
                 this.setState({ phoneNumberEmptyError: true, EmptyErrorText: LanguageSettings.dutch.EmptyErrorText });
             else
@@ -223,8 +233,8 @@ export default class FormOne extends Component {
     componentDidMount() {
         console.log("language from props="+this.props.navigation.state.params.language);
         console.log("default language="+this.state.language);
-        cLanguage = this.props.navigation.state.params.language;
-        this.setState({ language: cLanguage });
+        //cLanguage = this.props.navigation.state.params.language;
+        this.setState({ language: this.props.navigation.state.params.language });
         console.log("language="+this.state.language);
         this.setText();
         console.log("this.state.firstName="+this.state.firstName);
@@ -233,6 +243,7 @@ export default class FormOne extends Component {
 
     setText =  () => {
 
+        this.setState({language: this.props.navigation.state.params.language});
         console.log("this.state.language="+this.state.language);
 
         if (this.props.navigation.state.params.language === 'NEDERLANDS') {
@@ -274,18 +285,26 @@ export default class FormOne extends Component {
 
     renderValidation = () => {
 
+        //if(this.state.language === 'NEDERLANDS')
+
+        console.log("empty error text="+this.state.EmptyErrorText);
+        console.log("first Name Input="+this.state.firstNameInput);
+        console.log("phone Number Input="+this.state.phoneNumberInput);
+
         let errorString = this.state.EmptyErrorText;
 
-        if(this.state.firstNameError===true)
+        if(this.state.firstNameError===true || this.state.firstNameInput === '')
             errorString = errorString + '\n' + this.state.firstNameErrorText;
+
         // if(this.state.lastNameError===true)
         //     errorString = errorString + '\n' + this.state.lastNameErrorText;
-        if(this.state.phoneNumberError===true)
+
+        if(this.state.phoneNumberError===true || this.state.phoneNumberInput==='')
             errorString = errorString + '\n' + this.state.phoneNumberErrorText;
             
             console.log("errorString="+errorString);
         
-            if(this.state.firstNameError===false && this.state.lastNameError===false && this.state.phoneNumberError===false )
+            if(this.state.firstNameEmptyError === false  && this.state.phoneNumberEmptyError === false && this.state.firstNameError===false && this.state.lastNameError===false && this.state.phoneNumberError===false )
                 return (                        
                     <View style={newStyle.validationStyle}> 
                             <Validation
@@ -374,6 +393,20 @@ export default class FormOne extends Component {
                             onChangePhoneNumber = { (phoneNumberInput) => this.validatePhone(phoneNumberInput) } />
                 </View>
 
+                    <View style={newStyle.endButtons}>
+
+                    <TouchableOpacity onPress={() => this.props.navigateBack() }
+                        activeOpacity={0.5}
+                        style={newStyle.iconStyle}>
+                            <Icon
+                                containerStyle={newStyle.iconImageStyle}                               
+                                name='angle-left'
+                                type='font-awesome'
+                                color='#fff'
+                                size = {40}
+                                onPress={() => console.log('hello')} /> 
+                    </TouchableOpacity>
+
                     <ButtonNext 
                             objectParams=
                                 {{
@@ -384,9 +417,30 @@ export default class FormOne extends Component {
                                     phoneNumber: this.state.phoneNumberInput,
                                     firstNameError: this.state.firstNameError,
                                     lastNameError: this.state.lastNameError,
-                                    phoneNumberError: this.state.phoneNumberError
+                                    phoneNumberError: this.state.phoneNumberError,
+                                    firstNameEmpty: this.state.firstNameEmptyError,
+                                    lastNameEmpty: this.state.lastNameEmptyError,
+                                    phoneNumberEmpty: this.state.phoneNumberEmptyError
                                 }}
                             func = {this.func}/>
+                    </View>
+
+                    {/* <ButtonNext 
+                            objectParams=
+                                {{
+                                    btnText: this.state.buttonText, 
+                                    language: this.props.navigation.state.params.language,
+                                    firstName: this.state.firstNameInput,
+                                    lastName: this.state.lastNameInput,
+                                    phoneNumber: this.state.phoneNumberInput,
+                                    firstNameError: this.state.firstNameError,
+                                    lastNameError: this.state.lastNameError,
+                                    phoneNumberError: this.state.phoneNumberError,
+                                    firstNameEmpty: this.state.firstNameEmptyError,
+                                    lastNameEmpty: this.state.lastNameEmptyError,
+                                    phoneNumberEmpty: this.state.phoneNumberEmptyError
+                                }}
+                            func = {this.func}/> */}
  
             </KeyboardAwareScrollView>:
              <View style={newStyle.container}>
@@ -431,7 +485,21 @@ export default class FormOne extends Component {
 
              </View>
 
-                 <ButtonNext 
+            <View style={newStyle.endButtons}>
+
+                <TouchableOpacity onPress={() => this.props.navigateBack() }
+                    activeOpacity={0.5}
+                    style={newStyle.iconStyle}>
+                        <Icon
+                            containerStyle={newStyle.iconImageStyle}                               
+                            name='angle-left'
+                            type='font-awesome'
+                            color='#fff'
+                            size = {40}
+                            onPress={() => console.log('hello')} /> 
+                </TouchableOpacity>
+
+                 {/* <ButtonNext 
                          objectParams=
                              {{
                                  btnText: this.state.buttonText, 
@@ -441,9 +509,13 @@ export default class FormOne extends Component {
                                  phoneNumber: this.state.phoneNumberInput,
                                  firstNameError: this.state.firstNameError,
                                  lastNameError: this.state.lastNameError,
-                                 phoneNumberError: this.state.phoneNumberError
+                                 phoneNumberError: this.state.phoneNumberError,
+                                 firstNameEmpty: this.state.firstNameEmptyError,
+                                 lastNameEmpty: this.state.lastNameEmptyError,
+                                 phoneNumberEmpty: this.state.phoneNumberEmptyError
                              }}
-                         func = {this.func}/>
+                         func = {this.func}/> */}
+            </View>
 
          </View>
 
@@ -538,6 +610,33 @@ const newStyle = StyleSheet.create({
         marginTop: 10,
     },
 
+    endButtons: {
+        width: viewPortWidth,
+        height: 50,
+        flex: 4,
+        flexDirection: 'row',
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center',        
+    },
+
+    iconImageStyle:{
+        backgroundColor: 'black',
+        width: 50,
+        height: 50
+    },
+
+    iconStyle: {
+        width: 57,
+        height: 57,
+        borderRadius: 8,
+        backgroundColor: '#fad704',
+        marginTop: viewPortHeight / 80,
+        marginRight: 15,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+
     validationStyle:{
         position: 'absolute',
         top: 62,
@@ -547,3 +646,17 @@ const newStyle = StyleSheet.create({
     },
 });
 
+const mapStateToProps = state => {
+    return {
+    };
+  };
+  
+  const mapDispatchToProps = dispatch => {
+    return {  
+      resetNavigate: navigationObject => dispatch(NavigationActions.reset(navigationObject)),
+      navigate: navigationObject => dispatch(NavigationActions.navigate(navigationObject)),
+      navigateBack: () => dispatch(NavigationActions.navigate({routeName: 'NewScreen'})),
+    };
+  };
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(FormOne);
