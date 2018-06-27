@@ -38,6 +38,8 @@ export default class NewScreen extends Component {
 
     render()
     {
+        const { navigate } = this.props.navigation;
+
         return(
                 <View style={newStyle.container}>
                     <View style={newStyle.headerImageStyle}>
@@ -53,9 +55,9 @@ export default class NewScreen extends Component {
                     </View>
 
                 <View style={newStyle.buttons}>
-                      <LanguageButton language={LanguageSettings.dutch.languageText} />
-                      <LanguageButton language={LanguageSettings.french.languageText} />
-                      <LanguageButton language={LanguageSettings.english.languageText} />
+                      <LanguageButton language={LanguageSettings.dutch.languageText} navigation={this.props.navigation} />
+                      <LanguageButton language={LanguageSettings.french.languageText} navigation={this.props.navigation} />
+                      <LanguageButton language={LanguageSettings.english.languageText} navigation={this.props.navigation} />
                 </View>
               </View>
         );

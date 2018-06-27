@@ -395,7 +395,7 @@ class FormOne extends Component {
 
                     <View style={newStyle.endButtons}>
 
-                    <TouchableOpacity onPress={() => this.props.navigateBack() }
+                    <TouchableOpacity onPress={() => this.props.navigation.goBack() }
                         activeOpacity={0.5}
                         style={newStyle.iconStyle}>
                             <Icon
@@ -422,7 +422,9 @@ class FormOne extends Component {
                                     lastNameEmpty: this.state.lastNameEmptyError,
                                     phoneNumberEmpty: this.state.phoneNumberEmptyError
                                 }}
-                            func = {this.func}/>
+                            func = {this.func}
+                            navigation = { this.props.navigation}
+                            />
                     </View>
 
                     {/* <ButtonNext 
@@ -487,7 +489,7 @@ class FormOne extends Component {
 
             <View style={newStyle.endButtons}>
 
-                <TouchableOpacity onPress={() => this.props.navigateBack() }
+                <TouchableOpacity onPress={() => this.props.navigation.goBack() }
                     activeOpacity={0.5}
                     style={newStyle.iconStyle}>
                         <Icon
@@ -655,7 +657,7 @@ const mapStateToProps = state => {
     return {  
       resetNavigate: navigationObject => dispatch(NavigationActions.reset(navigationObject)),
       navigate: navigationObject => dispatch(NavigationActions.navigate(navigationObject)),
-      navigateBack: () => dispatch(NavigationActions.navigate({routeName: 'NewScreen'})),
+      navigateBack: () => this.props.navigation.goBack(),
     };
   };
   

@@ -373,13 +373,13 @@ class FormTwo extends Component {
                     this.setState({ message: res.Message_en });
                     // Alert.alert('Welcome', this.state.message);
                     this.setState({ isLogin: false, canLogin: false });
-                    this.props.onButtonPress(this.state.language);
+                    this.props.navigation.navigate('ThankYouScreen',{language: this.state.language,navigation: this.props.navigation});
                     //this.props.clear();
                   } else {
                     console.log("message=",res.Message_en);
                     this.setState({ message: res.Message_en })
                     // Alert.alert('Welcome', this.state.message);
-                    this.props.onButtonPress(this.state.language);
+                    this.props.navigation.navigate('ThankYouScreen',{language: this.state.language});
                   }
                 }).catch((error) => { console.error(error); });
             }
@@ -751,7 +751,7 @@ class FormTwo extends Component {
                 </View>
 
                 <View style={newStyle.buttons}>
-                    <TouchableOpacity onPress={() => this.props.navigateBack(this.state.language) }
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('FormOne',{language: this.state.language,}) }
                         activeOpacity={0.5}
                         style={newStyle.iconStyle}>
                             <Icon
@@ -886,7 +886,7 @@ class FormTwo extends Component {
             </View>
 
             <View style={newStyle.buttons}>
-                <TouchableOpacity onPress={() => this.props.navigateBack(this.state.language) }
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('FormOne',{language: this.state.language,}) }
                     activeOpacity={0.5}
                     style={newStyle.iconStyle}>
                         <Icon
@@ -1193,8 +1193,11 @@ const mapStateToProps = state => {
     return {  
       resetNavigate: navigationObject => dispatch(NavigationActions.reset(navigationObject)),
       navigate: navigationObject => dispatch(NavigationActions.navigate(navigationObject)),
-      navigateBack: (language) => dispatch(NavigationActions.navigate({routeName: 'FormOne', params:{language: language}})),
-      onButtonPress: (language) => dispatch(NavigationActions.navigate({routeName: 'ThankYouScreen', params:{language: language}})),
+    //   navigateBack: (language) => this.props.navigation.navigate('FormOne',{language: language,}),
+    //   onButtonPress: (language) => this.props.navigation.navigate('ThankYouScreen',{language: language}),
+  
+    //   navigateBack: (language) => dispatch(NavigationActions.navigate({routeName: 'FormOne', params:{language: language}})),
+    //   onButtonPress: (language) => dispatch(NavigationActions.navigate({routeName: 'ThankYouScreen', params:{language: language}})),
     };
   };
   

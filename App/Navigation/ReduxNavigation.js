@@ -1,9 +1,8 @@
 import React from 'react';
 import * as ReactNavigation from "react-navigation";
 import { BackHandler, Platform } from 'react-native';
-import { addNavigationHelpers } from 'react-navigation';
 import { NavigationActions } from "react-navigation";
-import { createReduxBoundAddListener } from 'react-navigation-redux-helpers';
+import { reduxifyNavigator, createReduxBoundAddListener } from 'react-navigation-redux-helpers';
 import { connect } from 'react-redux';
 import AppNavigation from './AppNavigation';
 
@@ -44,17 +43,19 @@ class ReduxNavigation extends React.Component {
 
   render () {
     const { dispatch, nav} = this.props;    
-    const addListener = createReduxBoundAddListener("root");
+    // const addListener = createReduxBoundAddListener("root");
     // const navigation = addNavigationHelpers({
     //   dispatch,
     //   state: nav,
     //   addListener
     // });
 
-    return <AppNavigation navigation={{
+    const AppNavigationState = reduxifyNavigator(AppNavigation,"root");
+
+    return <AppNavigationState navigation={{
             dispatch: this.props.dispatch,
-            state: this.props.nav,
-            addListener}}/>
+            state: this.props.nav,}}/>
+    // return 
   }
 }
 

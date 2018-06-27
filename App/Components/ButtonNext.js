@@ -128,7 +128,18 @@ class ButtonNext extends Component {
            !this.state.phoneNumberEmpty &&
            !this.state.firstNameError && 
            !this.state.lastNameError && 
-           !this.state.phoneNumberError)?this.props.onButtonPress(this.state.text,this.state.language,this.state.firstName,this.state.lastName,this.state.phoneNumber):this.somethingElse() }
+           !this.state.phoneNumberError)?
+           this.props.navigation.navigate('FormTwo',
+           {
+            objectParams: {
+              text: this.state.text,
+              language: this.state.language,
+              firstName: this.state.firstName,
+              lastName: this.state.lastName,
+              phoneNumber: this.state.phoneNumber,      
+           },
+           navigation: this.props.navigation,
+          }):this.somethingElse() }
           activeOpacity={0.5}
           style={{
             width: 266,
@@ -174,14 +185,26 @@ const mapDispatchToProps = dispatch => {
 
     resetNavigate: navigationObject => dispatch(NavigationActions.reset(navigationObject)),
     navigate: navigationObject => dispatch(NavigationActions.navigate(navigationObject)),
-    navigateBack: () => dispatch(NavigationActions.back()),
-    onButtonPress: (text,language,firstName,lastName,phoneNumber) => dispatch(NavigationActions.navigate({routeName: 'FormTwo',params: {objectParams: {
-        text: text,
-        language: language,
-        firstName: firstName,
-        lastName: lastName,
-        phoneNumber: phoneNumber,      
-    }}})),
+
+    // onButtonPress: (text,language,firstName,lastName,phoneNumber) => this.props.navigation.navigate('FormTwo',{
+    //   objectParams: {
+    //     text: text,
+    //     language: language,
+    //     firstName: firstName,
+    //     lastName: lastName,
+    //     phoneNumber: phoneNumber,      
+    // }}),
+    // navigateBack: () => this.props.navigation.goBack(),
+
+    // navigateBack: () => dispatch(NavigationActions.back()),
+    // onButtonPress: (text,language,firstName,lastName,phoneNumber) => dispatch(NavigationActions.navigate({routeName: 'FormTwo',
+    // params: {objectParams: {
+    //     text: text,
+    //     language: language,
+    //     firstName: firstName,
+    //     lastName: lastName,
+    //     phoneNumber: phoneNumber,      
+    // }}})),
 
   };
 };

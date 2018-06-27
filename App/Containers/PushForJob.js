@@ -21,7 +21,7 @@ import logoHeader from '../Images/page1.png';
 import pushImage from '../Images/pushForA.png';
 import jobImage from '../Images/group2.png';
 import njobanimationImage from '../Images/newjobanimation.gif';
-import { NavigationActions } from "react-navigation";
+import { NavigationActions, createStackNavigator,withNavigation } from "react-navigation";
 import { connect } from 'react-redux';
 
 
@@ -68,16 +68,22 @@ class PushForJob extends Component {
                     );
     }
 
+    buttonPress = () => {
+        this.props.navigation.navigate('NewScreen',{navigation: this.props.navigation});
+    }
+
     render()
     {
-        return(
+        const { navigate } = this.props.navigation;
+
+        return(                
                 <View style={newStyle.container}>
                     <View style={newStyle.topContainer}>
                         {/* <Animatable.Text animation="zoomInUp" style={newStyle.pushStyle}>PUSH {'\n'} FOR {'\n'} A</Animatable.Text> */}
                         <Image source={pushImage} resizeMode="contain" style={{ width: viewPortWidth * 0.812, height: viewPortHeight * 0.35, }} />
                     </View>
                     <View style={newStyle.bottomContainer}>
-                        <TouchableOpacity onPress={() => { this.props.onButtonPress()}}>
+                        <TouchableOpacity onPress={() => this.buttonPress() }>
                                     <Image source={njobanimationImage} resizeMode="contain" style={{ width: viewPortWidth * 0.891, height: viewPortHeight * 0.891, marginLeft: 15, }} />
                         </TouchableOpacity>         
                     </View>
@@ -181,19 +187,5 @@ const newStyle = StyleSheet.create({
     },
 
 });
-
-const mapStateToProps = state => {
-    return {
-    };
-  };
   
-  const mapDispatchToProps = dispatch => {
-    return {  
-      resetNavigate: navigationObject => dispatch(NavigationActions.reset(navigationObject)),
-      navigate: navigationObject => dispatch(NavigationActions.navigate(navigationObject)),
-      onButtonPress: () => dispatch(NavigationActions.navigate({routeName: 'NewScreen'})),
-      navigateBack: () => dispatch(NavigationActions.back()),  
-    };
-  };
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(PushForJob);
+export default PushForJob;

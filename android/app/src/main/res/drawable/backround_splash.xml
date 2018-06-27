@@ -3,10 +3,9 @@
 
 <item android:drawable="@color/blue" />
 
-<item>
-<bitmap
+<item
+    android:drawable="@drawable/appwaitingscreen"
     android:gravity="center"
-android:src="@mipmap/AppWaitingScreen" />
-</item>
+    />
 
 </layer-list>
