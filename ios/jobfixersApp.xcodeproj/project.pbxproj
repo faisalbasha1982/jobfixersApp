@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		005C3D7F5B2A440DAE3C11B9 /* WorkSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C9C032AA1E840889E9987AC /* WorkSans-ExtraBold.ttf */; };
 		008A5640ABCF4633A169F7E0 /* BarlowCondensed-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 146803D1D155456A8F5856C7 /* BarlowCondensed-SemiBoldItalic.otf */; };
@@ -1891,6 +1892,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jobfixers.subscriptionApp;
 				PRODUCT_NAME = jobfixersApp;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1921,6 +1923,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jobfixers.subscriptionApp;
 				PRODUCT_NAME = jobfixersApp;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

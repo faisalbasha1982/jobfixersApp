@@ -34,6 +34,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import ButtonWelcome from '../Components/ButtonWelcome';
 import { NavigationActions } from "react-navigation";
+import { scale, verticalScale, moderateScale } from 'react-native-size-matters'; 
 import LanguageButton from '../Components/LanguageButton';
 import { Dropdown } from 'react-native-material-dropdown';
 import Spinner from "react-native-loading-spinner-overlay";
@@ -639,7 +640,7 @@ class FormTwo extends Component {
            <View style={newStyle.container}>
 
                 <View style={newStyle.headerImage}>
-                    <Image source={logoNew} resizeMode="contain" style={{ width: viewPortWidth, height: viewPortHeight * .45 }} />
+                    <Image source={logoNew} resizeMode="contain" style={{ width: (viewPortWidth), height: (viewPortHeight * .45) }} />
                     {
                            (this.state.checkBoxError===true || this.state.postalCodeError===true)?this.renderValidation():this.somethingElse()
                     }
@@ -853,11 +854,10 @@ class FormTwo extends Component {
 
                 <Text style={newStyle.postalName}>{this.state.postalCode}</Text>
                 <TextInput
-                        style={[newStyle.postalInput,{marginTop: 10},]}
+                        style={[newStyle.postalInput,{marginTop: 0},]}
                         keyboardType="numeric"
                         placeholder=""
                         underlineColorAndroid= 'transparent'
-                        value={this.state.postalCodeInput}
                         onChangeText= { (postalCodeInput) => this.validationPostalCode(postalCodeInput) } />
                 
                 <View style={newStyle.policyStyle}> 
@@ -939,8 +939,8 @@ const newStyle = StyleSheet.create({
     },
 
     headerImage: {
-        width: viewPortWidth,
-        height: viewPortHeight * 0.51,
+        width: scale(viewPortWidth),
+        height: verticalScale(viewPortHeight * 0.51),
         flex: Platform.OS === 'ios'?13:11,
         backgroundColor: 'white',
         justifyContent: 'center',
@@ -1038,31 +1038,31 @@ const newStyle = StyleSheet.create({
     },
 
     firstName: {
-        width: 220,
-        height: 19,
+        width: scale(220),
+        height: verticalScale(19),
         fontFamily: 'WorkSans-Regular',
-        fontSize: 16,
+        fontSize: moderateScale(16),
         fontWeight: '500',
         fontStyle: 'normal',
         letterSpacing: 0.67,
         textAlign: 'left',
-        marginBottom: 5,
-        marginTop: 5,
-        marginLeft: 15,
+        marginBottom: moderateScale(5),
+        marginTop: moderateScale(5),
+        marginLeft: moderateScale(15),
     },
 
     postalName:{
-        width: 159,
-        height: 19,
+        width: scale(159),
+        height: verticalScale(19),
         fontFamily: 'WorkSans-Regular',
-        fontSize: 16,
+        fontSize: moderateScale(16),
         fontWeight: '500',
         fontStyle: 'normal',
         letterSpacing: 0.67,
         textAlign: 'left',
-        marginLeft: 15,
-        marginBottom: 45,        
-        marginTop:10,
+        marginLeft: moderateScale(15),
+        marginBottom: Platform.OS==='ios'?moderateScale(45):moderateScale(15),        
+        marginTop:moderateScale(10),
         zIndex:900,
     },
 
@@ -1075,15 +1075,15 @@ const newStyle = StyleSheet.create({
     },
 
     nameInput: {
-        width: 350,
-        height: 57,
-        top: 380,
+        width: scale(330),
+        height: verticalScale(57),
+        top: verticalScale(380),
         borderRadius: 8,
         backgroundColor: '#f6f6f6',
         position: 'absolute',
-        marginBottom: 15,
-        padding: 10,
-        marginLeft: 15,
+        marginBottom: moderateScale(15),
+        padding: moderateScale(10),
+        marginLeft: moderateScale(15),
         zIndex: 900
     },
 

@@ -6,6 +6,8 @@ import { colors } from '../Themes/Colors';
 import WelcomeScreen from '../Containers/WelcomeScreen';
 import { NavigationActions, createStackNavigator } from "react-navigation";
 import { connect } from 'react-redux';
+import { scale, verticalScale, moderateScale } from 'react-native-size-matters'; 
+
 
 const viewPortWidth = Dimensions.get('window').width;
 const viewPortHeight = Dimensions.get('window').height;
@@ -71,30 +73,30 @@ class LanguageButton extends Component {
         {this.props.language !== "NEDERLANDS" ?
           <Text
             style={{
-              fontSize: 16,
-              width: 375,
-              height: 19,
+              fontSize: moderateScale(16),
+              width: scale(375),
+              height: verticalScale(19),
               fontFamily: 'WorkSans-Medium',
               fontWeight: '500',
               fontStyle: 'normal',
               color: '#ffffff',
               letterSpacing: 0,
-              marginLeft: 110,
+              marginLeft: moderateScale(110),
               textAlign: 'left'
             }}
           > {this.props.language}
           </Text> :
           <Text
             style={{
-              fontSize: 16,
-              width: 375,
-              height: 19,
+              fontSize: moderateScale(16),
+              width: scale(375),
+              height: verticalScale(19),
               fontFamily: 'WorkSans-Medium',
               fontWeight: '500',
               fontStyle: 'normal',
               color: '#ffffff',
               letterSpacing: 0,
-              marginLeft: 95,
+              marginLeft: moderateScale(95),
               textAlign: 'left'
             }}
           > {this.props.language}

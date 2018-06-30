@@ -16,29 +16,32 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import LanguageButton from '../Components/LanguageButton';
 import Spinner from "react-native-loading-spinner-overlay";
-import DeviceInfo from 'react-native-device-info'
+import DeviceInfo from 'react-native-device-info';
 import * as Animatable from 'react-native-animatable';
 import { StyleSheet } from 'react-native';
 import CompanyBanner from '../Components/CompanyBanner';
 import LanguageSettings from '../Containers/LanguageSettingsNew';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
+import { scale, verticalScale, moderateScale } from 'react-native-size-matters'; 
 import { Colors } from "../Themes";
 import { Images } from '../Themes';
 import logo from '../Images/logoheader.png';
 import logoHeader from '../Images/logoheader.png';
-import headerImage from '../Images/logojobfixersNew.png'
+import headerImage from '../Images/logojobfixersNew.png';
 
 const viewPortHeight = Dimensions.get('window').height;
 const viewPortWidth  = Dimensions.get('window').width;
 
 // Styles
 
-export default class NewScreen extends Component {
+export default class NewScreen extends Component {    
 
     render()
     {
         const { navigate } = this.props.navigation;
+
+        console.log("width="+viewPortHeight);
+        console.log("height="+viewPortWidth);
 
         return(
                 <View style={newStyle.container}>
@@ -114,17 +117,17 @@ const newStyle = StyleSheet.create({
                 justifyContent: 'flex-end'
     },
     languageText: {
-                width: viewPortWidth,
-                height: 46,
+                width: scale(viewPortWidth),
+                height: verticalScale(46) ,
                 fontFamily: 'WorkSans-Regular',
-                fontSize: 30,
+                fontSize: moderateScale(30),
                 fontWeight: "400",
                 fontStyle: 'normal',
                 lineHeight: 46,
                 letterSpacing: 0,
                 textAlign: Platform.OS === 'ios'?'left':'left',
-                marginLeft: Platform.OS === 'ios'?15:5,
-                marginTop: 15
+                marginLeft: Platform.OS === 'ios'?moderateScale(15):5,
+                marginTop: moderateScale(15)
     },
 
     buttons: {
@@ -134,7 +137,7 @@ const newStyle = StyleSheet.create({
                 backgroundColor: 'white',
                 justifyContent: 'center',
                 alignItems: 'center',
-                marginLeft: 25,
+                marginLeft: 25 ,
                 marginRight: 25,
                 marginTop: 25,
                 marginBottom: viewPortHeight * 0.05,

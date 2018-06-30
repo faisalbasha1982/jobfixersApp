@@ -445,7 +445,12 @@ class FormOne extends Component {
                             func = {this.func}/> */}
  
             </KeyboardAwareScrollView>:
-             <View style={newStyle.container}>
+            <ScrollView>
+            <KeyboardAvoidingView
+               style = {newStyle.container}
+               behavior = "padding"
+               enabled>
+             {/* <View style={newStyle.container}> */}
             
              <View style={newStyle.headerImage}>
                  <Image source={logoNew} resizeMode="contain" style={{ width: viewPortWidth, height: viewPortHeight * .45 }} />
@@ -501,6 +506,26 @@ class FormOne extends Component {
                             onPress={() => console.log('hello')} /> 
                 </TouchableOpacity>
 
+                <ButtonNext 
+                            objectParams=
+                                {{
+                                    btnText: this.state.buttonText, 
+                                    language: this.props.navigation.state.params.language,
+                                    firstName: this.state.firstNameInput,
+                                    lastName: this.state.lastNameInput,
+                                    phoneNumber: this.state.phoneNumberInput,
+                                    firstNameError: this.state.firstNameError,
+                                    lastNameError: this.state.lastNameError,
+                                    phoneNumberError: this.state.phoneNumberError,
+                                    firstNameEmpty: this.state.firstNameEmptyError,
+                                    lastNameEmpty: this.state.lastNameEmptyError,
+                                    phoneNumberEmpty: this.state.phoneNumberEmptyError
+                                }}
+                            func = {this.func}
+                            navigation = { this.props.navigation}
+                />
+
+
                  {/* <ButtonNext 
                          objectParams=
                              {{
@@ -518,8 +543,9 @@ class FormOne extends Component {
                              }}
                          func = {this.func}/> */}
             </View>
-
-         </View>
+         {/* </View> */}
+         </KeyboardAvoidingView>
+         </ScrollView>
 
         );
     }
@@ -551,8 +577,9 @@ const newStyle = StyleSheet.create({
 
     headerImage: {
         width: viewPortWidth,
-        height: viewPortHeight * 0.51,
-        flex: Platform.OS === 'ios'?9:5,
+        height: Platform.OS === 'ios'?viewPortHeight * 0.51:
+                                      viewPortHeight * 0.29,
+        flex: Platform.OS === 'ios'?9:6,
         backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
@@ -560,9 +587,9 @@ const newStyle = StyleSheet.create({
 
     inputContainer: {
         backgroundColor: 'white',        
-        marginTop: 25,
+        marginTop: Platform.OS === 'ios'?25:10,
         padding: 20,
-        flex: Platform.OS === 'ios'?14:9,
+        flex: Platform.OS === 'ios'?14:1,
     },
 
     firstName: {
@@ -614,12 +641,14 @@ const newStyle = StyleSheet.create({
 
     endButtons: {
         width: viewPortWidth,
-        height: 50,
-        flex: 4,
+        height: Platform.OS === 'ios'?50:150,
+        zIndex: 999,
+        flex: Platform.OS === 'ios'?4:4,
         flexDirection: 'row',
         backgroundColor: 'white',
         justifyContent: 'center',
-        alignItems: 'center',        
+        alignItems: 'center',                
+        backgroundColor:'transparent'
     },
 
     iconImageStyle:{

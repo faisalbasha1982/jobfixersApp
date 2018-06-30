@@ -13,6 +13,7 @@ Dimensions
 } from 'react-native';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { scale, verticalScale, moderateScale } from 'react-native-size-matters'; 
 
 const viewPortHeight = Dimensions.get('window').height;
 const viewPortWidth = Dimensions.get('window').width;
@@ -85,7 +86,7 @@ class DropdownMenu extends Component {
       }
 
       return (
-        <View style={{width: 280,  zIndex: 999, elevation: 3, position: 'absolute', left: 0, right: 0, top: 0, bottom: 0}}>
+        <View style={{width: scale(280),  zIndex: 999, elevation: 3, position: 'absolute', left: 0, right: 0, top: 0, bottom: 0}}>
             <TouchableOpacity onPress={() => this.openOrClosePanel(this.state.activityIndex)} activeOpacity={1} style={{position: 'absolute', left: 0, right: 0, top: 0, bottom: 0}}>
                 <View style={{opacity: 0.4, backgroundColor: 'transparent', flex: 1 }} />
             </TouchableOpacity>
@@ -93,9 +94,9 @@ class DropdownMenu extends Component {
           <ScrollView style={[{position: 'absolute', elevation: 3,zIndex: 999, top: 0, left: 0, right: 0, backgroundColor: 'white'}, heightStyle]}>
           {
             currentTitles.map((title, index) =>
-            <TouchableOpacity key={index} activeOpacity={1} style={{flex: 1, height: 40}} onPress={this.itemOnPress.bind(this, index)} >
+            <TouchableOpacity key={index} activeOpacity={1} style={{flex: 1, height: verticalScale(40)}} onPress={this.itemOnPress.bind(this, index)} >
             {this.renderChcek(index, title)}
-              <View style={{backgroundColor: '#F6F6F6', height: 1, marginLeft: 15}} />
+              <View style={{backgroundColor: '#F6F6F6', height: 1, marginLeft: moderateScale(15)}} />
              </TouchableOpacity>
           )
           }
@@ -239,15 +240,15 @@ DropdownMenu.propTypes = {
 const styles = StyleSheet.create({
 
   title_style: {
-    fontSize: 14
+    fontSize: moderateScale(14)
   },
 
   item_text_style: {
     color: '#333333',
-    fontSize: 14,
+    fontSize: moderateScale(14),
     textAlign: 'left',
     fontFamily: 'WorkSans-Regular',
-    fontSize: 16,
+    fontSize: moderateScale(16),
     fontWeight: '500',
     fontStyle: 'normal',
     letterSpacing: 0.67,
@@ -255,7 +256,7 @@ const styles = StyleSheet.create({
 
   buttonStyle: {
     flex: 3, 
-    height: 57,    
+    height: verticalScale(57),    
     borderRadius: 8,
     alignItems: "center", 
     justifyContent: "center",
@@ -266,15 +267,15 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection: 'row',
     width: viewPortWidth,
-    height: 57,
+    height: verticalScale(57),
     alignItems: 'center', 
     justifyContent: 'center', 
     backgroundColor: 'transparent',
   },
 
   iconStyleNew: {
-    width: 57,
-    height: 57,
+    width: scale(57),
+    height: verticalScale(57),
     borderRadius: 8,
     backgroundColor: '#f6f6f6',
     marginLeft: 0,
@@ -284,8 +285,8 @@ const styles = StyleSheet.create({
 
   iconImageStyle:{
     backgroundColor: 'black',
-    width: 50,
-    height: 50
+    width: scale(50),
+    height: verticalScale(50)
 }
 });
 
