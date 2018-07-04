@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import RootContainer from './RootContainer'
 import createStore from '../Redux'
+import { BackHandler, Platform } from 'react-native'
 // import SplashScreen from 'react-native-splash-screen';
 
 // create our store
@@ -24,6 +25,25 @@ class App extends Component {
   // {
   //   SplashScreen.hide();
   // }
+
+  componentWillMount() {
+    if (Platform.OS !== 'android') return
+    BackHandler.addEventListener('hardwareBackPress', () => {
+      const { dispatch, nav } = this.props;
+      console.log("Back pressed", nav);
+      const activeRoute = nav.routes[nav.index];
+      if (activeRoute.index === 0) {
+        return false;
+      }
+      dispatch(NavigationActions.back());
+      return true;
+    })
+}
+
+componentWillUnmount() {
+    if (Platform.OS === 'android') BackHandler.removeEventListener('hardwareBackPress')
+}
+
 
   render () {
     return (

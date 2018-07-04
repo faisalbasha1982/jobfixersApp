@@ -14,7 +14,9 @@ import {
     ScrollView,
     Picker,
     Platform,
-    Linking
+    Linking,
+    PickerIOS,
+    Animated,
 } from 'react-native';
 import {
     BallIndicator,
@@ -28,33 +30,26 @@ import {
   } from 'react-native-indicators';
 import { CheckBox } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Icons from 'react-native-vector-icons/Feather';
-import { Container, Header, Content, Input, Item } from 'native-base';
 import { connect } from "react-redux";
+import  axios  from 'axios';
 import PropTypes from "prop-types";
-import ButtonWelcome from '../Components/ButtonWelcome';
 import { NavigationActions } from "react-navigation";
 import { scale, verticalScale, moderateScale } from 'react-native-size-matters'; 
-import LanguageButton from '../Components/LanguageButton';
-import { Dropdown } from 'react-native-material-dropdown';
-import Spinner from "react-native-loading-spinner-overlay";
 import DeviceInfo from 'react-native-device-info'
-import * as Animatable from 'react-native-animatable';
 import { StyleSheet } from 'react-native';
-import CompanyBanner from '../Components/CompanyBanner';
 import LanguageSettings from '../Containers/LanguageSettingsNew';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import CountryPicker, { getAllCountries} from 'react-native-country-picker-modal';
-import { WebView } from 'react-native';
-import { CountryCodes } from './CountryCodes';
 import CryptoJS from 'crypto-js';
-import utf8 from 'utf8';
 import Api from './Api';
 import DropdownMenu from './DropDownMenu';
 import Validation from '../Components/ButtonValidation';
+import SimplePicker from 'react-native-simple-picker';
 import Modal from "react-native-modal";
 import SmartPicker from 'react-native-smart-picker';
 import IOSPicker from 'react-native-ios-picker';
+import RNPickerSelect from 'react-native-picker-select';
+
 
 import { Colors } from "../Themes";
 import { Images } from '../Themes';
@@ -78,6 +73,7 @@ const userCountryData = getAllCountries()
 
 let callingCode = null;
 let cca2 = userLocaleCountryCode;
+var PickerItemIOS = PickerIOS.Item;
 
 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -128,7 +124,26 @@ class FormTwo extends Component {
             office:'',
             industry:'',
             isModalVisible: false,
-
+            pickerSelected: false,
+            modal: false,
+            offSet: new Animated.Value(viewPortHeight),
+            currentDataIndex:0,
+            favColor:'',
+            // items: [
+            //     {
+            //         label: this.state.construct,
+            //         value: this.state.construct,
+            //     },
+            //     {
+            //         label: this.state.industry,
+            //         value: this.state.industry,
+            //     },
+            //     {
+            //         label: this.state.office,
+            //         value: this.state.office,
+            //     },
+            // ],
+    
             // data: [
             //     {
             //       value: 'Construction Worker',
@@ -353,11 +368,14 @@ class FormTwo extends Component {
     
               var encrypted = this.aes(cAuthenticationData);
               console.log('loginfunction Encrypted :' + encrypted);
+
+            Platform.OS === 'ios'?
     
               fetch(Api.signUpURLP, {
                 method: 'post',
                 headers: {
                   'Content-Type': 'application/json',
+                  'Accept': 'application/json',
                 },
                 body: JSON.stringify({      
                     "AuthenticationData": encrypted.toString(),
@@ -382,7 +400,31 @@ class FormTwo extends Component {
                     // Alert.alert('Welcome', this.state.message);
                     this.props.navigation.navigate('ThankYouScreen',{language: this.state.language});
                   }
-                }).catch((error) => { console.error(error); });
+                }).catch((error) => { console.error(error); })
+                :
+                xhr = new XMLHttpRequest();
+                var url = Api.signUpURLP;
+                xhr.onreadystatechange =  () =>  { 
+                    if (xhr.readyState === 4 && xhr.status === 200) 
+                    {
+                        var json = JSON.parse(xhr.responseText);
+                        console.log(json);
+                    }
+
+                    if(xhr.readyState !== 4)
+                        return;
+                }
+                var data = JSON.stringify({      
+                    "AuthenticationData": encrypted.toString(),
+                    "firstname": fName,
+                    "lastname": lName,
+                    "phonenumber": this.state.phonenumber,
+                    "postalcode": parseInt(this.state.postalCodeInput),
+                    "niche": Nieche,
+                });
+                xhr.open("POST", url, true);
+                xhr.setRequestHeader("Content-type", "application/json");
+                xhr.send(data);               
             }
     }
 
@@ -624,7 +666,7 @@ class FormTwo extends Component {
         const myIcon = (<Icon name="angle-left" size={30} color="#900" />);
         var bt = LanguageSettings.dutch.buttonTextJob;
         const lbl = '';
-        var data = [[this.state.construct, this.state.industry, this.state.office,]];
+        var data = [this.state.construct, this.state.industry, this.state.office];
 
         return (
 
@@ -664,7 +706,8 @@ class FormTwo extends Component {
                     <Text style={newStyle.firstName}>{this.state.workText}</Text>
                     <View style= {newStyle.dropDownStyle}>
 
-                        { Platform.OS==='ios'?
+                        {
+                         Platform.OS==='ios'?
                          <DropdownMenu
                                 style={{
                                 flex: 1, 
@@ -682,13 +725,10 @@ class FormTwo extends Component {
                                 maxHeight={250} 
                                 handler={(selection, row) => this.setState({dropDownItem: data[selection][row]})}
                                 data={data}> 
-                        </DropdownMenu>
-                        // <IOSPicker 
-                        // data={data}
-                        // onValueChange={(d,i)=> this.setState({dropDownItem: data[d][i]})}/>
+                        </DropdownMenu>                       
                         :
                        <View style={{
-                                width: 250,
+                                width: Platform.OS==='ios'?350:250,
                                 height: 57,
                                 borderRadius: 8,
                                 backgroundColor: '#f6f6f6',
@@ -696,22 +736,22 @@ class FormTwo extends Component {
                                 fontFamily: 'WorkSans-Bold',
                                 fontWeight: '400',
                                 paddingLeft: 0,}}>
-                                    <Picker
+                                <Picker
                                         selectedValue={this.state.dropDownItem}
                                         style={{                                          
                                         backgroundColor: '#f6f6f6',
                                         fontFamily: 'WorkSans-Bold',
                                         fontWeight: '400',
-                                        padding: 10,                                        
+                                        padding: 10,        
                                     }}
                                         onValueChange={(itemValue, itemIndex) => this.setState({dropDownItem: itemValue})}>
                                         <Picker.Item label={this.state.construct} value={this.state.construct} />
                                         <Picker.Item label={this.state.industry} value={this.state.industry} />
                                         <Picker.Item label={this.state.office} value={this.state.office} />
-                                    </Picker>
-                        </View>
-                     
-                        }
+                                </Picker>
+
+                        </View>                     
+                      }
 
                     </View>
                     

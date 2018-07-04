@@ -55,6 +55,8 @@ class ReduxNavigation extends React.Component {
     return <AppNavigationState navigation={{
             dispatch: this.props.dispatch,
             state: this.props.nav,}}/>
+
+            
     // return 
   }
 }

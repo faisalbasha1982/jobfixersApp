@@ -17,6 +17,7 @@ import ThankYouScreen from '../Containers/ThankYouScreen';
 import PushForJob from '../Containers/PushForJob';
 import styles from './Styles/NavigationStyles';
 import LanguageButton from '../Components/LanguageButton';
+import PushToEarnSignIn from '../Containers/PushToEarnSignIn';
 
 
 // const middleware = createReactNavigationReduxMiddleware(
@@ -29,6 +30,7 @@ const AppNavigation = createStackNavigator({
   LaunchScreen: { screen: LaunchScreen },
   LanguageButton: { screen: LanguageButton},
   LanguageScreen: { screen: LanguageScreen },
+  PushToEarnSignIn: { screen: PushToEarnSignIn },
   NewScreen: { screen: NewScreen,
     navigationOptions: {
       gesturesEnabled: false,
@@ -59,7 +61,7 @@ const AppNavigation = createStackNavigator({
 }, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'PushForJob',
+  initialRouteName: 'PushToEarnSignIn',
   mode: "card",
   navigationOptions: {
     headerStyle: styles.header
