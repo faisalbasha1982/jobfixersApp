@@ -402,29 +402,78 @@ class FormTwo extends Component {
                   }
                 }).catch((error) => { console.error(error); })
                 :
-                xhr = new XMLHttpRequest();
-                var url = Api.signUpURLP;
-                xhr.onreadystatechange =  () =>  { 
-                    if (xhr.readyState === 4 && xhr.status === 200) 
-                    {
-                        var json = JSON.parse(xhr.responseText);
-                        console.log(json);
-                    }
+                fetch(Api.signUpURLP, {
+                    method: "POST",
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Accept': 'application/json',
+                    },
+                    body: JSON.stringify({      
+                        AuthenticationData: encrypted.toString(),
+                        firstname: fName,
+                        lastname: lName,
+                        phonenumber: this.state.phonenumber,
+                        postalcode: parseInt(this.state.postalCodeInput),
+                        niche: Nieche,
+                    }),
+                  }).then(response => response.json())
+                    .then((res) => {
+                      console.log('Success:', res);
+                      if (typeof (res.message) !== 'undefined') {
+                        this.setState({ message: res.Message_en });
+                        // Alert.alert('Welcome', this.state.message);
+                        this.setState({ isLogin: false, canLogin: false });
+                        this.props.navigation.navigate('ThankYouScreen',{language: this.state.language,navigation: this.props.navigation});
+                        //this.props.clear();
+                      } else {
+                        console.log("message=",res.Message_en);
+                        this.setState({ message: res.Message_en })
+                        // Alert.alert('Welcome', this.state.message);
+                        this.props.navigation.navigate('ThankYouScreen',{language: this.state.language});
+                      }
+                    }).catch((error) => { console.error(error); })
+                // axios.post(Api.signUpURLP,{
+                //     AuthenticationData: encrypted.toString(),
+                //     firstname: fName,
+                //     lastname: lName,
+                //     phonenumber: this.state.phonenumber,
+                //     postalcode: parseInt(this.state.postalCodeInput),
+                //     niche: Nieche,
+                // },
+                // {
+                //     headers: {
+                //         Accept: "application/json",
+                //         "Content-Type":"application/json",
+                //     },
+                //     method: 'POST'
+                // })
+                // .then( response => response.json())
+                // .then((res) => console.log(res))
+                // .catch((error) => { console.error(error)});
+                               
+                // xhr = new XMLHttpRequest();
+                // var url = Api.signUpURLP;
+                // xhr.onreadystatechange =  () =>  { 
+                //     if (xhr.readyState === 4 && xhr.status === 200) 
+                //     {
+                //         var json = JSON.parse(xhr.responseText);
+                //         console.log(json);
+                //     }
 
-                    if(xhr.readyState !== 4)
-                        return;
-                }
-                var data = JSON.stringify({      
-                    "AuthenticationData": encrypted.toString(),
-                    "firstname": fName,
-                    "lastname": lName,
-                    "phonenumber": this.state.phonenumber,
-                    "postalcode": parseInt(this.state.postalCodeInput),
-                    "niche": Nieche,
-                });
-                xhr.open("POST", url, true);
-                xhr.setRequestHeader("Content-type", "application/json");
-                xhr.send(data);               
+                //     if(xhr.readyState !== 4)
+                //         return;
+                // }
+                // var data = JSON.stringify({      
+                //     "AuthenticationData": encrypted.toString(),
+                //     "firstname": fName,
+                //     "lastname": lName,
+                //     "phonenumber": this.state.phonenumber,
+                //     "postalcode": parseInt(this.state.postalCodeInput),
+                //     "niche": Nieche,
+                // });
+                // xhr.open("POST", url, true);
+                // xhr.setRequestHeader("Content-type", "application/json");
+                // xhr.send(data);              
             }
     }
 

@@ -61,7 +61,7 @@ const AppNavigation = createStackNavigator({
 }, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'PushToEarnSignIn',
+  initialRouteName: 'PushForJob',
   mode: "card",
   navigationOptions: {
     headerStyle: styles.header

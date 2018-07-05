@@ -354,7 +354,7 @@ class PushToEarnSignIn extends Component {
                 enableAutomaticScroll={true}>
             
                 <View style={newStyle.headerImage}>
-                    <Image source={logoNew} resizeMode="contain" style={{ width: viewPortWidth, height: viewPortHeight * .45 }} />
+                    <Image source={logoNew} resizeMode="contain"  />
                 </View>
 
                 <View style={newStyle.inputContainer}>
