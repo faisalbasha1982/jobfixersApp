@@ -30,13 +30,16 @@ import Validation from '../Components/ButtonValidation';
 import LanguageSettings from '../Containers/LanguageSettingsNew';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import PhoneInput from 'react-native-phone-input';
+import ButtonLogin from '../Components/ButtonLogin';
+import ButtonSignUp from '../Components/ButtonSignUp';
+
 
 import { Colors } from "../Themes";
 import { Images } from '../Themes';
 
 import headerImage from '../Images/headerImage.png';
 import logoHeader from '../Images/logoheader.png';
-import logoNew from '../Images/logojobfixersNew.png';
+import logoNew from '../Images/page1.png';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
@@ -72,7 +75,7 @@ class PushToEarnRegisterProfile extends Component {
             firstNameInput:'',
             lastNameInput:'',
             phoneNumberInput:'',
-            buttonText: '',
+            buttonText: 'LOGIN',
             firstNameError:true,
             firstNameErrorText:'',            
             lastNameError:false,
@@ -223,61 +226,60 @@ class PushToEarnRegisterProfile extends Component {
      }
 
     componentWillReceiveProps(nextProps) {
-        console.log("in Form One screen language received="+nextProps.language);
-        if (this.props.navigation.state.params.language !== nextProps.language) {
-            this.setState({ language: nextProps.language });
-            this.setText();
-        }
+        // console.log("in Form One screen language received="+nextProps.language);
+        // if (this.props.navigation.state.params.language !== nextProps.language) {
+        //     this.setState({ language: nextProps.language });
+        //     this.setText();
+        // }
     }
 
     componentDidMount() {
-        console.log("language from props="+this.props.navigation.state.params.language);
-        console.log("default language="+this.state.language);
-        //cLanguage = this.props.navigation.state.params.language;
-        this.setState({ language: this.props.navigation.state.params.language });
-        console.log("language="+this.state.language);
-        this.setText();
-        console.log("this.state.firstName="+this.state.firstName);
-        console.log("this.state.buttonText="+this.state.buttonText);
+        // console.log("language from props="+this.props.navigation.state.params.language);
+        // console.log("default language="+this.state.language);
+        // this.setState({ language: this.props.navigation.state.params.language });
+        // console.log("language="+this.state.language);
+        // this.setText();
+        // console.log("this.state.firstName="+this.state.firstName);
+        // console.log("this.state.buttonText="+this.state.buttonText);
     }
 
-    setText =  () => {
+    // setText =  () => {
 
-        this.setState({language: this.props.navigation.state.params.language});
-        console.log("this.state.language="+this.state.language);
+    //     this.setState({language: this.props.navigation.state.params.language});
+    //     console.log("this.state.language="+this.state.language);
 
-        if (this.props.navigation.state.params.language === 'NEDERLANDS') {
-            console.log("setting in Nederlands");
-            this.setState({
-                firstName:  LanguageSettings.dutch.firstNameText,
-                name:       LanguageSettings.dutch.lastNameText,
-                phoneNumber: LanguageSettings.dutch.telephoneNumberText,
-                buttonText: LanguageSettings.dutch.buttonNextText
-            });
-        }
-        else
-            if (this.props.navigation.state.params.language === 'ENGLISH') {
-                console.log("setting in English");
-                this.setState({
-                    firstName:  LanguageSettings.english.firstNameText,
-                    name: LanguageSettings.english.lastNameText,
-                    phoneNumber: LanguageSettings.english.telephoneNumberText,
-                    buttonText: LanguageSettings.english.buttonNextText
-                });
-            }
-            else
-              {
-                console.log("setting in French");
-                this.setState({
-                    firstName:  LanguageSettings.french.firstNameText,
-                    name: LanguageSettings.french.lastNameText,
-                    phoneNumber: LanguageSettings.french.telephoneNumberText,
-                    buttonText: LanguageSettings.french.buttonNextText
-                });
-            }
+    //     if (this.props.navigation.state.params.language === 'NEDERLANDS') {
+    //         console.log("setting in Nederlands");
+    //         this.setState({
+    //             firstName:  LanguageSettings.dutch.firstNameText,
+    //             name:       LanguageSettings.dutch.lastNameText,
+    //             phoneNumber: LanguageSettings.dutch.telephoneNumberText,
+    //             buttonText: LanguageSettings.dutch.buttonNextText
+    //         });
+    //     }
+    //     else
+    //         if (this.props.navigation.state.params.language === 'ENGLISH') {
+    //             console.log("setting in English");
+    //             this.setState({
+    //                 firstName:  LanguageSettings.english.firstNameText,
+    //                 name: LanguageSettings.english.lastNameText,
+    //                 phoneNumber: LanguageSettings.english.telephoneNumberText,
+    //                 buttonText: LanguageSettings.english.buttonNextText
+    //             });
+    //         }
+    //         else
+    //           {
+    //             console.log("setting in French");
+    //             this.setState({
+    //                 firstName:  LanguageSettings.french.firstNameText,
+    //                 name: LanguageSettings.french.lastNameText,
+    //                 phoneNumber: LanguageSettings.french.telephoneNumberText,
+    //                 buttonText: LanguageSettings.french.buttonNextText
+    //             });
+    //         }
     
        
-    }
+    // }
 
     renderNothing = () => {
 
@@ -328,9 +330,7 @@ class PushToEarnRegisterProfile extends Component {
                                 }} />
                     </View>
             );
-        
-
-        
+                
         return;
 
     }
@@ -344,7 +344,6 @@ class PushToEarnRegisterProfile extends Component {
         console.log("platform --->",Platform.OS);
         return (
 
-            (platform === 'ios')?
             <KeyboardAwareScrollView
                 behavior="padding"
                 enableOnAndroid={false}
@@ -353,199 +352,87 @@ class PushToEarnRegisterProfile extends Component {
                 scrollToEnd={true}
                 enableResetScrollToCoords={true}
                 enableAutomaticScroll={true}>
-
             
                 <View style={newStyle.headerImage}>
-                    <Image source={logoNew} resizeMode="contain" style={{ width: viewPortWidth, height: viewPortHeight * .45 }} />
-                    {
-                      (this.state.renderValidate === true)?this.renderValidation():this.renderNothing()
-                    }
+                    <Image source={logoNew} resizeMode="contain" style={{ width: 225, height: 45 }} />
                 </View>
+
+                <View style= {{ flex:1, }}>
+                        <Text 
+                        style={{
+                        width: 334,
+                        height: 34,
+                        fontFamily: "WorkSans-Medium",
+                        fontSize: 21,
+                        fontWeight: "500",
+                        fontStyle: "normal",
+                        lineHeight: 34,
+                        letterSpacing: 0,
+                        textAlign: "left",
+                        color: "#E73D50" 
+                        }}>
+                    Profile
+                    </Text>
+                </View>                
 
                 <View style={newStyle.inputContainer}>
                
-                    <Text style={newStyle.firstName}>{this.state.firstName}</Text>
+                    <Text style={newStyle.firstName}>Email Address</Text>
                     <TextInput
                                 style={ newStyle.nameInput }
                                 placeholder=''
                                 underlineColorAndroid= 'transparent'
                                 onChangeText={(firstNameInput) => this.validationFirstName(firstNameInput)}/>
                             
-
-                    <Text style={newStyle.firstName}>{this.state.name}</Text>
+                    <Text style={newStyle.firstName}>Password</Text>
                     <TextInput
                         style={ newStyle.nameInput}
                         placeholder=''
                         underlineColorAndroid= 'transparent'
                         onChangeText= { (lastNameInput) => this.setState({lastNameInput}) }/>
 
-                      <Text style={newStyle.phoneNumberStyle}>{this.state.phoneNumber}</Text> 
-                     {/* <TextInput
-                        keyboardType= "numeric"
+                    <Text style={newStyle.firstName}>Password</Text>
+                    <TextInput
                         style={ newStyle.nameInput}
                         placeholder=''
                         underlineColorAndroid= 'transparent'
-                        onChangeText= { (phoneNumberInput) => this.validatePhone(phoneNumberInput) }/>  */}
-                      <PhoneInput 
-                            ref='phone'
-                            initialCountry='be'
-                            style= {newStyle.nameInput}
-                            onChangePhoneNumber = { (phoneNumberInput) => this.validatePhone(phoneNumberInput) } />
+                        onChangeText= { (lastNameInput) => this.setState({lastNameInput}) }/>
+
+                    <Text style={newStyle.firstName}>Password</Text>
+                    <TextInput
+                        style={ newStyle.nameInput}
+                        placeholder=''
+                        underlineColorAndroid= 'transparent'
+                        onChangeText= { (lastNameInput) => this.setState({lastNameInput}) }/>
+                    <Text style={newStyle.firstName}>Password</Text>
+
+                    <TextInput
+                        style={ newStyle.nameInput}
+                        placeholder=''
+                        underlineColorAndroid= 'transparent'
+                        onChangeText= { (lastNameInput) => this.setState({lastNameInput}) }/>
                 </View>
 
-                    <View style={newStyle.endButtons}>
-
-                    <TouchableOpacity onPress={() => this.props.navigation.goBack() }
-                        activeOpacity={0.5}
-                        style={newStyle.iconStyle}>
-                            <Icon
-                                containerStyle={newStyle.iconImageStyle}                               
-                                name='angle-left'
-                                type='font-awesome'
-                                color='#fff'
-                                size = {40}
-                                onPress={() => console.log('hello')} /> 
-                    </TouchableOpacity>
-
-                    <ButtonNext 
-                            objectParams=
-                                {{
-                                    btnText: this.state.buttonText, 
-                                    language: this.props.navigation.state.params.language,
-                                    firstName: this.state.firstNameInput,
-                                    lastName: this.state.lastNameInput,
-                                    phoneNumber: this.state.phoneNumberInput,
-                                    firstNameError: this.state.firstNameError,
-                                    lastNameError: this.state.lastNameError,
-                                    phoneNumberError: this.state.phoneNumberError,
-                                    firstNameEmpty: this.state.firstNameEmptyError,
-                                    lastNameEmpty: this.state.lastNameEmptyError,
-                                    phoneNumberEmpty: this.state.phoneNumberEmptyError
-                                }}
-                            func = {this.func}
-                            navigation = { this.props.navigation}
-                            />
-                    </View>
-
-                    {/* <ButtonNext 
-                            objectParams=
-                                {{
-                                    btnText: this.state.buttonText, 
-                                    language: this.props.navigation.state.params.language,
-                                    firstName: this.state.firstNameInput,
-                                    lastName: this.state.lastNameInput,
-                                    phoneNumber: this.state.phoneNumberInput,
-                                    firstNameError: this.state.firstNameError,
-                                    lastNameError: this.state.lastNameError,
-                                    phoneNumberError: this.state.phoneNumberError,
-                                    firstNameEmpty: this.state.firstNameEmptyError,
-                                    lastNameEmpty: this.state.lastNameEmptyError,
-                                    phoneNumberEmpty: this.state.phoneNumberEmptyError
-                                }}
-                            func = {this.func}/> */}
+                   <ButtonSignUp
+                        objectParams=
+                        {{
+                            btnText: 'SIGN UP', 
+                            language: '',
+                            firstName: this.state.firstNameInput,
+                            lastName: this.state.lastNameInput,
+                            phoneNumber: this.state.phoneNumberInput,
+                            firstNameError: this.state.firstNameError,
+                            lastNameError: this.state.lastNameError,
+                            phoneNumberError: this.state.phoneNumberError,
+                            firstNameEmpty: this.state.firstNameEmptyError,
+                            lastNameEmpty: this.state.lastNameEmptyError,
+                            phoneNumberEmpty: this.state.phoneNumberEmptyError
+                        }}
+                        func = {this.func}
+                        navigation = { this.props.navigation}
+                    />
  
-            </KeyboardAwareScrollView>:
-            <ScrollView>
-            <KeyboardAvoidingView
-               style = {newStyle.container}
-               behavior = "padding"
-               enabled>
-             {/* <View style={newStyle.container}> */}
-            
-             <View style={newStyle.headerImage}>
-                 <Image source={logoNew} resizeMode="contain" style={{ width: viewPortWidth, height: viewPortHeight * .45 }} />
-                 {
-                   (this.state.renderValidate === true)?this.renderValidation():this.renderNothing()
-                 }
-             </View>
-
-             <View style={newStyle.inputContainer}>
-            
-                 <Text style={newStyle.firstName}>{this.state.firstName}</Text>
-                 <TextInput
-                             style={ newStyle.nameInput }
-                             placeholder=''
-                             underlineColorAndroid= 'transparent'
-                             onChangeText={(firstNameInput) => this.validationFirstName(firstNameInput)}/>
-                         
-
-                 <Text style={newStyle.firstName}>{this.state.name}</Text>
-                 <TextInput
-                     style={ newStyle.nameInput}
-                     placeholder=''
-                     underlineColorAndroid= 'transparent'
-                     onChangeText= { (lastNameInput) => this.setState({lastNameInput}) }/>
-
-                 <Text style={newStyle.phoneNumberStyle}>{this.state.phoneNumber}</Text>
-                 {/* <TextInput
-                     keyboardType= "numeric"
-                     style={ newStyle.nameInput}
-                     placeholder=''
-                     underlineColorAndroid= 'transparent'
-                     onChangeText= { (phoneNumberInput) => this.validatePhone(phoneNumberInput) }/>                 */}
-                 <PhoneInput 
-                         ref='phone'
-                         initialCountry='be'
-                         style= {newStyle.nameInput}
-                         onChangePhoneNumber = { (phoneNumberInput) => this.validatePhone(phoneNumberInput) } />
-
-
-             </View>
-
-            <View style={newStyle.endButtons}>
-
-                <TouchableOpacity onPress={() => this.props.navigation.goBack() }
-                    activeOpacity={0.5}
-                    style={newStyle.iconStyle}>
-                        <Icon
-                            containerStyle={newStyle.iconImageStyle}                               
-                            name='angle-left'
-                            type='font-awesome'
-                            color='#fff'
-                            size = {40}
-                            onPress={() => console.log('hello')} /> 
-                </TouchableOpacity>
-
-                <ButtonNext 
-                            objectParams=
-                                {{
-                                    btnText: this.state.buttonText, 
-                                    language: this.props.navigation.state.params.language,
-                                    firstName: this.state.firstNameInput,
-                                    lastName: this.state.lastNameInput,
-                                    phoneNumber: this.state.phoneNumberInput,
-                                    firstNameError: this.state.firstNameError,
-                                    lastNameError: this.state.lastNameError,
-                                    phoneNumberError: this.state.phoneNumberError,
-                                    firstNameEmpty: this.state.firstNameEmptyError,
-                                    lastNameEmpty: this.state.lastNameEmptyError,
-                                    phoneNumberEmpty: this.state.phoneNumberEmptyError
-                                }}
-                            func = {this.func}
-                            navigation = { this.props.navigation}
-                />
-
-
-                 {/* <ButtonNext 
-                         objectParams=
-                             {{
-                                 btnText: this.state.buttonText, 
-                                 language: this.props.navigation.state.params.language,
-                                 firstName: this.state.firstNameInput,
-                                 lastName: this.state.lastNameInput,
-                                 phoneNumber: this.state.phoneNumberInput,
-                                 firstNameError: this.state.firstNameError,
-                                 lastNameError: this.state.lastNameError,
-                                 phoneNumberError: this.state.phoneNumberError,
-                                 firstNameEmpty: this.state.firstNameEmptyError,
-                                 lastNameEmpty: this.state.lastNameEmptyError,
-                                 phoneNumberEmpty: this.state.phoneNumberEmptyError
-                             }}
-                         func = {this.func}/> */}
-            </View>
-         {/* </View> */}
-         </KeyboardAvoidingView>
-         </ScrollView>
+            </KeyboardAwareScrollView>
 
         );
     }
@@ -576,10 +463,9 @@ const newStyle = StyleSheet.create({
     },
 
     headerImage: {
-        width: viewPortWidth,
-        height: Platform.OS === 'ios'?viewPortHeight * 0.51:
-                                      viewPortHeight * 0.29,
-        flex: Platform.OS === 'ios'?9:6,
+        width: viewPortWidth * 0.65,
+        height: Platform.OS === 'ios'?40:120,
+        flex: Platform.OS === 'ios'?17:8,
         backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
@@ -588,8 +474,23 @@ const newStyle = StyleSheet.create({
     inputContainer: {
         backgroundColor: 'white',        
         marginTop: Platform.OS === 'ios'?25:10,
-        padding: 20,
-        flex: Platform.OS === 'ios'?14:1,
+        padding: 25,
+        marginLeft: 0,
+        flex: Platform.OS === 'ios'?60:1,
+        backgroundColor: 'transparent'
+    },
+
+    socialIcons: {
+        flex: 4,
+        justifyContent: 'center', 
+        alignItems: 'flex-start' ,
+        marginTop: 10, 
+        marginLeft: 20,
+        padding: 30, 
+        flexDirection: 'row', 
+        width: viewPortWidth, 
+        height: 400, 
+        backgroundColor: 'transparent'
     },
 
     firstName: {
@@ -602,6 +503,17 @@ const newStyle = StyleSheet.create({
         letterSpacing: 0.67,
         textAlign: 'left',
         marginBottom: 15
+    },
+
+    forgotPassword:{
+        width: 112,
+        height: 14,
+        fontFamily: "WorkSans-Medium",
+        fontSize: 12,
+        fontWeight: "500",
+        fontStyle: "normal",
+        letterSpacing: 0.43,
+        color: "#E73D50",
     },
 
     phoneNumberStyle: {
@@ -646,26 +558,31 @@ const newStyle = StyleSheet.create({
         flex: Platform.OS === 'ios'?4:4,
         flexDirection: 'row',
         backgroundColor: 'white',
-        justifyContent: 'center',
-        alignItems: 'center',                
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
         backgroundColor:'transparent'
     },
 
     iconImageStyle:{
         backgroundColor: 'black',
         width: 50,
-        height: 50
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
 
     iconStyle: {
-        width: 57,
-        height: 57,
-        borderRadius: 8,
-        backgroundColor: '#fad704',
-        marginTop: viewPortHeight / 80,
-        marginRight: 15,
+        width: 45,
+        height: 45,
+        borderRadius: 45,
+        backgroundColor: 'transparent',
+        marginTop: viewPortHeight / 200,
+        marginRight: 0,
+        marginLeft: 15,
+        marginTop: 10,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: 'transparent'        
     },
 
     validationStyle:{

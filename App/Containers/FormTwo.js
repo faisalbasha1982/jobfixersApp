@@ -50,7 +50,6 @@ import SmartPicker from 'react-native-smart-picker';
 import IOSPicker from 'react-native-ios-picker';
 import RNPickerSelect from 'react-native-picker-select';
 
-
 import { Colors } from "../Themes";
 import { Images } from '../Themes';
 
@@ -143,6 +142,21 @@ class FormTwo extends Component {
             //         value: this.state.office,
             //     },
             // ],
+
+            items: [
+                {
+                    label: 'Red',
+                    value: 'red',
+                },
+                {
+                    label: 'Orange',
+                    value: 'orange',
+                },
+                {
+                    label: 'Blue',
+                    value: 'blue',
+                },
+            ],
     
             // data: [
             //     {
@@ -375,15 +389,15 @@ class FormTwo extends Component {
                 method: 'post',
                 headers: {
                   'Content-Type': 'application/json',
-                  'Accept': 'application/json',
+                  Accept: 'application/json',
                 },
                 body: JSON.stringify({      
-                    "AuthenticationData": encrypted.toString(),
-                    "firstname": fName,
-                    "lastname": lName,
-                    "phonenumber": this.state.phonenumber,
-                    "postalcode": parseInt(this.state.postalCodeInput),
-                    "niche": Nieche,
+                    AuthenticationData: encrypted.toString(),
+                    firstname: fName,
+                    lastname: lName,
+                    phonenumber: this.state.phonenumber,
+                    postalcode: parseInt(this.state.postalCodeInput),
+                    niche: Nieche,
                 }),
               }).then(response => response.json())
                 .then((res) => {
@@ -402,36 +416,65 @@ class FormTwo extends Component {
                   }
                 }).catch((error) => { console.error(error); })
                 :
-                fetch(Api.signUpURLP, {
-                    method: "POST",
-                    headers: {
-                      'Content-Type': 'application/json',
-                      'Accept': 'application/json',
-                    },
-                    body: JSON.stringify({      
-                        AuthenticationData: encrypted.toString(),
-                        firstname: fName,
-                        lastname: lName,
-                        phonenumber: this.state.phonenumber,
-                        postalcode: parseInt(this.state.postalCodeInput),
-                        niche: Nieche,
-                    }),
-                  }).then(response => response.json())
-                    .then((res) => {
-                      console.log('Success:', res);
-                      if (typeof (res.message) !== 'undefined') {
-                        this.setState({ message: res.Message_en });
-                        // Alert.alert('Welcome', this.state.message);
-                        this.setState({ isLogin: false, canLogin: false });
-                        this.props.navigation.navigate('ThankYouScreen',{language: this.state.language,navigation: this.props.navigation});
-                        //this.props.clear();
-                      } else {
-                        console.log("message=",res.Message_en);
-                        this.setState({ message: res.Message_en })
-                        // Alert.alert('Welcome', this.state.message);
-                        this.props.navigation.navigate('ThankYouScreen',{language: this.state.language});
-                      }
-                    }).catch((error) => { console.error(error); })
+                data = JSON.stringify({
+                    "AuthenticationData": encrypted.toString(),
+                    "firstname": fName,
+                    "lastname": lName,
+                    "phonenumber": this.state.phonenumber,
+                    "postalcode": parseInt(this.state.postalCodeInput),
+                    "niche": Nieche
+                  });
+                  
+                  var xhr = new XMLHttpRequest();
+                  xhr.withCredentials = true;
+                  
+                  xhr.addEventListener("readystatechange", function () {
+                    if (this.readyState === 4 && xhr.status === 200) {
+                      console.log(this.responseText);
+                    }
+                    else
+                    {
+                        console.log("error message="+xhr.status);
+                    }
+                  });
+                  
+                  xhr.open("POST", "https://prod-54.westeurope.logic.azure.com:443/workflows/fad35cb3bf804958806170aab090f5fd/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=PIqV4C0NMg6yGjaBeaOMl8oLM8DK8v8NilOL-4azW7A");
+                  xhr.setRequestHeader("Accept", "application/json");
+                  xhr.setRequestHeader("Content-Type", "application/json");
+                  xhr.setRequestHeader("Cache-Control", "no-cache");
+                  xhr.setRequestHeader("Postman-Token", "366882d7-ecb6-4c7b-b0aa-2e7e7314dc79");
+
+                // fetch(Api.signUpURLP, {
+                //     method: 'POST',
+                //     headers: {
+                //       'Content-Type':'application/json',
+                //       Accept:'application/json',
+                //       'Cache-Control': 'no-cache',
+                //     },
+                //     body:JSON.stringify({      
+                //         AuthenticationData: encrypted.toString(),
+                //         firstname: fName,
+                //         lastname: lName,
+                //         phonenumber: this.state.phonenumber,
+                //         postalcode: parseInt(this.state.postalCodeInput),
+                //         niche: Nieche,
+                //     }),
+                //   }).then(response => response.json())
+                //     .then((res) => {
+                //       console.log('Success:', res);
+                //       if (typeof (res.message) !== 'undefined') {
+                //         this.setState({ message: res.Message_en });
+                //         // Alert.alert('Welcome', this.state.message);
+                //         this.setState({ isLogin: false, canLogin: false });
+                //         this.props.navigation.navigate('ThankYouScreen',{language: this.state.language,navigation: this.props.navigation});
+                //         //this.props.clear();
+                //       } else {
+                //         console.log("message=",res.Message_en);
+                //         this.setState({ message: res.Message_en })
+                //         // Alert.alert('Welcome', this.state.message);
+                //         this.props.navigation.navigate('ThankYouScreen',{language: this.state.language});
+                //       }
+                //     }).catch((error) => { console.error(error); })
                 // axios.post(Api.signUpURLP,{
                 //     AuthenticationData: encrypted.toString(),
                 //     firstname: fName,
@@ -716,6 +759,20 @@ class FormTwo extends Component {
         var bt = LanguageSettings.dutch.buttonTextJob;
         const lbl = '';
         var data = [this.state.construct, this.state.industry, this.state.office];
+        var newData = [
+                    {
+                        label: this.state.construct,
+                        value: this.state.construct,
+                    },
+                    {
+                        label: this.state.industry,
+                        value: this.state.industry,
+                    },
+                    {
+                        label: this.state.office,
+                        value: this.state.office,
+                    },
+        ];
 
         return (
 
@@ -755,36 +812,55 @@ class FormTwo extends Component {
                     <Text style={newStyle.firstName}>{this.state.workText}</Text>
                     <View style= {newStyle.dropDownStyle}>
 
-                        {
-                         Platform.OS==='ios'?
-                         <DropdownMenu
-                                style={{
-                                flex: 1, 
-                                marginTop: 20,
-                                flexDirection: 'row', 
-                                borderRadius: 8, 
-                                }}
-                                bgColor={'transparent'}
-                                tintColor={'#666666'}
-                                activityTintColor={'green'}
-                                // arrowImg={}      
-                                // checkImage={}   
-                                // optionTextStyle={{color: '#333333'}}
-                                // titleStyle={{color: '#333333'}} 
-                                maxHeight={250} 
-                                handler={(selection, row) => this.setState({dropDownItem: data[selection][row]})}
-                                data={data}> 
-                        </DropdownMenu>                       
-                        :
+                        {/* { */}
+                         {/* //Platform.OS==='ios'?
+                        //  <DropdownMenu
+                        //         style={{
+                        //         flex: 1, 
+                        //         marginTop: 20,
+                        //         flexDirection: 'row', 
+                        //         borderRadius: 8, 
+                        //         }}
+                        //         bgColor={'transparent'}
+                        //         tintColor={'#666666'}
+                        //         activityTintColor={'green'}
+                        //         // arrowImg={}      
+                        //         // checkImage={}   
+                        //         // optionTextStyle={{color: '#333333'}}
+                        //         // titleStyle={{color: '#333333'}} 
+                        //         maxHeight={250} 
+                        //         handler={(selection, row) => this.setState({dropDownItem: data[selection][row]})}
+                        //         data={data}> 
+                        // </DropdownMenu>                        
+                       
+                        //: */}
                        <View style={{
                                 width: Platform.OS==='ios'?350:250,
                                 height: 57,
                                 borderRadius: 8,
                                 backgroundColor: '#f6f6f6',
                                 padding: 10,
+                                paddingTop: 20,
                                 fontFamily: 'WorkSans-Bold',
                                 fontWeight: '400',
                                 paddingLeft: 0,}}>
+                                 {Platform.OS === 'ios'?
+                                 <RNPickerSelect
+                                        items={newData}
+                                        placeholder={{}}
+                                        hideIcon={true}
+                                        style={{ padding:10,marginTop: 10,
+                                            fontFamily: 'WorkSans-Bold',
+                                            fontWeight: '500',
+                                         }}
+                                        onValueChange={(value) => 
+                                        {
+                                            this.setState({
+                                                favColor: value,
+                                            });
+                                        }}>
+                                </RNPickerSelect>
+                                :
                                 <Picker
                                         selectedValue={this.state.dropDownItem}
                                         style={{                                          
@@ -798,9 +874,10 @@ class FormTwo extends Component {
                                         <Picker.Item label={this.state.industry} value={this.state.industry} />
                                         <Picker.Item label={this.state.office} value={this.state.office} />
                                 </Picker>
-
+                                 
+                                 }
                         </View>                     
-                      }
+                      {/* //} */}
 
                     </View>
                     

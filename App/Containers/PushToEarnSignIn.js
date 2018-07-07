@@ -30,6 +30,8 @@ import Validation from '../Components/ButtonValidation';
 import LanguageSettings from '../Containers/LanguageSettingsNew';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import PhoneInput from 'react-native-phone-input';
+import ButtonLogin from '../Components/ButtonLogin';
+
 
 import { Colors } from "../Themes";
 import { Images } from '../Themes';
@@ -72,7 +74,7 @@ class PushToEarnSignIn extends Component {
             firstNameInput:'',
             lastNameInput:'',
             phoneNumberInput:'',
-            buttonText: '',
+            buttonText: 'LOGIN',
             firstNameError:true,
             firstNameErrorText:'',            
             lastNameError:false,
@@ -327,9 +329,7 @@ class PushToEarnSignIn extends Component {
                                 }} />
                     </View>
             );
-        
-
-        
+                
         return;
 
     }
@@ -354,12 +354,107 @@ class PushToEarnSignIn extends Component {
                 enableAutomaticScroll={true}>
             
                 <View style={newStyle.headerImage}>
-                    <Image source={logoNew} resizeMode="contain"  />
+                    <Image source={logoNew} resizeMode="contain" style={{ width: 225, height: 45 }} />
                 </View>
+
+                <View style= {{ flex:1, }}>
+                        <Text 
+                        style={{
+                        width: 334,
+                        height: 34,
+                        fontFamily: "WorkSans-Medium",
+                        fontSize: 21,
+                        fontWeight: "500",
+                        fontStyle: "normal",
+                        lineHeight: 34,
+                        letterSpacing: 0,
+                        textAlign: "center",
+                        color: "#E73D50" 
+                        }}>
+                    Sign In 
+                    </Text>
+                </View>                
+
+                <View style= { newStyle.socialIcons }>
+
+                        <View style={{ width: 70, height: 70, marginRight: 20, borderRadius: 70, backgroundColor: '#E73D50' }}>
+                                <TouchableOpacity onPress={() => this.props.navigation.goBack() }
+                                    activeOpacity={0.5}
+                                    style={ newStyle.iconStyle }>
+                                        <Icon
+                                            containerStyle={newStyle.iconImageStyle}
+                                            name='facebook-f'
+                                            type='font-awesome'
+                                            color='#fff'
+                                            size = {35}
+                                            onPress={() => console.log('hello')} /> 
+                                </TouchableOpacity>
+                        </View>
+
+                        <View style= {{width: 70, height: 70,marginRight: 20, borderRadius: 70, backgroundColor: '#E73D50' }}>
+                                <TouchableOpacity onPress={() => this.props.navigation.goBack() }
+                                    activeOpacity={0.5}
+                                    style={ newStyle.iconStyle }>
+                                        <Icon
+                                            containerStyle={newStyle.iconImageStyle}
+                                            name='linkedin'
+                                            type='font-awesome'
+                                            color='#fff'
+                                            size = {35}
+                                            onPress={() => console.log('hello')} /> 
+                                </TouchableOpacity>
+                        </View>
+
+                        <View style = {{width: 70, height: 70,marginRight: 20, borderRadius: 70, backgroundColor: '#E73D50'}}>
+                                <TouchableOpacity onPress={() => this.props.navigation.goBack() }
+                                    activeOpacity={0.5}
+                                    style={ newStyle.iconStyle }>
+                                        <Icon
+                                            containerStyle={newStyle.iconImageStyle}
+                                            name='twitter'
+                                            type='font-awesome'
+                                            color='#fff'
+                                            size = {35}
+                                            onPress={() => console.log('hello')} /> 
+                                </TouchableOpacity>
+                        </View>
+
+                        <View style = {{ width: 70, height: 70, marginRight: 20, borderRadius: 70, backgroundColor: '#E73D50' }}>
+                                <TouchableOpacity onPress={() => this.props.navigation.goBack() }
+                                    activeOpacity={0.5}
+                                    style={ newStyle.iconStyle }>
+                                        <Icon
+                                            containerStyle={newStyle.iconImageStyle}
+                                            name='google'
+                                            type='font-awesome'
+                                            color='#fff'
+                                            size = {35}
+                                            onPress={() => console.log('hello')} /> 
+                                </TouchableOpacity>
+                        </View>
+               </View>
+
+                  <View style= {{ flex:1, marginTop: 20}}>
+                        <Text 
+                        style={{
+                        width: 334,
+                        height: 34,
+                        fontFamily: "WorkSans-Medium",
+                        fontSize: 14,
+                        fontWeight: "500",
+                        fontStyle: "normal",
+                        lineHeight: 34,
+                        letterSpacing: 0,
+                        textAlign: "center",
+                        color: "#353535"
+                        }}>
+                    or sign in with:
+                    </Text>
+                </View>                
 
                 <View style={newStyle.inputContainer}>
                
-                    <Text style={newStyle.firstName}>{this.state.firstName}</Text>
+                    <Text style={newStyle.firstName}>Email Address</Text>
                     <TextInput
                                 style={ newStyle.nameInput }
                                 placeholder=''
@@ -367,60 +462,56 @@ class PushToEarnSignIn extends Component {
                                 onChangeText={(firstNameInput) => this.validationFirstName(firstNameInput)}/>
                             
 
-                    <Text style={newStyle.firstName}>{this.state.name}</Text>
+                    <Text style={newStyle.firstName}>Password</Text>
                     <TextInput
                         style={ newStyle.nameInput}
                         placeholder=''
                         underlineColorAndroid= 'transparent'
                         onChangeText= { (lastNameInput) => this.setState({lastNameInput}) }/>
 
-                      <Text style={newStyle.phoneNumberStyle}>{this.state.phoneNumber}</Text> 
-                     {/* <TextInput
-                        keyboardType= "numeric"
-                        style={ newStyle.nameInput}
-                        placeholder=''
-                        underlineColorAndroid= 'transparent'
-                        onChangeText= { (phoneNumberInput) => this.validatePhone(phoneNumberInput) }/>  */}
-                      <PhoneInput 
-                            ref='phone'
-                            initialCountry='be'
-                            style= {newStyle.nameInput}
-                            onChangePhoneNumber = { (phoneNumberInput) => this.validatePhone(phoneNumberInput) } />
-                </View>
+                      <Text style={newStyle.forgotPassword}>Forgot Password?</Text>
 
                     <View style={newStyle.endButtons}>
 
-                    <TouchableOpacity onPress={() => this.props.navigation.goBack() }
-                        activeOpacity={0.5}
-                        style={newStyle.iconStyle}>
-                            <Icon
-                                containerStyle={newStyle.iconImageStyle}                               
-                                name='angle-left'
-                                type='font-awesome'
-                                color='#fff'
-                                size = {40}
-                                onPress={() => console.log('hello')} /> 
-                    </TouchableOpacity>
-
-                    <ButtonNext 
-                            objectParams=
-                                {{
-                                    btnText: this.state.buttonText, 
-                                    language: this.props.navigation.state.params.language,
-                                    firstName: this.state.firstNameInput,
-                                    lastName: this.state.lastNameInput,
-                                    phoneNumber: this.state.phoneNumberInput,
-                                    firstNameError: this.state.firstNameError,
-                                    lastNameError: this.state.lastNameError,
-                                    phoneNumberError: this.state.phoneNumberError,
-                                    firstNameEmpty: this.state.firstNameEmptyError,
-                                    lastNameEmpty: this.state.lastNameEmptyError,
-                                    phoneNumberEmpty: this.state.phoneNumberEmptyError
-                                }}
-                            func = {this.func}
-                            navigation = { this.props.navigation}
-                            />
+                    <ButtonLogin 
+                        objectParams=
+                        {{
+                            btnText: this.state.buttonText, 
+                            language: '',
+                            firstName: this.state.firstNameInput,
+                            lastName: this.state.lastNameInput,
+                            phoneNumber: this.state.phoneNumberInput,
+                            firstNameError: this.state.firstNameError,
+                            lastNameError: this.state.lastNameError,
+                            phoneNumberError: this.state.phoneNumberError,
+                            firstNameEmpty: this.state.firstNameEmptyError,
+                            lastNameEmpty: this.state.lastNameEmptyError,
+                            phoneNumberEmpty: this.state.phoneNumberEmptyError
+                        }}
+                        func = {this.func}
+                        navigation = { this.props.navigation}
+                    />
                     </View>
+
+                <View style= {{ flex:1, marginTop: 0, marginLeft: 20}}>
+                        <Text 
+                        style={{
+                        width: 334,
+                        height: 34,
+                        fontFamily: "WorkSans-Medium",
+                        fontSize: 14,
+                        fontWeight: "500",
+                        fontStyle: "normal",
+                        lineHeight: 34,
+                        letterSpacing: 0,
+                        textAlign: "center",
+                        color: "#353535"
+                        }}>
+                        Don't have an Account ? Sign up here !
+                    </Text>
+                </View>                
+
+                </View>
 
                     {/* <ButtonNext 
                             objectParams=
@@ -573,18 +664,32 @@ const newStyle = StyleSheet.create({
     headerImage: {
         width: viewPortWidth * 0.65,
         height: Platform.OS === 'ios'?40:120,
-        flex: Platform.OS === 'ios'?4:8,
+        flex: Platform.OS === 'ios'?8:8,
         backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'powderblue'
     },
 
     inputContainer: {
         backgroundColor: 'white',        
         marginTop: Platform.OS === 'ios'?25:10,
-        padding: 20,
-        flex: Platform.OS === 'ios'?14:1,
+        padding: 25,
+        marginLeft: 30,
+        flex: Platform.OS === 'ios'?30:1,
+        backgroundColor: 'transparent'
+    },
+
+    socialIcons: {
+        flex: 4,
+        justifyContent: 'center', 
+        alignItems: 'flex-start' ,
+        marginTop: 10, 
+        marginLeft: 20,
+        padding: 30, 
+        flexDirection: 'row', 
+        width: viewPortWidth, 
+        height: 400, 
+        backgroundColor: 'transparent'
     },
 
     firstName: {
@@ -597,6 +702,17 @@ const newStyle = StyleSheet.create({
         letterSpacing: 0.67,
         textAlign: 'left',
         marginBottom: 15
+    },
+
+    forgotPassword:{
+        width: 112,
+        height: 14,
+        fontFamily: "WorkSans-Medium",
+        fontSize: 12,
+        fontWeight: "500",
+        fontStyle: "normal",
+        letterSpacing: 0.43,
+        color: "#E73D50",
     },
 
     phoneNumberStyle: {
@@ -641,26 +757,31 @@ const newStyle = StyleSheet.create({
         flex: Platform.OS === 'ios'?4:4,
         flexDirection: 'row',
         backgroundColor: 'white',
-        justifyContent: 'center',
-        alignItems: 'center',                
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
         backgroundColor:'transparent'
     },
 
     iconImageStyle:{
         backgroundColor: 'black',
         width: 50,
-        height: 50
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
 
     iconStyle: {
-        width: 57,
-        height: 57,
-        borderRadius: 8,
-        backgroundColor: '#fad704',
-        marginTop: viewPortHeight / 80,
-        marginRight: 15,
+        width: 45,
+        height: 45,
+        borderRadius: 45,
+        backgroundColor: 'transparent',
+        marginTop: viewPortHeight / 200,
+        marginRight: 0,
+        marginLeft: 15,
+        marginTop: 10,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: 'transparent'        
     },
 
     validationStyle:{
