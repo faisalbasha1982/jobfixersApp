@@ -19,6 +19,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { NavigationActions } from "react-navigation";
 import ButtonNext from '../Components/ButtonNext';
+import ButtonLogin from '../Components/ButtonLogin';
+import ButtonPushWelcome from '../Components/ButtonPushWelcome';
 import ButtonWelcome from '../Components/ButtonWelcome';
 import LanguageButton from '../Components/LanguageButton';
 import Spinner from "react-native-loading-spinner-overlay";
@@ -30,16 +32,13 @@ import Validation from '../Components/ButtonValidation';
 import LanguageSettings from '../Containers/LanguageSettingsNew';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import PhoneInput from 'react-native-phone-input';
-import ButtonLogin from '../Components/ButtonLogin';
-import ButtonSignUp from '../Components/ButtonSignUp';
-
 
 import { Colors } from "../Themes";
 import { Images } from '../Themes';
 
 import headerImage from '../Images/headerImage.png';
 import logoHeader from '../Images/logoheader.png';
-import logoNew from '../Images/page1.png';
+import logoNew from '../Images/NewHeaderImage.png';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
@@ -55,11 +54,7 @@ export const IMAGE_HEIGHT_SMALL = window.width /7;
 
 let cLanguage = '';
 
-class PushToEarnSignUp extends Component {
-
-    static propTypes = {
-        language: PropTypes.string.isRequired
-    }
+class PushToEarnCardDetails extends Component {
 
     constructor(props)
     {
@@ -75,9 +70,9 @@ class PushToEarnSignUp extends Component {
             firstNameInput:'',
             lastNameInput:'',
             phoneNumberInput:'',
-            buttonText: 'LOGIN',
+            buttonText: '',
             firstNameError:true,
-            firstNameErrorText:'',            
+            firstNameErrorText:'',
             lastNameError:false,
             lastNameErrorText:'',
             phoneNumberError:true,
@@ -226,7 +221,7 @@ class PushToEarnSignUp extends Component {
      }
 
     componentWillReceiveProps(nextProps) {
-        // console.log("in Form One screen language received="+nextProps.language);
+        //console.log("in Form One screen language received="+nextProps.language);
         // if (this.props.navigation.state.params.language !== nextProps.language) {
         //     this.setState({ language: nextProps.language });
         //     this.setText();
@@ -236,6 +231,7 @@ class PushToEarnSignUp extends Component {
     componentDidMount() {
         // console.log("language from props="+this.props.navigation.state.params.language);
         // console.log("default language="+this.state.language);
+        // //cLanguage = this.props.navigation.state.params.language;
         // this.setState({ language: this.props.navigation.state.params.language });
         // console.log("language="+this.state.language);
         // this.setText();
@@ -313,7 +309,7 @@ class PushToEarnSignUp extends Component {
                                 objectParams = 
                                 {{
                                     'btnText': errorString, 
-                                    'language': this.props.navigation.state.params.language,
+                                    'language': '',
                                     'backgroundColor':'transparent'
                                 }} />
                     </View>
@@ -325,12 +321,14 @@ class PushToEarnSignUp extends Component {
                                 objectParams = 
                                 {{
                                     'btnText': errorString, 
-                                    'language': this.props.navigation.state.params.language,
+                                    'language': '',
                                     'backgroundColor': 'normal'
                                 }} />
                     </View>
             );
-                
+        
+
+        
         return;
 
     }
@@ -355,177 +353,136 @@ class PushToEarnSignUp extends Component {
                 enableAutomaticScroll={true}>
             
                 <View style={newStyle.headerImage}>
-                    <Image source={logoNew} resizeMode="contain" style={{ width: 225, height: 45 }} />
+                    <Image source={logoNew} resizeMode="contain" style={{ width: viewPortWidth, height: viewPortHeight * .45 }} />
+                    {
+                      (this.state.renderValidate === true)?this.renderValidation():this.renderNothing()
+                    }
                 </View>
 
-                <View style= {{ flex:1, }}>
-                        <Text 
-                        style={{
-                        width: 334,
-                        height: 34,
-                        fontFamily: "WorkSans-Medium",
-                        fontSize: 21,
-                        fontWeight: "500",
-                        fontStyle: "normal",
-                        lineHeight: 34,
-                        letterSpacing: 0,
-                        textAlign: "center",
-                        color: "#E73D50" 
-                        }}>
-                    Sign Up
-                    </Text>
-                </View>                
+                <View style= { newStyle.layoutBelow }>
 
-                <View style= { newStyle.socialIcons }>
-
-                        <View style={{ width: 70, height: 70, marginRight: 20, borderRadius: 70, backgroundColor: '#E73D50' }}>
-                                <TouchableOpacity onPress={() => this.props.navigation.goBack() }
+                    <View style={newStyle.leftButtons}>
+                        <View style={newStyle.leftButton}>
+                                <TouchableOpacity onPress={ ( ) => {} }
                                     activeOpacity={0.5}
-                                    style={ newStyle.iconStyle }>
-                                        <Icon
-                                            containerStyle={newStyle.iconImageStyle}
-                                            name='facebook-f'
-                                            type='font-awesome'
-                                            color='#fff'
-                                            size = {35}
-                                            onPress={() => console.log('hello')} /> 
-                                </TouchableOpacity>
+                                    style={newStyle.iconStyle}>
+                                <Icon
+                                    containerStyle={newStyle.iconImageStyle}
+                                    name='user'
+                                    type='font-awesome'
+                                    color='#E73D50'
+                                    size = {20}
+                                    onPress={() => console.log('hello')} /> 
+                        </TouchableOpacity>
                         </View>
-
-                        <View style= {{width: 70, height: 70,marginRight: 20, borderRadius: 70, backgroundColor: '#E73D50' }}>
-                                <TouchableOpacity onPress={() => this.props.navigation.goBack() }
+                        <View style={newStyle.leftButton}>
+                                <TouchableOpacity onPress={ ( ) => {} }
                                     activeOpacity={0.5}
-                                    style={ newStyle.iconStyle }>
-                                        <Icon
-                                            containerStyle={newStyle.iconImageStyle}
-                                            name='linkedin'
-                                            type='font-awesome'
-                                            color='#fff'
-                                            size = {35}
-                                            onPress={() => console.log('hello')} /> 
-                                </TouchableOpacity>
+                                    style={newStyle.iconStyle}>
+                                <Icon
+                                    containerStyle={newStyle.iconImageStyle}
+                                    name='users'
+                                    type='font-awesome'
+                                    color='#E73D50'
+                                    size = {20}
+                                    onPress={() => console.log('hello')} /> 
+                        </TouchableOpacity>
                         </View>
-
-                        <View style = {{width: 70, height: 70,marginRight: 20, borderRadius: 70, backgroundColor: '#E73D50'}}>
-                                <TouchableOpacity onPress={() => this.props.navigation.goBack() }
+                        <View style={newStyle.leftButton}>
+                                <TouchableOpacity onPress={ ( ) => {} }
                                     activeOpacity={0.5}
-                                    style={ newStyle.iconStyle }>
-                                        <Icon
-                                            containerStyle={newStyle.iconImageStyle}
-                                            name='twitter'
-                                            type='font-awesome'
-                                            color='#fff'
-                                            size = {35}
-                                            onPress={() => console.log('hello')} /> 
-                                </TouchableOpacity>
+                                    style={newStyle.iconStyle}>
+                                <Icon
+                                    containerStyle={newStyle.iconImageStyle}
+                                    name='euro-sign'
+                                    type='font-awesome'
+                                    color='#E73D50'
+                                    size = {20}
+                                    onPress={() => console.log('hello')} /> 
+                        </TouchableOpacity>
                         </View>
-
-                        <View style = {{ width: 70, height: 70, marginRight: 20, borderRadius: 70, backgroundColor: '#E73D50' }}>
-                                <TouchableOpacity onPress={() => this.props.navigation.goBack() }
+                        <View style={newStyle.leftButton}>
+                                <TouchableOpacity onPress={ ( ) => {} }
                                     activeOpacity={0.5}
-                                    style={ newStyle.iconStyle }>
-                                        <Icon
-                                            containerStyle={newStyle.iconImageStyle}
-                                            name='google'
-                                            type='font-awesome'
-                                            color='#fff'
-                                            size = {35}
-                                            onPress={() => console.log('hello')} /> 
-                                </TouchableOpacity>
+                                    style={newStyle.iconStyle}>
+                                <Icon
+                                    containerStyle={newStyle.iconImageStyle}
+                                    name='info-circle'
+                                    type='font-awesome'
+                                    color='#E73D50'
+                                    size = {20}
+                                    onPress={() => console.log('hello')} /> 
+                        </TouchableOpacity>
                         </View>
-               </View>
-
-                  <View style= {{ flex:1, marginTop: 25}}>
-                        <Text 
-                        style={{
-                        width: 334,
-                        height: 34,
-                        fontFamily: "WorkSans-Medium",
-                        fontSize: 14,
-                        fontWeight: "500",
-                        fontStyle: "normal",
-                        lineHeight: 34,
-                        letterSpacing: 0,
-                        textAlign: "center",
-                        color: "#353535"
-                        }}>
-                    or sign up with:
-                    </Text>
-                </View>                
-
-                <View style={newStyle.inputContainer}>
-               
-                    <Text style={newStyle.firstName}>Email Address</Text>
-                    <TextInput
-                                style={ newStyle.nameInput }
-                                placeholder=''
-                                underlineColorAndroid= 'transparent'
-                                onChangeText={(firstNameInput) => this.validationFirstName(firstNameInput)}/>
-                            
-
-                    <Text style={newStyle.firstName}>Password</Text>
-                    <TextInput
-                        style={ newStyle.nameInput}
-                        placeholder=''
-                        underlineColorAndroid= 'transparent'
-                        onChangeText= { (lastNameInput) => this.setState({lastNameInput}) }/>
-
-                    <Text style={newStyle.firstName}>Password</Text>
-                    <TextInput
-                        style={ newStyle.nameInput}
-                        placeholder=''
-                        underlineColorAndroid= 'transparent'
-                        onChangeText= { (lastNameInput) => this.setState({lastNameInput}) }/>
-                    <View style={newStyle.endButtons}>
-
-                   
                     </View>
 
+                    <View style={newStyle.endButtons}>     
+
+                        <View style={newStyle.topView}>
+                            <Text style= {newStyle.topText}>           
+                                    My Profile
+                            </Text>    
+                        </View>
+
+                        <View style= {newStyle.inputContainer}>
+
+                            <Text style={newStyle.firstName}>Naam Kaart</Text>
+                            <TextInput
+                                        style={ newStyle.nameInput }
+                                        placeholder=''
+                                        underlineColorAndroid= 'transparent'
+                                        onChangeText={(firstNameInput) => this.validationFirstName(firstNameInput)}/>
+                                    
+                            <Text style={newStyle.firstName}>IBAN NUMBER</Text>
+                            <TextInput
+                                style={ newStyle.nameInput}
+                                placeholder=''
+                                underlineColorAndroid= 'transparent'
+                                onChangeText= { (lastNameInput) => this.setState({lastNameInput}) }/>
+
+                            <Text style={newStyle.firstName}>BIC NUMBER</Text>
+                            <TextInput
+                                style={ newStyle.nameInput}
+                                placeholder=''
+                                underlineColorAndroid= 'transparent'
+                                onChangeText= { (lastNameInput) => this.setState({lastNameInput}) }/>
+
+                        </View>
+
+
+                        <View style={newStyle.buttonView}>
+                                <ButtonPushWelcome
+                                    objectParams=
+                                        {{
+                                            btnText: "SAVE DATA", 
+                                            language: "ENGLISH",
+                                            firstName: this.state.firstNameInput,
+                                            lastName: this.state.lastNameInput,
+                                            phoneNumber: this.state.phoneNumberInput,
+                                            firstNameError: this.state.firstNameError,
+                                            lastNameError: this.state.lastNameError,
+                                            phoneNumberError: this.state.phoneNumberError,
+                                            firstNameEmpty: this.state.firstNameEmptyError,
+                                            lastNameEmpty: this.state.lastNameEmptyError,
+                                            phoneNumberEmpty: this.state.phoneNumberEmptyError
+                                        }}
+                                func = {this.func}
+                                navigation = { this.props.navigation}
+                                />
+                        </View>
+
+                    </View>
+                
+
                 </View>
-
-                   <ButtonSignUp
-                        objectParams=
-                        {{
-                            btnText: 'SIGN UP', 
-                            language: '',
-                            firstName: this.state.firstNameInput,
-                            lastName: this.state.lastNameInput,
-                            phoneNumber: this.state.phoneNumberInput,
-                            firstNameError: this.state.firstNameError,
-                            lastNameError: this.state.lastNameError,
-                            phoneNumberError: this.state.phoneNumberError,
-                            firstNameEmpty: this.state.firstNameEmptyError,
-                            lastNameEmpty: this.state.lastNameEmptyError,
-                            phoneNumberEmpty: this.state.phoneNumberEmptyError
-                        }}
-                        func = {this.func}
-                        navigation = { this.props.navigation}
-                    />
-
-                    {/* <ButtonNext 
-                            objectParams=
-                                {{
-                                    btnText: this.state.buttonText, 
-                                    language: this.props.navigation.state.params.language,
-                                    firstName: this.state.firstNameInput,
-                                    lastName: this.state.lastNameInput,
-                                    phoneNumber: this.state.phoneNumberInput,
-                                    firstNameError: this.state.firstNameError,
-                                    lastNameError: this.state.lastNameError,
-                                    phoneNumberError: this.state.phoneNumberError,
-                                    firstNameEmpty: this.state.firstNameEmptyError,
-                                    lastNameEmpty: this.state.lastNameEmptyError,
-                                    phoneNumberEmpty: this.state.phoneNumberEmptyError
-                                }}
-                            func = {this.func}/> */}
- 
-            </KeyboardAwareScrollView>:
+                 
+            </KeyboardAwareScrollView>
+            :
             <ScrollView>
             <KeyboardAvoidingView
                style = {newStyle.container}
                behavior = "padding"
                enabled>
-             {/* <View style={newStyle.container}> */}
             
              <View style={newStyle.headerImage}>
                  <Image source={logoNew} resizeMode="contain" style={{ width: viewPortWidth, height: viewPortHeight * .45 }} />
@@ -552,12 +509,7 @@ class PushToEarnSignUp extends Component {
                      onChangeText= { (lastNameInput) => this.setState({lastNameInput}) }/>
 
                  <Text style={newStyle.phoneNumberStyle}>{this.state.phoneNumber}</Text>
-                 {/* <TextInput
-                     keyboardType= "numeric"
-                     style={ newStyle.nameInput}
-                     placeholder=''
-                     underlineColorAndroid= 'transparent'
-                     onChangeText= { (phoneNumberInput) => this.validatePhone(phoneNumberInput) }/>                 */}
+
                  <PhoneInput 
                          ref='phone'
                          initialCountry='be'
@@ -585,7 +537,7 @@ class PushToEarnSignUp extends Component {
                             objectParams=
                                 {{
                                     btnText: this.state.buttonText, 
-                                    language: this.state.language,
+                                    language: "ENGLISH",
                                     firstName: this.state.firstNameInput,
                                     lastName: this.state.lastNameInput,
                                     phoneNumber: this.state.phoneNumberInput,
@@ -600,25 +552,7 @@ class PushToEarnSignUp extends Component {
                             navigation = { this.props.navigation}
                 />
 
-
-                 {/* <ButtonNext 
-                         objectParams=
-                             {{
-                                 btnText: this.state.buttonText, 
-                                 language: this.props.navigation.state.params.language,
-                                 firstName: this.state.firstNameInput,
-                                 lastName: this.state.lastNameInput,
-                                 phoneNumber: this.state.phoneNumberInput,
-                                 firstNameError: this.state.firstNameError,
-                                 lastNameError: this.state.lastNameError,
-                                 phoneNumberError: this.state.phoneNumberError,
-                                 firstNameEmpty: this.state.firstNameEmptyError,
-                                 lastNameEmpty: this.state.lastNameEmptyError,
-                                 phoneNumberEmpty: this.state.phoneNumberEmptyError
-                             }}
-                         func = {this.func}/> */}
             </View>
-         {/* </View> */}
          </KeyboardAvoidingView>
          </ScrollView>
 
@@ -651,34 +585,13 @@ const newStyle = StyleSheet.create({
     },
 
     headerImage: {
-        width: viewPortWidth * 0.65,
-        height: Platform.OS === 'ios'?40:120,
-        flex: Platform.OS === 'ios'?17:8,
+        width: viewPortWidth,
+        height: Platform.OS === 'ios'?viewPortHeight * 0.51:
+                                      viewPortHeight * 0.29,
+        flex: Platform.OS === 'ios'?2:6,
         backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
-    },
-
-    inputContainer: {
-        backgroundColor: 'white',        
-        marginTop: Platform.OS === 'ios'?25:10,
-        padding: 25,
-        marginLeft: 30,
-        flex: Platform.OS === 'ios'?48:1,
-        backgroundColor: 'transparent'
-    },
-
-    socialIcons: {
-        flex: 4,
-        justifyContent: 'center', 
-        alignItems: 'flex-start' ,
-        marginTop: 10, 
-        marginLeft: 20,
-        padding: 30, 
-        flexDirection: 'row', 
-        width: viewPortWidth, 
-        height: 400, 
-        backgroundColor: 'transparent'
     },
 
     firstName: {
@@ -691,17 +604,6 @@ const newStyle = StyleSheet.create({
         letterSpacing: 0.67,
         textAlign: 'left',
         marginBottom: 15
-    },
-
-    forgotPassword:{
-        width: 112,
-        height: 14,
-        fontFamily: "WorkSans-Medium",
-        fontSize: 12,
-        fontWeight: "500",
-        fontStyle: "normal",
-        letterSpacing: 0.43,
-        color: "#E73D50",
     },
 
     phoneNumberStyle: {
@@ -718,7 +620,7 @@ const newStyle = StyleSheet.create({
     },
 
     nameInput: {
-        width: 334,
+        width: 280,
         height: 57,
         borderRadius: 8,
         backgroundColor: '#f6f6f6',
@@ -739,38 +641,129 @@ const newStyle = StyleSheet.create({
         marginTop: 10,
     },
 
-    endButtons: {
-        width: viewPortWidth,
-        height: Platform.OS === 'ios'?50:150,
-        zIndex: 999,
-        flex: Platform.OS === 'ios'?4:4,
+    layoutBelow: {
+        flex: 4,
         flexDirection: 'row',
+        backgroundColor: 'transparent'
+    },
+
+    leftButtons:{
+        width: 45,        
         backgroundColor: 'white',
+        shadowColor: "rgba(216, 216, 216, 0.15)",
+        shadowOffset: {
+          width: 1,
+          height: 2
+        },
+        shadowRadius: 5,
+        shadowOpacity: 1,
+        flex:2
+  },
+
+  leftButton: {
+    width: 54,
+    height: 111,
+    backgroundColor: Colors.white,
+    shadowColor: "rgba(216, 216, 216, 0.20)",
+    shadowOffset: {
+      width: 1,
+      height: 2
+    },
+    shadowRadius: 5,
+    shadowOpacity: 1,
+    marginBottom: 5,
+    marginRight: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 2,
+  },
+
+  endButtons: {
+        width: viewPortWidth * 0.77,
+        height: viewPortHeight * 0.70,
+        zIndex: 999,
+        flex: Platform.OS === 'ios'?11:4,
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        backgroundColor: 'white',        
+    },
+
+    inputContainer: {
+        backgroundColor: 'white',
+        flex: Platform.OS === 'ios'?18:1,        
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
-        backgroundColor:'transparent'
+    },
+
+    topText: {
+        width: 321,
+        height: 34,
+        fontFamily: "WorkSans-Medium",
+        fontSize: 21,
+        fontWeight: "600",
+        fontStyle: "normal",
+        lineHeight: 34,
+        letterSpacing: 0,
+        textAlign: "center",
+        color: "rgb(231, 61, 80)"
+    },
+
+    topView: {
+        width: 276,
+        height: 68,
+        flex:2,
+        marginTop: 10,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
+    paraView: {
+        width: 276,
+        height: 57,
+        flex: 1,
+    },
+
+    buttonView: {
+        flex: 7,
+    },
+
+    para: {
+        width: 276,
+        height: 57,
+        fontFamily: "WorkSans-Medium",
+        fontSize: 16,
+        fontWeight: "normal",
+        fontStyle: "normal",
+        letterSpacing: 0.67,
+        textAlign: "center",
+        color: "rgb(53, 53, 53)",
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
     },
 
     iconImageStyle:{
-        backgroundColor: 'black',
-        width: 50,
-        height: 50,
-        justifyContent: 'center',
-        alignItems: 'center'
+        width: 13,
+        height: 16,
+        fontFamily: "FontAwesome",
+        fontSize: 16,
+        fontWeight: "normal",
+        fontStyle: "normal",
+        letterSpacing: 0.67,
+        textAlign: "center",
+        color: "rgb(231, 61, 80)", 
+        marginTop: 30,
     },
 
     iconStyle: {
-        width: 45,
-        height: 45,
-        borderRadius: 45,
+        width: 30,
+        height: 30,
+        borderRadius: 0,
         backgroundColor: 'transparent',
-        marginTop: viewPortHeight / 200,
-        marginRight: 0,
-        marginLeft: 15,
-        marginTop: 10,
+        marginTop: viewPortHeight / 80,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'transparent'        
+        marginLeft: 10,
     },
 
     validationStyle:{
@@ -795,4 +788,4 @@ const mapStateToProps = state => {
     };
   };
   
-  export default connect(mapStateToProps, mapDispatchToProps)(PushToEarnSignUp);
+  export default connect(mapStateToProps, mapDispatchToProps)(PushToEarnCardDetails);

@@ -22,13 +22,22 @@ import PushToEarnSignUp from '../Containers/PushToEarnSignUp';
 import PushToEarnForgetPass from '../Containers/PushToEarnForgetPass';
 import PushToEarnOTP from '../Containers/PushToEarnOTP';
 import PushToEarnRegisterProfile from '../Containers/PushToEarnRegisterProfile';
-
+import PushToEarnWelcomeScreen from '../Containers/PushToEarnWelcomeScreen';
+import PushToEarnProfileCardDetails from '../Containers/PushToEarnProfileCardDetails';
+import PushToEarnChangePassword from '../Containers/PushToEarnChangePassword';
+import PushToEarnNoFriends from '../Containers/PushToEarnNoFriends';
+import PushToEarnAddFriend from '../Containers/PushToEarnAddFriend';
+import PushToEarnAddFriendsButtons from '../Containers/PushToEarnAddFriendsButtons';
+import PushToEarnProfile from '../Containers/PushToEarnProfile';
+import PushToEarnFriendsOverview from '../Containers/PushToEarnFriendsOverview';
+import PushToEarnInformation from '../Containers/PushToEarnInformation';
 // const middleware = createReactNavigationReduxMiddleware(
 //   'root',
 //   state => state.nav
 // );
 
 // Manifest of possible screens
+
 const AppNavigation = createStackNavigator({
   LaunchScreen: { screen: LaunchScreen },
   LanguageButton: { screen: LanguageButton},
@@ -38,6 +47,15 @@ const AppNavigation = createStackNavigator({
   PushToEarnForgetPass: { screen: PushToEarnForgetPass },
   PushToEarnOTP: { screen: PushToEarnOTP },
   PushToEarnRegisterProfile: { screen: PushToEarnRegisterProfile },
+  PushToEarnWelcomeScreen: { screen: PushToEarnWelcomeScreen },
+  PushToEarnProfileCardDetails: { screen: PushToEarnProfileCardDetails},
+  PushToEarnChangePassword: { screen: PushToEarnChangePassword },
+  PushToEarnNoFriends: { screen: PushToEarnNoFriends },
+  PushToEarnAddFriend: { screen: PushToEarnAddFriend },
+  PushToEarnAddFriendsButtons: { screen: PushToEarnAddFriendsButtons },
+  PushToEarnProfile: { screen: PushToEarnProfile },
+  PushToEarnFriendsOverview: { screen: PushToEarnFriendsOverview },
+  PushToEarnInformation: { screen: PushToEarnInformation },
   NewScreen: { screen: NewScreen,
     navigationOptions: {
       gesturesEnabled: false,
@@ -68,7 +86,7 @@ const AppNavigation = createStackNavigator({
 }, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'PushToEarnRegisterProfile',
+  initialRouteName: 'PushToEarnInformation',
   mode: "card",
   navigationOptions: {
     headerStyle: styles.header
