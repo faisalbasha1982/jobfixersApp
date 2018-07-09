@@ -51,7 +51,7 @@ _head(item){
 
 _body(item){
     return (
-        <View style={{padding:10}}>
+        <View style={{padding:5}}>
           <Text style={ newStyle.fontStyle }>{item.body}</Text>
           <Text style={newStyle.fontStyle}>{item.time}</Text>
           <Text style={newStyle.fontStyle}>{item.newTime}</Text>
@@ -77,12 +77,13 @@ const newStyle = StyleSheet.create({
 
 borderBottom: {
   width: viewPortWidth*0.60,
-  height: 50,
+  height: 30,
   borderBottomColor: "#000",
   borderBottomWidth: StyleSheet.hairlineWidth,
   backgroundColor: 'transparent',
-  justifyContent: 'center',
-  alignItems: 'center',
+  justifyContent: 'flex-start',
+  alignItems: 'flex-start',
+  marginBottom: 10,
 },
 
 fontStyle: {
@@ -91,7 +92,7 @@ fontStyle: {
   fontWeight: "normal",
   fontStyle: "normal",
   letterSpacing: 0.67,
-  textAlign: 'center',
+  textAlign: 'left',
   color: "rgb(231, 61, 80)",
 }
 
