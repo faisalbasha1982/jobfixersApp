@@ -31,6 +31,9 @@ import PushToEarnAddFriendsButtons from '../Containers/PushToEarnAddFriendsButto
 import PushToEarnProfile from '../Containers/PushToEarnProfile';
 import PushToEarnFriendsOverview from '../Containers/PushToEarnFriendsOverview';
 import PushToEarnInformation from '../Containers/PushToEarnInformation';
+import PushToEarnMoney from '../Containers/PushToEarnMoney';
+import pushToEarnMoneyList from '../Containers/PushToEarnMoneyList';
+import CollapsibleView from '../Components/CollapsibleView';
 // const middleware = createReactNavigationReduxMiddleware(
 //   'root',
 //   state => state.nav
@@ -56,6 +59,9 @@ const AppNavigation = createStackNavigator({
   PushToEarnProfile: { screen: PushToEarnProfile },
   PushToEarnFriendsOverview: { screen: PushToEarnFriendsOverview },
   PushToEarnInformation: { screen: PushToEarnInformation },
+  PushToEarnMoney: { screen: PushToEarnMoney },
+  pushToEarnMoneyList: { screen: pushToEarnMoneyList },
+  CollapsibleView: { screen: CollapsibleView },
   NewScreen: { screen: NewScreen,
     navigationOptions: {
       gesturesEnabled: false,
@@ -86,7 +92,7 @@ const AppNavigation = createStackNavigator({
 }, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'PushToEarnInformation',
+  initialRouteName: 'PushToEarnMoney',
   mode: "card",
   navigationOptions: {
     headerStyle: styles.header

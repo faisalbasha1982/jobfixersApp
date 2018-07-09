@@ -21,6 +21,7 @@ import { NavigationActions } from "react-navigation";
 import ButtonNext from '../Components/ButtonNext';
 import ButtonLogin from '../Components/ButtonLogin';
 import ButtonPushWelcome from '../Components/ButtonPushWelcome';
+import ButtonAddFriends from '../Components/ButtonAddFriends';
 import ButtonWelcome from '../Components/ButtonWelcome';
 import LanguageButton from '../Components/LanguageButton';
 import Spinner from "react-native-loading-spinner-overlay";
@@ -435,7 +436,7 @@ class PushToEarnNoFriends extends Component {
                     </View>
 
                     <View style={newStyle.buttonView}>
-                            <ButtonPushWelcome
+                            <ButtonAddFriends
                                 objectParams=
                                     {{
                                         btnText: "VOEG EEN KANDIDAAT TOE", 

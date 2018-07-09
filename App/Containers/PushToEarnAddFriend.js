@@ -22,6 +22,7 @@ import ButtonNext from '../Components/ButtonNext';
 import ButtonLogin from '../Components/ButtonLogin';
 import ButtonPushWelcome from '../Components/ButtonPushWelcome';
 import ButtonWelcome from '../Components/ButtonWelcome';
+import ButtonFriends from '../Components/ButtonFriends';
 import LanguageButton from '../Components/LanguageButton';
 import Spinner from "react-native-loading-spinner-overlay";
 import DeviceInfo from 'react-native-device-info'
@@ -425,7 +426,7 @@ class PushToEarnAddFriend extends Component {
                         </View>
 
                          <View style={newStyle.buttonView}>
-                                <ButtonPushWelcome
+                                <ButtonFriends
                                     objectParams=
                                         {{
                                             btnText: "ZOEK EN JE TELEFOONBOEK", 
@@ -465,7 +466,7 @@ class PushToEarnAddFriend extends Component {
 
 
                         <View style={newStyle.buttonViewBottom}>
-                                <ButtonPushWelcome
+                                <ButtonFriends
                                     objectParams=
                                         {{
                                             btnText: "VOEG EEN KANDIDAAT TOE", 

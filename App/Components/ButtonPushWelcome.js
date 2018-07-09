@@ -71,7 +71,7 @@ class ButtonPushWelcome extends Component {
         phoneNumberError: this.props.objectParams.phoneNumberError,
         firstNameEmpty: this.props.objectParams.firstNameEmpty,
         lastNameEmpty: this.props.objectParams.lastNameEmpty,
-        phoneNumberEmpty: this.props.objectParams.phoneNumberEmpty            
+        phoneNumberEmpty: this.props.objectParams.phoneNumberEmpty,                    
     });
   }
 
@@ -123,23 +123,7 @@ class ButtonPushWelcome extends Component {
 
       return (
         <TouchableOpacity
-        onPress={() => 
-          (!this.state.firstNameEmpty &&
-           !this.state.phoneNumberEmpty &&
-           !this.state.firstNameError && 
-           !this.state.lastNameError && 
-           !this.state.phoneNumberError)?
-           this.props.navigation.navigate('FormTwo',
-           {
-            objectParams: {
-              text: this.state.text,
-              language: this.state.language,
-              firstName: this.state.firstName,
-              lastName: this.state.lastName,
-              phoneNumber: this.state.phoneNumber,      
-           },
-           navigation: this.props.navigation,
-          }):this.somethingElse() }
+        onPress={() => this.props.navigation.navigate('PushToEarnProfile') }
           activeOpacity={0.5}
           style={{
             width: 266,

@@ -21,6 +21,7 @@ import { NavigationActions } from "react-navigation";
 import ButtonNext from '../Components/ButtonNext';
 import ButtonLogin from '../Components/ButtonLogin';
 import ButtonPushWelcome from '../Components/ButtonPushWelcome';
+import ButtonPushNoFriends from '../Components/ButtonPushNoFriends';
 import ButtonWelcome from '../Components/ButtonWelcome';
 import LanguageButton from '../Components/LanguageButton';
 import Spinner from "react-native-loading-spinner-overlay";
@@ -451,7 +452,7 @@ class PushToEarnChangePassword extends Component {
 
 
                         <View style={newStyle.buttonView}>
-                                <ButtonPushWelcome
+                                <ButtonPushNoFriends
                                     objectParams=
                                         {{
                                             btnText: "SAVE DATA", 

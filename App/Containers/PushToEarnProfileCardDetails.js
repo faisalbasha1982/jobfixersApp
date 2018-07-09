@@ -22,6 +22,7 @@ import ButtonNext from '../Components/ButtonNext';
 import ButtonLogin from '../Components/ButtonLogin';
 import ButtonPushWelcome from '../Components/ButtonPushWelcome';
 import ButtonWelcome from '../Components/ButtonWelcome';
+import ButtonNew from '../Components/ButtonNew';
 import LanguageButton from '../Components/LanguageButton';
 import Spinner from "react-native-loading-spinner-overlay";
 import DeviceInfo from 'react-native-device-info'
@@ -451,7 +452,7 @@ class PushToEarnCardDetails extends Component {
 
 
                         <View style={newStyle.buttonView}>
-                                <ButtonPushWelcome
+                                <ButtonNew
                                     objectParams=
                                         {{
                                             btnText: "SAVE DATA", 

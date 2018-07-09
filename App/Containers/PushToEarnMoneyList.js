@@ -32,10 +32,7 @@ import Validation from '../Components/ButtonValidation';
 import LanguageSettings from '../Containers/LanguageSettingsNew';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import PhoneInput from 'react-native-phone-input';
-import Accordion from 'react-native-collapsible/Accordion';
-import CollapsibleList from 'react-native-collapsible-list';
-import CollapseView from "react-native-collapse-view";
-import CollapsibleView from '../Components/CollapsibleView';
+
 import { Colors } from "../Themes";
 import { Images } from '../Themes';
 
@@ -57,21 +54,7 @@ export const IMAGE_HEIGHT_SMALL = window.width /7;
 
 let cLanguage = '';
 
-const SECTIONS = [
-    {
-        title: 'First',
-        content: 'Correction - Contract -1'
-    },
-    {
-        title: 'Second',
-        content: 'Correction - Contract -1'
-    },
-    {
-        title: 'Third',
-        content: 'Correction - Contract -1'
-    }];
-
-class PushToEarnMoney extends Component {
+class PushToEarnMoneyList extends Component {
 
     constructor(props)
     {
@@ -99,20 +82,6 @@ class PushToEarnMoney extends Component {
             firstNameEmptyError:false,
             lastNameEmptyError:false,
             phoneNumberEmptyError:false,
-            sections: [
-                {
-                    title: 'First',
-                    content: 'Correction - Contract -1'
-                },
-                {
-                    title: 'Second',
-                    content: 'Correction - Contract -1'
-                },
-                {
-                    title: 'Third',
-                    content: 'Correction - Contract -1'
-                }],
-         
         };    
     }
 
@@ -368,15 +337,6 @@ class PushToEarnMoney extends Component {
       this.setState({renderValidate,EmptyErrorText});
     }
 
-    onCollapsedListToggle(collapsed)
-    {
-        if(collapsed)
-            this.setState({ collapseButtonText: 'Show Less'});
-        else
-            this.setState({ collapseButtonText: 'Show More'});
-    }
-    
-
     render() {
         const platform = Platform.OS;
         console.log("platform --->",Platform.OS);
@@ -467,11 +427,28 @@ class PushToEarnMoney extends Component {
                         <View style= {newStyle.inputContainer}>
 
                             <Text style={newStyle.firstName}>Name LastName</Text>
+
+                            <View style={newStyle.borderBottom}> </View>
+                                    
+                            <Text style={newStyle.firstName}>Last Name</Text>
+
                             <View style={newStyle.borderBottom}> </View>
 
-                            
-                            {/* <CollapsibleView /> */}
+                            <Text style={newStyle.firstName}>Last Name</Text>
 
+                            <View style={newStyle.borderBottom}> </View>
+
+                            <Text style={newStyle.firstName}>Last Name</Text>
+
+                            <View style={newStyle.borderBottom}> </View>
+
+                            <Text style={newStyle.firstName}>Last Name</Text>
+
+                            <View style={newStyle.borderBottom}> </View>
+
+                            <Text style={newStyle.firstName}>Last Name</Text>
+
+                            <View style={newStyle.borderBottom}> </View>
 
                         </View>
 
@@ -589,22 +566,6 @@ class PushToEarnMoney extends Component {
 
 const newStyle = StyleSheet.create({
 
-    header: {
-        backgroundColor: '#F5FCFF',
-        padding:10,
-    },
-
-    headerText: {
-        textAlign: 'center',
-        fontSize: 16,
-        backgroundColor: '#fff',
-    },
-
-    content: {
-        padding: 20,
-        backgroundColor: '#fff',
-    },
-
     container: {
         flex: 1,
         backgroundColor: 'white',
@@ -636,20 +597,6 @@ const newStyle = StyleSheet.create({
         alignItems: 'center',
     },
 
-    dateStyle: {
-        width: 200,
-        height: 19,
-        fontFamily: 'WorkSans-Regular',
-        fontSize: 10,
-        fontWeight: '500',
-        fontStyle: 'normal',
-        letterSpacing: 0.67,
-        textAlign: 'left',
-        marginLeft: 25,
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-    },
-
     firstName: {
         width: 159,
         height: 19,
@@ -660,30 +607,6 @@ const newStyle = StyleSheet.create({
         letterSpacing: 0.67,
         textAlign: 'left',
         marginBottom: 15
-    },
-
-    accordionStyle:{
-        width: 159,
-        height: 19,
-        fontFamily: 'WorkSans-Regular',
-        fontSize: 16,
-        fontWeight: '500',
-        fontStyle: 'normal',
-        letterSpacing: 0.67,
-        textAlign: 'left',
-        color: 'rgb(231, 61, 80)'
-    },
-
-    collapsibleItem: {
-        padding: 10,       
-    },
-
-    wrapperCollapsibleList: {
-        flex: 1,
-        marginTop: 20,
-        overflow: 'hidden',
-        backgroundColor: '#fff',
-        borderRadius: 5,
     },
 
     phoneNumberStyle: {
@@ -707,21 +630,6 @@ const newStyle = StyleSheet.create({
         marginBottom: 15,
         padding: 10,
     },
-
-    view: {
-        height:50,
-        padding: 20,
-        justifyContent:'center',
-        backgroundColor:'#ffffff',
-      },
-
-      iconView: {
-        padding: 20,
-        alignItems: 'center',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        backgroundColor:'#ffffff',
-      },
 
     borderBottom: {
         width: 280,
@@ -779,10 +687,6 @@ const newStyle = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 2,
-  },
-
-  collapseView: {
-    padding: 20
   },
 
   endButtons: {
@@ -895,4 +799,4 @@ const mapStateToProps = state => {
     };
   };
   
-  export default connect(mapStateToProps, mapDispatchToProps)(PushToEarnMoney);
+  export default connect(mapStateToProps, mapDispatchToProps)(PushToEarnMoneyList);

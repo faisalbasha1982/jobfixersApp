@@ -12,7 +12,7 @@ const viewPortHeight = Dimensions.get('window').height;
 
 let clanguage = '';
 
-class ButtonLogin extends Component {
+class ButtonCardDetails extends Component {
   constructor(props) {
     super(props);
 
@@ -123,12 +123,12 @@ class ButtonLogin extends Component {
 
       return (
         <TouchableOpacity
-        onPress={() => {this.props.navigation.navigate('PushToEarnWelcomeScreen')} }
+        onPress={() => this.props.navigation.navigate('PushToEarnProfileCardDetails') }
           activeOpacity={0.5}
           style={{
-            width: 330,
+            width: 266,
             height: 57,
-            marginBottom: 10,
+            marginBottom: 20,
             marginLeft: 0,
             borderRadius: 8,
             backgroundColor: '#E73D50',
@@ -154,7 +154,7 @@ class ButtonLogin extends Component {
   }
 }
 
-ButtonLogin.propTypes = {
+ButtonCardDetails.propTypes = {
     text: PropTypes.string.isRequired,
     language: PropTypes.string.isRequired,
 }
@@ -193,4 +193,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ButtonLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(ButtonCardDetails);

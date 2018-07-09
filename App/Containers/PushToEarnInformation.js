@@ -686,7 +686,7 @@ const newStyle = StyleSheet.create({
         fontStyle: "normal",
         lineHeight: 34,
         letterSpacing: 0,
-        textAlign: "left",
+        textAlign: "center",
         color: "rgb(231, 61, 80)"
     },
 
@@ -695,8 +695,8 @@ const newStyle = StyleSheet.create({
         height: 68,
         flex:2,
         marginTop: 10,
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start'
+        alignItems: 'center',
+        justifyContent: 'center'
     },
 
     paraView: {

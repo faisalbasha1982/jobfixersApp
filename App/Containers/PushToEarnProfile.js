@@ -22,6 +22,7 @@ import ButtonNext from '../Components/ButtonNext';
 import ButtonLogin from '../Components/ButtonLogin';
 import ButtonPushWelcome from '../Components/ButtonPushWelcome';
 import ButtonWelcome from '../Components/ButtonWelcome';
+import ButtonCardDetails from '../Components/ButtonCardDetails';
 import LanguageButton from '../Components/LanguageButton';
 import Spinner from "react-native-loading-spinner-overlay";
 import DeviceInfo from 'react-native-device-info'
@@ -281,6 +282,11 @@ class PushToEarnProfile extends Component {
 
     }
 
+    callDetails = () => {
+
+        //this.props.navigation.navigate('PushToEarnProfileCardDetails');
+    }
+
     renderValidation = () => {
 
         //if(this.state.language === 'NEDERLANDS')
@@ -461,21 +467,20 @@ class PushToEarnProfile extends Component {
                                 underlineColorAndroid= 'transparent'
                                 onChangeText= { (lastNameInput) => this.setState({lastNameInput}) }/>
 
-                            <Text style={newStyle.firstName}>Card Details</Text>
-                            <TextInput
-                                style={ newStyle.nameInput}
-                                placeholder='Card Details'
-                                underlineColorAndroid= 'transparent'
-                                onChangeText= { (lastNameInput) => this.setState({lastNameInput}) }/>                                
+                            {/* <Text style={newStyle.firstName}>Card Details</Text>
+                            <View style={newStyle.nameInput}
+                                  onPress = { () => this.callDetails() }>
+
+                            </View> */}
 
                         </View>
 
 
                         <View style={newStyle.buttonView}>
-                                <ButtonPushWelcome
+                                <ButtonCardDetails
                                     objectParams=
                                         {{
-                                            btnText: "SAVE DATA", 
+                                            btnText: "CARD DETAILS", 
                                             language: "ENGLISH",
                                             firstName: this.state.firstNameInput,
                                             lastName: this.state.lastNameInput,
