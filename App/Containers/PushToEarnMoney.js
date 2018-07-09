@@ -470,7 +470,7 @@ class PushToEarnMoney extends Component {
                             <View style={newStyle.borderBottom}> </View>
 
                             
-                            {/* <CollapsibleView /> */}
+                            <CollapsibleView />
 
 
                         </View>

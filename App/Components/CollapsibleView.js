@@ -61,7 +61,7 @@ _body(item){
 
 render() {
     return (
-          <View style= {{ flex: 1, backgroundColor: 'white', marginTop: 5, justifyContent: 'center'   }}>
+          <View style= {{ flex: 1, backgroundColor: 'white', marginTop: 0, justifyContent: 'flex-start', alignItems:'flex-start'   }}>
           <AccordionList
             list={this.state.list}
             header={this._head}
@@ -76,7 +76,7 @@ render() {
 const newStyle = StyleSheet.create({
 
 borderBottom: {
-  width: viewPortWidth,
+  width: viewPortWidth*0.60,
   height: 50,
   borderBottomColor: "#000",
   borderBottomWidth: StyleSheet.hairlineWidth,
@@ -87,13 +87,12 @@ borderBottom: {
 
 fontStyle: {
   fontFamily: "WorkSans-Medium",
-  fontSize: 16,
+  fontSize: 11,
   fontWeight: "normal",
   fontStyle: "normal",
   letterSpacing: 0.67,
-  textAlign: "center",
+  textAlign: 'center',
   color: "rgb(231, 61, 80)",
-  textAlign:'center',
 }
 
 });
