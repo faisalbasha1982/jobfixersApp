@@ -112,6 +112,21 @@ class PushToEarnMoney extends Component {
                     title: 'Third',
                     content: 'Correction - Contract -1'
                 }],
+            months: {
+                        one : 'JANUARY',
+                        two : 'FEBRUARY',
+                        three : 'MARCH',
+                        four : 'APRIL',
+                        five : 'MAY',
+                        six : 'JUNE',
+                        seven : 'JULY',
+                        eight : 'AUGUST',
+                        nine : 'SEPTEMBER',
+                        ten : 'OCTOBER',
+                        eleven : 'NOVEMBER',
+                        twelve : 'DECEMBER',
+                    },
+            currentMonthlyIndex: 6,
          
         };    
     }
@@ -375,6 +390,53 @@ class PushToEarnMoney extends Component {
         else
             this.setState({ collapseButtonText: 'Show More'});
     }
+
+    getMonth = () => {
+
+        var month = this.state.months.one;
+
+        if(this.state.currentMonthlyIndex === 1)
+            month = this.state.months.one;
+        if(this.state.currentMonthlyIndex === 2)
+            month = this.state.months.two;
+        if(this.state.currentMonthlyIndex === 3)
+            month = this.state.months.three;
+        if(this.state.currentMonthlyIndex === 4)
+            month = this.state.months.four;
+        if(this.state.currentMonthlyIndex === 5)
+            month = this.state.months.five;
+        if(this.state.currentMonthlyIndex === 6)
+            month = this.state.months.six;
+        if(this.state.currentMonthlyIndex === 7)
+            month = this.state.months.seven;
+        if(this.state.currentMonthlyIndex === 8)
+            month = this.state.months.eight;
+        if(this.state.currentMonthlyIndex === 9)   
+            month = this.state.months.nine;
+        if(this.state.currentMonthlyIndex === 10)
+            month = this.state.months.ten;
+        if(this.state.currentMonthlyIndex === 11)
+            month = this.state.months.eleven;
+        if(this.state.currentMonthlyIndex === 12)
+            month = this.state.months.twelve;
+
+         
+        return month;
+    }
+
+    getNextMonth = () => {
+
+        if(this.state.currentMonthlyIndex !== 12)                
+            this.setState({ currentMonthlyIndex: this.state.currentMonthlyIndex + 1 });
+          
+    }
+
+    getPrevMonth = () => {
+
+        if(this.state.currentMonthlyIndex !== 1)
+            this.setState({ currentMonthlyIndex: this.state.currentMonthlyIndex - 1 });
+    
+    }
     
 
     render() {
@@ -456,7 +518,7 @@ class PushToEarnMoney extends Component {
                         </View>
                     </View>
 
-                    <View style={newStyle.endButtons}>     
+                    <View style={newStyle.endButtons}>
 
                         <View style={newStyle.topView}>
                             <Text style= {newStyle.topText}>           
@@ -466,35 +528,49 @@ class PushToEarnMoney extends Component {
 
                         <View style= {newStyle.inputContainer}>
 
-                            <Text style={newStyle.firstName}>Name LastName</Text>
+                            <View style={newStyle.textContainer}>
+                                <Text style={newStyle.firstName}>Name LastName</Text>
+                                <Text style={newStyle.backText}>Back to Overview</Text>
+                            </View>
+
                             <View style={newStyle.borderBottom}> </View>
 
+                            <View style={newStyle.monthlyBar}>
+                            <TouchableOpacity onPress={ ( ) => {} }
+                                    activeOpacity={0.5}
+                                    style={newStyle.iconStyle}>
+                                    <Icon
+                                        containerStyle={newStyle.iconImageStyle}
+                                        name='angle-left'
+                                        type='font-awesome'
+                                        color='rgb(155, 155, 155)'
+                                        size = {18}
+                                        onPress={() => {this.getPrevMonth() } } /> 
+                            </TouchableOpacity>
+
+                            <Text style={newStyle.monthlyText}>{this.getMonth()}</Text>
+
+                            <TouchableOpacity onPress={ ( ) => {} }
+                                    activeOpacity={0.5}
+                                    style={newStyle.iconStyle}>
+                                    <Icon
+                                        containerStyle={newStyle.iconImageStyle}
+                                        name='angle-right'
+                                        type='font-awesome'
+                                        color='rgb(155, 155, 155)'
+                                        size = {18}
+                                        onPress={() => { this.getNextMonth() } } /> 
+                            </TouchableOpacity>
+
+                            </View>
                             
                             <CollapsibleView />
 
-
-                        </View>
-
-
-                        <View style={newStyle.buttonView}>
-                                <ButtonPushWelcome
-                                    objectParams=
-                                        {{
-                                            btnText: "SAVE DATA", 
-                                            language: "ENGLISH",
-                                            firstName: this.state.firstNameInput,
-                                            lastName: this.state.lastNameInput,
-                                            phoneNumber: this.state.phoneNumberInput,
-                                            firstNameError: this.state.firstNameError,
-                                            lastNameError: this.state.lastNameError,
-                                            phoneNumberError: this.state.phoneNumberError,
-                                            firstNameEmpty: this.state.firstNameEmptyError,
-                                            lastNameEmpty: this.state.lastNameEmptyError,
-                                            phoneNumberEmpty: this.state.phoneNumberEmptyError
-                                        }}
-                                func = {this.func}
-                                navigation = { this.props.navigation}
-                                />
+                            <View style={newStyle.borderBottomNew}></View>
+                            <View style={newStyle.totalText}>
+                                    <Text style={newStyle.firstName}>Totaal</Text>
+                                    <Text style={newStyle.firstName}>Totaal</Text>
+                            </View>
                         </View>
 
                     </View>
@@ -611,6 +687,24 @@ const newStyle = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'center',
+    },
+
+    textContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+           
+    },
+
+    backText: {
+        fontFamily: "WorkSans-Medium",
+        fontSize: 13,
+        fontWeight: "500",
+        fontStyle: "normal",
+        letterSpacing: 0.54,
+        textAlign: "center",   
+        color: "rgb(231, 61, 80)"
+        
     },
 
     keyboardScrollViewContainer: {
@@ -731,6 +825,50 @@ const newStyle = StyleSheet.create({
         marginBottom: 20,
     },
 
+    borderBottomNew: {
+        width: 280,
+        height: 1,
+        borderBottomColor: "rgb(231, 61, 80)",
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        marginTop: 20,
+        flex:2,
+    },
+
+    monthlyBar: {
+
+        width: 280,
+        height: 30,
+        backgroundColor: '#353535',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: "rgb(246, 246, 246)",
+        marginBottom: 30,
+        flexDirection: 'row'
+    },
+
+    monthlyText: {
+        fontFamily: "WorkSans-Medium",
+        fontSize: 13,
+        fontWeight: "500",
+        fontStyle: "normal",
+        letterSpacing: 0.54,
+        textAlign: "center",
+        color: "rgb(155, 155, 155)"
+    },
+
+    totalText: {
+        width: 280,
+        height: 40,
+        fontFamily: 'WorkSans-Regular',
+        fontSize: 16,
+        fontWeight: '500',
+        fontStyle: 'normal',
+        letterSpacing: 0.67,
+        textAlign: 'left',
+        flex: 2,
+        marginTop: 10,
+    },
+
     buttons: {
         width: viewPortWidth,
         height: 20,
@@ -786,7 +924,7 @@ const newStyle = StyleSheet.create({
   },
 
   endButtons: {
-        width: viewPortWidth * 0.77,
+        width: viewPortWidth * 0.81,
         height: viewPortHeight * 0.70,
         zIndex: 999,
         flex: Platform.OS === 'ios'?11:4,
@@ -800,7 +938,7 @@ const newStyle = StyleSheet.create({
         backgroundColor: 'white',
         flex: Platform.OS === 'ios'?18:1,        
         justifyContent: 'flex-start',
-        alignItems: 'flex-start',
+        alignItems: 'flex-start',       
     },
 
     topText: {
@@ -813,7 +951,8 @@ const newStyle = StyleSheet.create({
         lineHeight: 34,
         letterSpacing: 0,
         textAlign: "center",
-        color: "rgb(231, 61, 80)"
+        color: "rgb(231, 61, 80)",
+        marginRight: 20,
     },
 
     topView: {
@@ -821,7 +960,7 @@ const newStyle = StyleSheet.create({
         height: 68,
         flex:2,
         marginTop: 10,
-        alignItems: 'flex-start',
+        alignItems: 'center',
         justifyContent: 'flex-start'
     },
 
@@ -863,12 +1002,11 @@ const newStyle = StyleSheet.create({
     },
 
     iconStyle: {
-        width: 30,
-        height: 30,
-        borderRadius: 0,
+        width: 20,
+        height: 20,
+        borderRadius: 20,
         backgroundColor: 'transparent',
-        marginTop: viewPortHeight / 80,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         marginLeft: 10,
     },
